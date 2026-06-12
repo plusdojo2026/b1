@@ -23,8 +23,8 @@
     <footer>
         <nav>
             <ul>
-                <li class="nowpage"><img src="../images/home_red.png" class="footer_icon"><br>ホーム</li>
-                <li><img src="/webapp/images/custom.png" class="footer_icon"><br>カスタム</li>
+                <li class="nowpage"><img src="images/home_red.png" class="footer_icon"><br>ホーム</li>
+                <li><img src="b1/images/custom.png" class="footer_icon"><br>カスタム</li>
                 <li><img src="../images/contest.png" class="footer_icon"><br>コンテスト</li>
                 <li><img src="../images/akinator.png" class="footer_icon"><br>診断</li>
                 <li><img src="../images/mydata.png" class="footer_icon"><br>マイデータ</li>
