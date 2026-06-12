@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FanTable │ タイトル</title>
-    <link rel="stylesheet" href="common.css">
-    <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="/webapp/css/common.css">
+    <link rel="stylesheet" href="/webapp/css/home.css">
 </head>
 <body>
 
