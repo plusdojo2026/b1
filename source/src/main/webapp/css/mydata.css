@@ -2,7 +2,15 @@
 
         body { background-color: #fcfbf4; font-family: Arial, sans-serif; padding: 20px 20px 85px 20px; margin: 0; }
         .card { background-color: white; border-radius: 20px; padding: 20px; margin-bottom: 20px; text-align: center; }
-        .rank-badge { background-color: #ffff33; color: #d93333; font-weight: bold; padding: 5px 20px; border-radius: 15px; display: inline-block; }
+        
+        .rank-badge {
+        background-color: #ffff33;
+        color: #d93333;
+        font-weight: bold;
+        padding: 5px 20px;
+        border-radius: 15px;
+		display: inline-block;
+              }
         .label-red { background-color: #d93333; color: white; padding: 2px 5px; border-radius: 3px; }
         .btn-change { background-color: #d93333; color: white; border: none; padding: 5px 20px; border-radius: 5px; }
         .btn-logout { background-color: #3fa938; color: white; border: none; width: 100%; padding: 10px; border-radius: 5px; font-size: 16px; }
