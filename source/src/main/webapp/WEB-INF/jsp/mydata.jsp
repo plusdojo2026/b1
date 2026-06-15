@@ -15,8 +15,8 @@
 
     <!-- 会员ランク・ユーザー情報の表示カード -->
     <div class="card">
-        <p>User's Rank</p>
-        <div class="rank-badge">🏅 ${rankData}</div>
+        <p><b>User's Rank</b></p>
+        <div class="rank-badge"><img src="/b1/images/Gold.png" width="80px"></div>
         <p><span class="label-red">ユーザー名</span> <strong>${nameData}</strong></p>
         <button class="btn-change" onclick="location.href='${pageContext.request.contextPath}/edit_mydata'">変更</button>
     </div>
