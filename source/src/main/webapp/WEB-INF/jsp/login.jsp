@@ -1,64 +1,43 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html lang="ja">
 <head>
-<meta charset="UTF-8">
-<title>ログイン</title>
-<link rel="stylesheet" href="/b1/css/common.css">
-<link rel="stylesheet" href="/b1/css/login.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ログイン</title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/common.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/login.css">
 </head>
-<!-- ロゴ画像 -->
-<div class="top-image"></div>
-
-<div class="bottom-content">
-    
-</div>
-
 <body>
-<div class="logo-area">
-    <img src="/b1/images/logo.png" width="60px">
-</div>
 
-<div class="error-area">
-    <span id="error_message"></span>
-</div>
+    <!-- 【已修复】置顶平铺的Logo区域 -->
+    <div class="logo-container">
+        <img src="${pageContext.request.contextPath}/images/logo.png" alt="ロゴ" class="logo-img">
+    </div>
 
-<div class="login-box">
-    <!-- 入力欄 -->
-</div>
+    <!-- 【已修复】整体包裹容器，使内容在下方居中对齐 -->
+    <div class="main-content">
+        
+        <!-- 未入力エラーメッセージ -->
+        <div class="error-txt">${errorMessage}</div>
 
-<div class="login-box">
-<form id="login_form" method="POST" action="/b1/LoginServlet">
-<span id="error_message" style="color:red; display:block; width:100%; text-align:center; white-space:nowrap; margin-bottom:5px;">
-          	</span>
-<h2 class= "hero"></h2>
-<input type="tel" name="phone" placeholder="電話番号">
-<input type="password" name="pw" placeholder="パスワード">
-<button type="submit" name="login">ログイン</button>
+        <!-- ログインフォーム -->
+        <form action="${pageContext.request.contextPath}/login" method="POST">
+            <div class="input-container">
+                <input type="text" name="phoneNumber" class="input-field" placeholder="電話番号" value="${phoneNumber}">
+                <input type="password" name="password" class="input-field" placeholder="パスワード">
+            </div>
 
-</form>
-<style>
+            <!-- ログインボタン -->
+            <button type="submit" class="btn-submit">ログイン</button>
+        </form>
 
+        <!-- 新規登録へのリンク -->
+        <div class="register-redirect">
+            アカウントをお持ちでない方は、<a href="${pageContext.request.contextPath}/regist_user">新規登録</a>
+        </div>
+        
+    </div>
 
-</style>
-<!-- 新規登録はこちらから -->
-<p id="signup-text" style="text-align:center; white-space:nowrap;">
-  アカウントをお持ちでない方は<a href="/b1/servlet/UserRegistServlet" style="color:red;">新規登録</a>
-</p>
-
-</div>
 </body>
-<script>
-let formObj = document.getElementById('login_form');
-let errorMessageObj = document.getElementById('error_message');
-/* [ログイン]ボタンをクリックしたときの処理 */
-formObj.onsubmit = function(event) {
-  if (formObj.phone.value === '' || formObj.pw.value === '') {
-    errorMessageObj.textContent = '※電話番号とパスワードを入力してください！';
-    event.preventDefault();
-  }
-};
-</script>
-
 </html>
