@@ -18,7 +18,7 @@
         <p>User's Rank</p>
         <div class="rank-badge">🏅 ${rankData}</div>
         <p><span class="label-red">ユーザー名</span> <strong>${nameData}</strong></p>
-        <button class="btn-change" onclick="location.href='edit_mydata.jsp'">変更</button>
+        <button class="btn-change" onclick="location.href='${pageContext.request.contextPath}/edit_mydata'">変更</button>
     </div>
 
     <!-- 摂取栄養素情報の表示カード -->
