@@ -1,1 +1,109 @@
 @charset "UTF-8";
+
+@charset "UTF-8";
+
+/* ページ全体のスタイル設定 */
+body { 
+    background-color: #fcfbf4; 
+    font-family: Arial, sans-serif; 
+    padding: 20px 20px 85px 20px; 
+    margin: 0; 
+    text-align: center; 
+}
+
+/* 画面中央のタイトル */
+.title { 
+    font-size: 22px; 
+    color: #4a2c11; 
+    font-weight: bold; 
+    margin-bottom: 25px; 
+}
+
+/* 白い角丸カードコンテナ */
+.form-card { 
+    background-color: white; 
+    border-radius: 25px; 
+    padding: 30px 15px; 
+    margin-bottom: 15px; 
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05); 
+}
+
+/* 入力行のレイアウト調整 */
+.input-row { 
+    display: flex; 
+    align-items: center; 
+    margin-bottom: 15px; 
+    justify-content: center; 
+}
+.input-row:last-child { 
+    margin-bottom: 0; 
+}
+
+/* 赤いテキストラベル */
+.label-red { 
+    background-color: #d93333; 
+    color: white; 
+    padding: 6px 0; 
+    border-radius: 5px; 
+    font-size: 12px; 
+    font-weight: bold; 
+    width: 85px; 
+    text-align: center; 
+    margin-right: 10px; 
+    flex-shrink: 0; 
+}
+
+/* 入力用のテキストボックス */
+.input-field { 
+    flex-grow: 1; 
+    max-width: 180px; 
+    padding: 6px 10px; 
+    border: 1px solid #7f8c8d; 
+    border-radius: 5px; 
+    font-size: 14px; 
+}
+
+/* 未入力警告メッセージ（赤文字） */
+.error-txt { 
+    color: #d93333; 
+    font-size: 13px; 
+    min-height: 20px; 
+    margin: 15px 0; 
+    font-weight: bold; 
+}
+
+/* 大きな丸角ボタンのベーススタイル */
+.btn-large { 
+    width: 100%; 
+    max-width: 300px; 
+    padding: 14px 0; 
+    border: none; 
+    border-radius: 30px; 
+    font-size: 16px; 
+    font-weight: bold; 
+    cursor: pointer; 
+    margin-bottom: 15px; 
+    display: inline-block; 
+}
+
+/* 変更用ボタン（赤） */
+.btn-submit { 
+    background-color: #d93333; 
+    color: white; 
+}
+
+/* 削除用按钮（深茶色/黒） */
+.btn-delete { 
+    background-color: #2b1d11; 
+    color: white; 
+}
+
+/* 戻るテキストリンク */
+.back-link { 
+    display: inline-block; 
+    color: #d93333; 
+    font-size: 13px; 
+    text-decoration: underline; 
+    margin-top: 5px; 
+    cursor: pointer; 
+}
