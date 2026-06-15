@@ -27,11 +27,13 @@ body {
     border-radius: 5px;
     margin: 0 auto 10px auto;
     overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
 }
 .logo-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* 画像を枠内に綺麗に収める */
+    width: 90%;
+    height: auto;
 }
 
 /* エラーメッセージ（未入力警告など） */

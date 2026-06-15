@@ -12,16 +12,20 @@ body {
 /* ロゴ画像のコンテナとサイズ調整（【微调】去掉最大宽度和圆角边框，实现真正置顶全屏平铺） */
 .logo-container {
     width: 100%;
-    height: 180px; /* 小幅增加了高度，铺满效果更佳 */
-    background-color: #e5b485; 
+    height: 320px;
+    background-color: #e5b485;
     margin: 0;
     overflow: hidden;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .logo-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; 
+    width: 90%;
+    height: auto;
 }
+
 
 /* 【新增】整体内容包裹容器（把原本body的左右20px边距加回这里，且用 margin-top 整体往下挪动，让输入框靠中） */
 .main-content {
