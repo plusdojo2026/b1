@@ -16,15 +16,15 @@
 
     <!-- 会员ランク・ユーザー情報の表示カード -->
     <div class="card">
-        <p><b>User's Rank</b></p>
-        <div class="rank-badge"><img src="/b1/images/gold.png" width="80px"></div>
+        <p class="mydata_text">User's Rank</p>
+        <div class="rank-badge"><img src="/b1/images/gold.png" width="180px"></div>
         <p><span class="label-red">ユーザー名</span> <strong>${nameData}</strong></p>
         <button class="btn-change" onclick="location.href='${pageContext.request.contextPath}/edit_mydata'">変更</button>
     </div>
 
     <!-- 摂取栄養素情報の表示カード -->
     <div class="card">
-        <h3>栄養素</h3>
+        <p class="mydata_text">栄養素</p>
         <p style="color: gray; font-size: 12px;">今月の摂取量 (目安)</p>
         <p>タンパク質： <strong>${proteinData}g</strong></p>
         <p>食物繊維： <strong>${fiberData}g</strong></p>
@@ -37,11 +37,11 @@
     <footer>
         <nav>
             <ul>
-                <li class="nowpage"><img src="/b1/images/home_red.png" class="footer_icon"><br>ホーム</li>
+                <li><img src="/b1/images/home.png" class="footer_icon"><br>ホーム</li>
                 <li><img src="/b1/images/custom.png" class="footer_icon"><br>カスタム</li>
                 <li><img src="/b1/images/contest.png" class="footer_icon"><br>コンテスト</li>
                 <li><img src="/b1/images/akinator.png" class="footer_icon"><br>診断</li>
-                <li><img src="/b1/images/mydata.png" class="footer_icon"><br>マイデータ</li>
+                <li class="nowpage"><img src="/b1/images/mydata_red.png" class="footer_icon"><br>マイデータ</li>
             </ul>
         </nav>
     </footer>
