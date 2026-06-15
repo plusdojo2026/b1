@@ -1,1 +1,45 @@
 @charset "UTF-8";
+body { background-color: #fcfbf4; font-family: Arial, sans-serif; padding: 20px 20px 85px 20px; margin: 0; }
+
+.btn-top { background-color: red; color: white; border: none; width: 100%; padding: 20px; margin-top:20px ; border-radius: 40px; font-size: 24px; }
+
+.ViewMymenu{
+	background-color: #F9F6EE;
+	justify-content: center;
+	width: 100%;
+    display: flex;
+    align-items: flex-start; /* 上揃え */
+    gap: 10px;
+    margin-top:20px ;
+}
+
+.footer_icon{
+    width: 60px; /* 好きなサイズに調整 */
+    height: auto;
+}
+
+.menu-right{
+    display: flex;
+    flex-direction: column; /* 縦に並べる */
+    gap: 8px;
+}
+
+#user_id{
+    width: 200px; /* 好きな幅 */
+    height: 30px;
+    border: none;
+}
+
+.btn-group{
+    display: flex;
+    gap: 10px; /* 編集と削除を横並び */
+}
+
+.btn-submit{
+	background-color: #C82518; color: white; border: none;
+}
+
+
+.btn-delete{
+	background-color: #2B2523; color: white; border: none;
+}
