@@ -1,86 +1,93 @@
 @charset "UTF-8";
 
-.login-box {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        height: 100vh;
-        padding: 20px; /* ← スマホで左右が切れないように */
-    }
-
-    .login-box form {
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
-        width: 100%;        /* ← スマホで画面幅に合わせる */
-        max-width: 300px;   /* ← PCでは広がりすぎない */
-    }
-
-    .login-box input {
-        height: 40px;
-        font-size: 16px;
-        padding: 5px;
-        text-align: left;
-        border-radius: 6px;
-        border: 1px solid #ccc;
-    }
-.login-box button {
-    height: 45px;
-    font-size: 16px;
-    border-radius: 6px;
-    border: none;
-    background-color: red;   /* ← 背景を赤*/
-    color: white;            /* ← 文字を白 */
-}
-/*ログインボタンの角を丸く*/
-    .login-box button {
-    border-radius: 999px;
-}
-    /*ロゴ画像*/
-.top-image {
-    height: 40vh; /* ← 上半分よりちょい上にしたいなら40〜45vh */
-    background-image: url("/b1/images/logo.png"); /* ← ここに画像名 */
-    background-size: cover;
-    background-position: center;
-}
-.bottom-content {
-    height: 30vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-/* ロゴ部分：固定高さで安定 */
-.logo-area {
-    height: 80px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+/* ページ全体のスタイル設定（【微调】去掉 padding:20px，改由各个模块自己控制，图片才能顶格铺满） */
+body { 
+    background-color: #fcfbf4; 
+    font-family: Arial, sans-serif; 
+    padding: 0; 
+    margin: 0; 
+    text-align: center; 
 }
 
-/* ロゴ画像 */
-.logo {
-    width: 50px;
-    
+/* ロゴ画像のコンテナとサイズ調整（【微调】去掉最大宽度和圆角边框，实现真正置顶全屏平铺） */
+.logo-container {
+    width: 100%;
+    height: 180px; /* 小幅增加了高度，铺满效果更佳 */
+    background-color: #e5b485; 
+    margin: 0;
+    overflow: hidden;
+}
+.logo-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
 }
 
-/* エラーメッセージのスペース */
-.error-area {
-    height: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+/* 【新增】整体内容包裹容器（把原本body的左右20px边距加回这里，且用 margin-top 整体往下挪动，让输入框靠中） */
+.main-content {
+    width: 100%;
+    max-width: 320px;
+    margin: 40px auto 0 auto; /* 40px 负责把账号密码整体往下推，靠中显示 */
+    padding: 0 20px;
+    box-sizing: border-box;
 }
 
-#error_message {
-    color: red;
+/* エラーメッセージ表示エリア（赤文字） */
+.error-txt { 
+    color: #d93333; 
+    font-size: 13px; 
+    min-height: 20px; 
+    margin: 15px 0; 
+    font-weight: bold; 
+}
+
+/* 入力フォームのエリア調整 */
+.input-container {
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto;
+}
+
+/* 電話番号とパスワードボックスの共通丸角スタイル */
+.input-field { 
+    width: 100%;
+    padding: 12px 15px; 
+    margin-bottom: 15px;
+    border: 1.5px solid #7f8c8d; 
+    border-radius: 10px; 
+    font-size: 16px; 
+    box-sizing: border-box; 
+    background-color: #ffffff;
+}
+.input-field::placeholder {
+    color: #bcbcbc;
+}
+
+/* ログインボタン（大赤丸角） */
+.btn-submit { 
+    width: 100%; 
+    max-width: 320px; 
+    padding: 14px 0; 
+    border: none; 
+    border-radius: 30px; 
+    font-size: 18px; 
+    font-weight: bold; 
+    background-color: #d93333; 
+    color: white;
+    cursor: pointer; 
+    margin-top: 5px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+/* 下部の新規登録画面へのリンクスタイル */
+.register-redirect {
+    margin-top: 25px;
     font-size: 14px;
+    font-weight: bold;
+    color: #000000;
+}
+.register-redirect a {
+    color: #d93333;
+    text-decoration: underline;
 }
 
-/* 入力欄 */
-.login-box {
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
