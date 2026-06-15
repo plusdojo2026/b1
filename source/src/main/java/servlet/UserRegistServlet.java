@@ -1,41 +1,67 @@
 package servlet;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * Servlet implementation class UserRegistServlet
- */
-@WebServlet("/UserRegistServlet")
+// 新規会員登録画面の遷移およびバリデーションを制御するServlet
+@WebServlet("/regist_user")
 public class UserRegistServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public UserRegistServlet() {
-        super();
-        // TODO Auto-generated constructor stub
+    private static final long serialVersionUID = 1L;
+
+    // 画面の初期表示処理
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) 
+            throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
+        // 登録画面（JSP）を表示
+        request.getRequestDispatcher("/WEB-INF/jsp/regist_user.jsp").forward(request, response);
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-	}
+    // 「新規会員登録」ボタン押下時の処理
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) 
+            throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
+        response.setCharacterEncoding("UTF-8");
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
+        // 各入力フォームから値を取得
+        String name = request.getParameter("userName");
+        String phone = request.getParameter("phoneNumber");
+        String pass = request.getParameter("password");
+        String passConf = request.getParameter("passwordConfirm");
+        String checked = request.getParameter("confirmCheck"); // チェックボックスの状態
 
+        // 未入力チェック（バリデーション）
+        if (name == null || name.trim().isEmpty() || 
+            phone == null || phone.trim().isEmpty() || 
+            pass == null || pass.trim().isEmpty() || 
+            passConf == null || passConf.trim().isEmpty() || 
+            checked == null) { // チェックボックスが未チェックの場合も含む
+            
+            // エラーメッセージと入力値を保持して元の画面に戻す
+            request.setAttribute("errorMessage", "すべての項目を入力し、確認チェックを入れてください。");
+            request.setAttribute("userName", name);
+            request.setAttribute("phoneNumber", phone);
+            
+            request.getRequestDispatcher("/WEB-INF/jsp/regist_user.jsp").forward(request, response);
+            return;
+        }
+
+        // パスワード一致チェック
+        if (!pass.equals(passConf)) {
+            request.setAttribute("errorMessage", "パスワードと確認用パスワードが一致しません。");
+            request.setAttribute("userName", name);
+            request.setAttribute("phoneNumber", phone);
+            request.getRequestDispatcher("/WEB-INF/jsp/regist_user.jsp").forward(request, response);
+            return;
+        }
+
+        // TODO: ここでデータベースへの会員登録（Insert）処理を実行
+        
+        // 登録成功後はログイン画面、またはマイデータ画面へ遷移（ここでは一旦mydataへ）
+        response.sendRedirect(request.getContextPath() + "/mydata");
+    }
 }
