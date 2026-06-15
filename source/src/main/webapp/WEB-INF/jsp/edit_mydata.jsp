@@ -54,7 +54,7 @@
                 <li><img src="/b1/images/custom.png" class="footer_icon"><br>カスタム</li>
                 <li><img src="/b1/images/contest.png" class="footer_icon"><br>コンテスト</li>
                 <li><img src="/b1/images/akinator.png" class="footer_icon"><br>診断</li>
-                <li class="nowpage"><img src="/b1/images/home_red.png" class="footer_icon"><br>マイデータ</li>
+                <li class="nowpage"><img src="/b1/images/mydata_red.png" class="footer_icon"><br>マイデータ</li>
             </ul>
         </nav>
     </footer>
