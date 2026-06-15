@@ -16,6 +16,9 @@
     </header>
 
     <main>
+    
+    <button class="btn-logout" onclick="location.href='/b1/servlet/MymenuRegistServlet'"><b>オリジナルバーガーを作る</b></button>
+	<button class="btn-logout" onclick="location.href='/b1/servlet/MymenuViewServlet'"><b>マイメニューを見る</b></button>
 
     </main>
 
