@@ -40,7 +40,16 @@ public class RanksDAO {
 	        }
 	    } catch (Exception e) {
 	        e.printStackTrace();
-	    }
+	    } finally {
+			// データベースを切断
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
 
 	    return rank;
 	}
