@@ -83,3 +83,11 @@
     color: #F9F6EE;
     -webkit-tap-highlight-color: transparent;
 }
+
+.top_contest p {
+    background-color: #C82518;
+    color: #F9F6EE;
+    padding: 5px 0;
+    border-radius: 10px;
+    font-weight: bold;
+}
