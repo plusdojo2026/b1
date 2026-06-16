@@ -31,7 +31,7 @@ public class MaterialsDAO {
 	        ResultSet rs = ps.executeQuery();
 
 	        if (rs.next()) {
-	            material = new Material(
+	        	material = new Material(
 	                rs.getInt("id"),
 	                rs.getString("name"),
 	                rs.getInt("category"),
@@ -114,7 +114,7 @@ public class MaterialsDAO {
 		return materiallist;
 	}
 	
-	// 引数nameで指定された項目で検索して、取得されたデータのリストを返す
+	// 引数categoryで指定された項目で検索して、取得されたデータのリストを返す
 	public List<Material> selectByCategory(int category) {
 		Connection conn = null;
 		List<Material> materiallist = new ArrayList<Material>();
@@ -174,7 +174,7 @@ public class MaterialsDAO {
 		return materiallist;
 	}
 
-	// 引数cardで指定されたレコードを登録し、成功したらtrueを返す
+	// 引数materialで指定されたレコードを登録し、成功したらtrueを返す
 	public boolean insert(Material material) {
 		Connection conn = null;
 		boolean result = false;
@@ -235,7 +235,7 @@ public class MaterialsDAO {
 		return result;
 	}
 
-	// 引数cardで指定されたレコードを更新し、成功したらtrueを返す
+	// 引数materialで指定されたレコードを更新し、成功したらtrueを返す
 	public boolean update(Material material) {
 		Connection conn = null;
 		boolean result = false;
@@ -298,7 +298,7 @@ public class MaterialsDAO {
 		return result;
 	}
 
-	// 引数cardで指定された番号のレコードを削除し、成功したらtrueを返す
+	// 引数idで指定された番号のレコードを削除し、成功したらtrueを返す
 	public boolean delete(int id) {
 		Connection conn = null;
 		boolean result = false;

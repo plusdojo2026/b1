@@ -104,7 +104,7 @@ public class CategoriesDAO {
 		return categorylist;
 	}
 
-	// 引数categoryで指定されたレコードを登録し、成功したらtrueを返す
+	// 引数nameを登録し、成功したらtrueを返す
 	public boolean insert(String name) {
 		Connection conn = null;
 		boolean result = false;
@@ -155,7 +155,7 @@ public class CategoriesDAO {
 		return result;
 	}
 
-	// 引数cardで指定されたレコードを更新し、成功したらtrueを返す
+	// 引数categoryで指定されたレコードを更新し、成功したらtrueを返す
 	public boolean update(Category category) {
 		Connection conn = null;
 		boolean result = false;
@@ -208,7 +208,7 @@ public class CategoriesDAO {
 		return result;
 	}
 
-	// 引数cardで指定された番号のレコードを削除し、成功したらtrueを返す
+	// 引数idで指定された番号のレコードを削除し、成功したらtrueを返す
 	public boolean delete(int id) {
 		Connection conn = null;
 		boolean result = false;
