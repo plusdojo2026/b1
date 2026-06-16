@@ -1,1 +1,99 @@
 @charset "UTF-8";
+
+body { 
+    background-color: #fcfbf4; 
+    font-family: Arial, sans-serif; 
+    padding: 20px 20px 85px 20px; 
+    margin: 0; 
+    text-align: center; 
+    box-sizing: border-box;
+}
+
+.page-title { 
+    font-size: 24px; 
+    color: #4a2c11; 
+    font-weight: bold; 
+    margin-bottom: 5px; 
+}
+
+.result-msg {
+    color: #e58585;
+    font-size: 11px;
+    margin-bottom: 12px;
+}
+
+.user-card {
+    background-color: white;
+    border: 1.5px solid #bdc3c7;
+    border-radius: 20px;
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 340px;
+    margin: 0 auto 20px auto;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+}
+
+.avatar-box {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid #bdc3c7;
+    overflow: hidden;
+    background-color: #f0f3f4;
+}
+.avatar-box img { width: 100%; height: 100%; object-fit: cover; }
+.user-name { font-size: 15px; font-weight: bold; color: #2c3e50; flex-grow: 1; text-align: left; margin-left: 10px; }
+.rank-badge { background-color: #ffff33; color: #d93333; font-weight: bold; padding: 6px 15px; border-radius: 15px; font-size: 16px; }
+
+.illustration-stage {
+    width: 100%;
+    max-width: 360px;
+    height: 200px;
+    margin: 0 auto 20px auto;
+    background: linear-gradient(to bottom, #fcfbf4 65%, #e5b485 65%); 
+    border-bottom: 5px solid #8e44ad; 
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.illustration-box {
+    width: 130px;
+    height: 160px;
+    border: 1.5px solid #000000;
+    background-color: #ffffff;
+    margin-bottom: 5px;
+    font-size: 11px;
+    color: #333333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.diagnostic-card {
+    background-color: #d93333;
+    border-radius: 25px;
+    padding: 20px 15px;
+    max-width: 340px;
+    margin: 0 auto;
+    color: white;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+.diag-title { font-size: 18px; font-weight: bold; margin-bottom: 5px; letter-spacing: 1px; }
+.diag-subtitle { font-size: 12px; opacity: 0.9; margin-bottom: 15px; }
+
+.diag-btn {
+    background-color: #ffffff;
+    color: #d93333;
+    border: none;
+    border-radius: 20px;
+    padding: 8px 35px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}

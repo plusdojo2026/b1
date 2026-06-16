@@ -51,6 +51,6 @@ public class LoginServlet extends HttpServlet {
         session.setAttribute("loginUser", loginUser);
 
         // ログイン成功後はマイデータ画面（Servlet）へリダイレクト
-        response.sendRedirect(request.getContextPath() + "/mydata");
+        response.sendRedirect(request.getContextPath() + "/home");
     }
 }
