@@ -23,7 +23,7 @@
     <footer>
         <nav>
             <ul>
-                <li class="nowpage"><a href="/b1/ServletHome">
+                <li class="nowpage"><a href="/b1/HomeServlet">
                 		<img src="/b1/images/home_red.png" class="footer_icon"><br>ホーム
                 	</a></li>
                 <li><a href="/b1/CustomServlet">

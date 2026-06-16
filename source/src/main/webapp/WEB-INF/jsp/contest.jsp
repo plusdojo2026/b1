@@ -28,7 +28,7 @@
     <footer>
         <nav>
             <ul>
-                <li><a href="/b1/ServletHome">
+                <li><a href="/b1/HomeServlet">
                 		<img src="/b1/images/home.png" class="footer_icon"><br>ホーム
                 	</a></li>
                 <li><a href="/b1/CustomServlet">

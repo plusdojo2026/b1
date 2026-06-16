@@ -1,1 +1,93 @@
 @charset "UTF-8";
+
+.contest_user {
+    display: inline-flex;
+    justify-content: center;
+    gap: 30px;
+    font-weight: bold;
+    margin: 0 0 10px 0;
+}
+
+.burger {
+    position: relative;
+    width: 150px;
+    margin: auto;
+}
+
+.burger img {
+    width: 150px;
+    position: absolute;
+    left: 0;
+}
+
+.buns_top {
+    top: 0;
+    z-index: 999;
+}
+
+.buns_bottom {
+    z-index: 1;
+}
+
+.contest_menu_item {
+    text-align: center;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 20px;
+    padding: 10px 0 20px 0;
+    box-shadow: 0 5px 6px rgba(0,0,0,0.2);
+}
+
+.vote_button {
+    color: #F9F6EE;
+    padding: 10px 30px;
+    width: 60%;
+    max-width: 400px;
+    background-color: #C82518;
+    font-weight: bold;
+    font-size: 1.1rem;
+    border-radius: 100px;
+    display: block;
+    margin: 10px auto;
+    position: relative;
+    border: none;
+    cursor: pointer;
+}
+
+.top_contest {
+    text-align: center;
+}
+
+.class_contest {
+    display: inline-flex;
+    border: 2px solid #dbb89d;
+    border-radius: 20px;
+    overflow: hidden;
+    gap : 0px;
+    align-items: center;
+}
+
+.class_contest a {
+    text-decoration: none;
+    color: inherit;
+    -webkit-tap-highlight-color: transparent;
+    padding: 0 10px;
+}
+
+.choice {
+    background-color: #C82518;
+    border-radius:20px;
+}
+.choice a {
+    text-decoration: none;
+    color: #F9F6EE;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.top_contest p {
+    background-color: #C82518;
+    color: #F9F6EE;
+    padding: 5px 0;
+    border-radius: 10px;
+    font-weight: bold;
+}
