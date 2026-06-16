@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FanTable │ タイトル</title>
+    <title>FanTable │ メニューコンテスト</title>
     <link rel="stylesheet" href="/b1/css/common.css">
     <link rel="stylesheet" href="/b1/css/home.css">
 </head>
@@ -12,12 +12,11 @@
 
     <header>
     <div class="common">
-        <h1>タイトル</h1>
+        <h1>メニューコンテスト</h1>
     </div>
     </header>
 
     <main>
-
     </main>
 
     <footer>
