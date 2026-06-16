@@ -58,7 +58,7 @@ public class MymenusDAO {
 	    return mymenu;
 	}
 	
-	// 引数mymenu指定された項目で検索して、取得されたデータのリストを返す
+	// 引数user_idで指定された項目で検索して、取得されたデータのリストを返す
 	public List<Mymenu> select(int user_id) {
 		Connection conn = null;
 		List<Mymenu> mymenulist = new ArrayList<Mymenu>();
@@ -155,7 +155,11 @@ public class MymenusDAO {
 			PreparedStatement ps = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
-			ps.setString(1, mymenu.getName());
+			if (mymenu.getName() != null) {
+				ps.setString(1, mymenu.getName());
+			} else {
+				ps.setString(1, "");
+			}
             ps.setInt(2, mymenu.getUser_id());
             ps.setInt(3, mymenu.getBuns());
 
@@ -224,7 +228,11 @@ public class MymenusDAO {
 			PreparedStatement ps = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
-			ps.setString(1, mymenu.getName());
+			if (mymenu.getName() != null) {
+				ps.setString(1, mymenu.getName());
+			} else {
+				ps.setString(1, "");
+			}
             ps.setInt(2, mymenu.getUser_id());
             ps.setInt(3, mymenu.getBuns());
 
