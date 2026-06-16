@@ -43,10 +43,14 @@
         
     </form>
 
+   
     <!-- 底部切换登录链接 -->
-    <div class="login-redirect">
-        すでにアカウントをお持ちの方は、<a href="${pageContext.request.contextPath}/login.jsp">ログイン</a>
-    </div>
+        <div class="login-redirect">
+    <!-- ❌ 修正前：href="${pageContext.request.contextPath}/login.jsp" -->
+    <!-- ⭕ 修正后：直接找 Servlet 的路径 /login -->
+    すでにアカウントをお持ちの方は、<a href="${pageContext.request.contextPath}/login">ログイン</a>
+        </div>
+
 
 </body>
 </html>
