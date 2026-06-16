@@ -18,11 +18,11 @@
     </header>
 
     <main>
-        <button class="button" onclick="location.href='/b1/servlet/ContestRegistServlet'">コンテストに応募する<span class="arrow">≫</span></button>
+        <button class="button" onclick="location.href='/b1/ContestRegistServlet'">コンテストに応募する<span class="arrow">≫</span></button>
         <span id="space_contest">　</span>
-        <button class="button" onclick="location.href='/b1/servlet/UserContestVoteServlet'">コンテストに投票する<span class="arrow">≫</span></button>
-        <button class="button"onclick="location.href='/b1/servlet/UserContestViewServlet'">コンテストの結果を見る<span class="arrow">≫</span></button>
-        <button class="button"onclick="location.href='/b1/servlet/JoinContestViewServlet'">コンテスト応募履歴<span class="arrow">≫</span></button>
+        <button class="button" onclick="location.href='/b1/UserContestVoteServlet'">コンテストに投票する<span class="arrow">≫</span></button>
+        <button class="button"onclick="location.href='/b1/UserContestViewServlet'">コンテストの結果を見る<span class="arrow">≫</span></button>
+        <button class="button"onclick="location.href='/b1/JoinContestViewServlet'">コンテスト応募履歴<span class="arrow">≫</span></button>
     </main>
 
     <footer>
