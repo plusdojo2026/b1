@@ -8,14 +8,14 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import dto.Material;
+import dto.Category;
 
-public class MaterialsDAO {
+public class CategoriesDAO {
 	// 引数idのデータを返す
-	public Material selectById(int id) {
+	public Category selectById(int id) {
 
 	    Connection conn = null;
-	    Material material = null;
+	    Category category = null;
 
 	    try {
 	        Class.forName("com.mysql.cj.jdbc.Driver");
@@ -24,21 +24,16 @@ public class MaterialsDAO {
  			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/b1?"
  					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
  					"root", "password");
-	        String sql = "SELECT * FROM materials WHERE id=?";
+	        String sql = "SELECT * FROM categories WHERE id=?";
 	        PreparedStatement ps = conn.prepareStatement(sql);
 	        ps.setInt(1, id);
 
 	        ResultSet rs = ps.executeQuery();
 
 	        if (rs.next()) {
-	            material = new Material(
+	            category = new Category(
 	                rs.getInt("id"),
 	                rs.getString("name"),
-	                rs.getInt("category"),
-	                rs.getInt("price"),
-	                rs.getString("image"),
-	                rs.getInt("protein"),
-	                rs.getInt("df"),
 	                rs.getTimestamp("created_at").toLocalDateTime(),
 	                rs.getTimestamp("updated_at").toLocalDateTime()
 	            );
@@ -47,13 +42,13 @@ public class MaterialsDAO {
 	        e.printStackTrace();
 	    }
 
-	    return material;
+	    return category;
 	}
 	
 	// 引数nameで指定された項目で検索して、取得されたデータのリストを返す
-	public List<Material> selectByName(String name) {
+	public List<Category> selectByName(String name) {
 		Connection conn = null;
-		List<Material> materiallist = new ArrayList<Material>();
+		List<Category> categorylist = new ArrayList<Category>();
 
 		try {
 			// JDBCドライバを読み込む
@@ -65,7 +60,7 @@ public class MaterialsDAO {
 					"root", "password");
 
 			// SQL文を準備する
-			String sql = "SELECT * FROM materials WHERE name = ? ORDER BY id";
+			String sql = "SELECT * FROM categories WHERE name = ? ORDER BY id";
 			PreparedStatement ps = conn.prepareStatement(sql);
 			
 			if (name != null) {
@@ -79,25 +74,20 @@ public class MaterialsDAO {
 
 			// 結果表をコレクションにコピーする
 			while (rs.next()) {
-				Material materials = new Material(
+				Category categories = new Category(
 						rs.getInt("id"),
 		                rs.getString("name"),
-		                rs.getInt("category"),
-		                rs.getInt("price"),
-		                rs.getString("image"),
-		                rs.getInt("protein"),
-		                rs.getInt("df"),
 		                rs.getTimestamp("created_at").toLocalDateTime(),
 		                rs.getTimestamp("updated_at").toLocalDateTime()
 		            );
-				materiallist.add(materials);
+				categorylist.add(categories);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-			materiallist = null;
+			categorylist = null;
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
-			materiallist = null;
+			categorylist = null;
 		} finally {
 			// データベースを切断
 			if (conn != null) {
@@ -105,77 +95,17 @@ public class MaterialsDAO {
 					conn.close();
 				} catch (SQLException e) {
 					e.printStackTrace();
-					materiallist = null;
+					categorylist = null;
 				}
 			}
 		}
 
 		// 結果を返す
-		return materiallist;
-	}
-	
-	// 引数nameで指定された項目で検索して、取得されたデータのリストを返す
-	public List<Material> selectByCategory(int category) {
-		Connection conn = null;
-		List<Material> materiallist = new ArrayList<Material>();
-
-		try {
-			// JDBCドライバを読み込む
-			Class.forName("com.mysql.cj.jdbc.Driver");
-
-			// データベースに接続する
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/b1?"
-					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
-					"root", "password");
-
-			// SQL文を準備する
-			String sql = "SELECT * FROM materials WHERE category = ? ORDER BY id";
-			PreparedStatement ps = conn.prepareStatement(sql);
-			
-			ps.setInt(1,category);
-
-			// SQL文を実行し、結果表を取得する
-			ResultSet rs = ps.executeQuery();
-
-			// 結果表をコレクションにコピーする
-			while (rs.next()) {
-				Material materials = new Material(
-						rs.getInt("id"),
-		                rs.getString("name"),
-		                rs.getInt("category"),
-		                rs.getInt("price"),
-		                rs.getString("image"),
-		                rs.getInt("protein"),
-		                rs.getInt("df"),
-		                rs.getTimestamp("created_at").toLocalDateTime(),
-		                rs.getTimestamp("updated_at").toLocalDateTime()
-		            );
-				materiallist.add(materials);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-			materiallist = null;
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-			materiallist = null;
-		} finally {
-			// データベースを切断
-			if (conn != null) {
-				try {
-					conn.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-					materiallist = null;
-				}
-			}
-		}
-
-		// 結果を返す
-		return materiallist;
+		return categorylist;
 	}
 
-	// 引数cardで指定されたレコードを登録し、成功したらtrueを返す
-	public boolean insert(Material material) {
+	// 引数categoryで指定されたレコードを登録し、成功したらtrueを返す
+	public boolean insert(String name) {
 		Connection conn = null;
 		boolean result = false;
 
@@ -190,28 +120,18 @@ public class MaterialsDAO {
 
 			// SQL文を準備する
 			String sql =
-	                "INSERT INTO materials (" +
-	                "name,category,price," +
-	                "image,protein,df" +
-	                ") VALUES (?,?,?,?,?,?)";
+	                "INSERT INTO categories (" +
+	                "name"+
+	                ") VALUES (?)";
 			PreparedStatement ps = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
-			if (material.getName() != null) {
-				ps.setString(1, material.getName());
+			if (name != null) {
+				ps.setString(1, name);
 			} else {
 				ps.setString(1, "");
 			}
-            ps.setInt(2, material.getCategory());
-            ps.setInt(3, material.getPrice());
-            if (material.getImage() != null) {
-				ps.setString(4, material.getImage());
-			} else {
-				ps.setString(4, "");
-			}
-            ps.setInt(5, material.getProtein());
-            ps.setInt(6, material.getDf());
-
+			
 			// SQL文を実行する
 			if (ps.executeUpdate() == 1) {
 				result = true;
@@ -236,7 +156,7 @@ public class MaterialsDAO {
 	}
 
 	// 引数cardで指定されたレコードを更新し、成功したらtrueを返す
-	public boolean update(Material material) {
+	public boolean update(Category category) {
 		Connection conn = null;
 		boolean result = false;
 
@@ -251,29 +171,19 @@ public class MaterialsDAO {
 
 			// SQL文を準備する
 			String sql =
-	                "UPDATE materials SET " +
-	                "name=?,category=?,price=?," +
-	                "image=?,protein=?,df=? " +
+	                "UPDATE categories SET " +
+	                "name=? " +
 	                "WHERE id=?";
 			
 			PreparedStatement ps = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
-			if (material.getName() != null) {
-				ps.setString(1, material.getName());
+			if (category.getName() != null) {
+				ps.setString(1, category.getName());
 			} else {
 				ps.setString(1, "");
 			}
-            ps.setInt(2, material.getCategory());
-            ps.setInt(3, material.getPrice());
-            if (material.getImage() != null) {
-				ps.setString(4, material.getImage());
-			} else {
-				ps.setString(4, "");
-			}
-            ps.setInt(5, material.getProtein());
-            ps.setInt(6, material.getDf());
-            ps.setInt(7, material.getId());
+            ps.setInt(2, category.getId());
             
 			// SQL文を実行する
 			if (ps.executeUpdate() == 1) {
@@ -313,7 +223,7 @@ public class MaterialsDAO {
 					"root", "password");
 
 			// SQL文を準備する
-			String sql = "DELETE FROM materials WHERE id=?";
+			String sql = "DELETE FROM categories WHERE id=?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる

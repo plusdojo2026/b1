@@ -43,6 +43,12 @@ footer nav ul li {
     font-weight: bold;
 }
 
+footer nav ul li a {
+    text-decoration: none;
+    color: inherit;
+    -webkit-tap-highlight-color: transparent;
+}
+
 .nowpage {
     color: #C82518;
     font-weight: bold;
