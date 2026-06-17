@@ -19,12 +19,13 @@ CREATE TABLE users  (
 /* usersダミーデータ */
 INSERT INTO users 
     (phone, pw, name, rank_id, icon, vote, levelup_menu, created_at, updated_at)
+    (phone, pw, name, rank_id, icon, vote, levelup_menu)
 VALUES
-    ('09012345678', 'pass1234', 'ミスターバーガー', 1, 'icons/user1.png', 5, 101, current_timestamp, current_timestamp),
-    ('08023456789', 'burger99', 'バーガーマスター', 2, 'icons/user2.png', 12, 102, current_timestamp, current_timestamp),
-    ('07034567890', 'cheese77', 'キングバーガー', 1, 'icons/user3.png', 8, 103, current_timestamp, current_timestamp),
-    ('09045678901', 'meat555', 'バーガー太郎', 3, 'icons/user4.png', 20, 104, current_timestamp, current_timestamp),
-    ('08056789012', 'bbq0000', 'チーズ花子', 2, 'icons/user5.png', 15, 105, now(), now());
+    ('09012345678', 'pass1234', 'ミスターバーガー', 1, 'icons/user1.png', 5, 101),
+    ('08023456789', 'burger99', 'バーガーマスター', 2, 'icons/user2.png', 12, 102),
+    ('07034567890', 'cheese77', 'キングバーガー', 1, 'icons/user3.png', 8, 103),
+    ('09045678901', 'meat555', 'バーガー太郎', 3, 'icons/user4.png', 20, 104),
+    ('08056789012', 'bbq0000', 'チーズ花子', 2, 'icons/user5.png', 15, 105);
 
 
 /* ranksテーブル */
