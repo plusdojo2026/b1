@@ -18,7 +18,6 @@ CREATE TABLE users  (
 
 /* usersダミーデータ */
 INSERT INTO users 
-    (phone, pw, name, rank_id, icon, vote, levelup_menu, created_at, updated_at)
     (phone, pw, name, rank_id, icon, vote, levelup_menu)
 VALUES
     ('09012345678', 'pass1234', 'ミスターバーガー', 1, 'icons/user1.png', 5, 101),

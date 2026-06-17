@@ -1,1 +1,117 @@
-@charset "UTF-8";
+
+/* 1位カード */
+.card.first {
+    background: #f7f4ee;
+    border-radius: 16px;
+    padding: 15px;
+    margin-bottom: 20px;
+    position: relative;
+    box-shadow:
+        0 0 0 3px #e0d2b3 inset,
+        0 5px 10px rgba(0,0,0,0.1);
+}
+
+/* 装飾枠風 */
+.card.first::before {
+    content: "";
+    position: absolute;
+    inset: 8px;
+    border: 2px solid #d9c7a1;
+    border-radius: 14px;
+    pointer-events: none;
+}
+
+/* 第1位バッジ */
+.rank-badge {
+    background: #142a5c;
+    color: #d9b36b;
+    text-align: center;
+    padding: 8px;
+    border-radius: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* 情報行 */
+.info {
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 8px;
+}
+
+.brand-icon {
+    background: #3b2412;
+    color: white;
+    border-radius: 50%;
+    padding: 3px 6px;
+    font-size: 10px;
+}
+
+.silver {
+    background: #d9d9d9;
+    border-radius: 10px;
+    padding: 2px 8px;
+    font-size: 11px;
+}
+
+.votes {
+    margin-left: auto;
+    font-weight: bold;
+}
+
+/* 画像 */
+.image {
+    height: 120px;
+    background: #bfbfbf;
+    border-radius: 15px;
+    margin-bottom: 10px;
+}
+
+/* タイトル */
+.title {
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* 2位・3位 */
+.item {
+    display: flex;
+    align-items: center;
+    border: 2px solid #e0cda5;
+    background: #f7f4ee;
+    border-radius: 14px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.rank {
+    min-width: 60px;
+    text-align: center;
+    color: #c7a873;
+    font-weight: bold;
+}
+
+.text {
+    flex: 1;
+}
+
+.name {
+    font-weight: bold;
+    margin-bottom: 4px;
+}
+
+.brand {
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+main {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 10px;
+}

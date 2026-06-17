@@ -17,6 +17,8 @@ public class UserContestViewServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// ユーザーコンテスト結果ページにフォワードする
+		request.setCharacterEncoding("UTF-8");
+        response.setCharacterEncoding("UTF-8");
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/result_user_contest.jsp");
 		dispatcher.forward(request, response);
 	}
