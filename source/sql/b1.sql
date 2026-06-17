@@ -170,20 +170,19 @@ CREATE TABLE contestmenus (
     sauce INT DEFAULT 0,
     price INT DEFAULT 0,
     contest_id INT,
-    vote INT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 /* contestmenusダミーデータ */
 INSERT INTO contestmenus
-    (name, user_id, buns, patty1, patty2, patty3, vege1, vege2, vege3, topping1, topping2, topping3, sauce, price, contest_id, vote)
+    (name, user_id, buns, patty1, patty2, patty3, vege1, vege2, vege3, topping1, topping2, topping3, sauce, price, contest_id)
 VALUES
-    ('チーズ爆増バーガー', 1, 2, 1, 1, NULL, 4, NULL, NULL, 3, 3, 3, 1, 920, 1, 15),
-    ('アボカドヘルシー', 2, 2, NULL, NULL, NULL, 4, 7, 5, NULL, NULL, NULL, 3, 600, 1, 22),
-    ('ベーコンモンスター', 3, 2, 1, 1, NULL, 4, NULL, NULL, 5, 5, 5, 2, 980, 1, 30),
-    ('スパイシーチキン極', 4, 2, 6, NULL, NULL, 4, NULL, NULL, 3, NULL, NULL, 3, 750, 2, 18),
-    ('トリプルミートキング', 5, 2, 1, 1, 1, 4, 5, NULL, 3, 5, NULL, 2, 1200, 2, 40);
+    ('チーズ爆増バーガー', 1, 2, 1, 1, NULL, 4, NULL, NULL, 3, 3, 3, 1, 920, 1),
+    ('アボカドヘルシー', 2, 2, NULL, NULL, NULL, 4, 7, 5, NULL, NULL, NULL, 3, 600, 1),
+    ('ベーコンモンスター', 3, 2, 1, 1, NULL, 4, NULL, NULL, 5, 5, 5, 2, 980, 1),
+    ('スパイシーチキン極', 4, 2, 6, NULL, NULL, 4, NULL, NULL, 3, NULL, NULL, 3, 750, 2),
+    ('トリプルミートキング', 5, 2, 1, 1, 1, 4, 5, NULL, 3, 5, NULL, 2, 1200, 2);
 
 
 /* contestsテーブル */
