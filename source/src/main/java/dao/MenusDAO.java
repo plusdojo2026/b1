@@ -199,8 +199,9 @@ public class MenusDAO {
 		return menulist;
 	}
 	
-	// 引数patty1で指定された項目で検索して、取得されたデータのリストを返す
-	public List<Menu> selectByPatty1(int patty1) {
+	// 引数pattyで指定された項目で検索して、取得されたデータのリストを返す
+
+	public List<Menu> selectByPatty(int patty) {
 		Connection conn = null;
 		List<Menu> menulist = new ArrayList<Menu>();
 
@@ -212,14 +213,15 @@ public class MenusDAO {
 			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/b1?"
 					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
 					"root", "password");
-
+			
 			// SQL文を準備する
-			String sql = "SELECT * FROM menus WHERE patty1 = ? ORDER BY id";
+			String sql = "SELECT * FROM menus WHERE patty1 = ? or patty2 = ? or patty3 = ? ORDER BY id";
 			PreparedStatement ps = conn.prepareStatement(sql);
 			
-			ps.setInt(1,patty1);
+			ps.setInt(1,patty);
+			ps.setInt(2,patty);
+			ps.setInt(3,patty);
 			
-
 			// SQL文を実行し、結果表を取得する
 			ResultSet rs = ps.executeQuery();
 
@@ -247,6 +249,8 @@ public class MenusDAO {
                 );
 				menulist.add(menus);
 			}
+			
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 			menulist = null;
@@ -269,9 +273,9 @@ public class MenusDAO {
 		return menulist;
 	}
 	
-	// 引数patty2で指定された項目で検索して、取得されたデータのリストを返す
-	
-	public List<Menu> selectByPatty2(int patty2) {
+	// 引数vegeで指定された項目で検索して、取得されたデータのリストを返す
+
+	public List<Menu> selectByVege(int vege) {
 		Connection conn = null;
 		List<Menu> menulist = new ArrayList<Menu>();
 
@@ -283,14 +287,15 @@ public class MenusDAO {
 			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/b1?"
 					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
 					"root", "password");
-
+			
 			// SQL文を準備する
-			String sql = "SELECT * FROM menus WHERE patty2 = ? ORDER BY id";
+			String sql = "SELECT * FROM menus WHERE vege1 = ? or vege2 = ? or vege3 = ? ORDER BY id";
 			PreparedStatement ps = conn.prepareStatement(sql);
 			
-			ps.setInt(1,patty2);
+			ps.setInt(1,vege);
+			ps.setInt(2,vege);
+			ps.setInt(3,vege);
 			
-
 			// SQL文を実行し、結果表を取得する
 			ResultSet rs = ps.executeQuery();
 
@@ -318,6 +323,8 @@ public class MenusDAO {
                 );
 				menulist.add(menus);
 			}
+			
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 			menulist = null;
@@ -339,10 +346,10 @@ public class MenusDAO {
 		// 結果を返す
 		return menulist;
 	}
-
-	// 引数patty3で指定された項目で検索して、取得されたデータのリストを返す
 	
-	public List<Menu> selectByPatty3(int patty3) {
+	// 引数toppingで指定された項目で検索して、取得されたデータのリストを返す
+
+	public List<Menu> selectByTopping(int topping) {
 		Connection conn = null;
 		List<Menu> menulist = new ArrayList<Menu>();
 
@@ -354,14 +361,15 @@ public class MenusDAO {
 			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/b1?"
 					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
 					"root", "password");
-
+			
 			// SQL文を準備する
-			String sql = "SELECT * FROM menus WHERE patty3 = ? ORDER BY id";
+			String sql = "SELECT * FROM menus WHERE topping1 = ? or topping2 = ? or topping3 = ? ORDER BY id";
 			PreparedStatement ps = conn.prepareStatement(sql);
 			
-			ps.setInt(1,patty3);
+			ps.setInt(1,topping);
+			ps.setInt(2,topping);
+			ps.setInt(3,topping);
 			
-
 			// SQL文を実行し、結果表を取得する
 			ResultSet rs = ps.executeQuery();
 
@@ -389,432 +397,8 @@ public class MenusDAO {
                 );
 				menulist.add(menus);
 			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-			menulist = null;
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-			menulist = null;
-		} finally {
-			// データベースを切断
-			if (conn != null) {
-				try {
-					conn.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-					menulist = null;
-				}
-			}
-		}
-
-		// 結果を返す
-		return menulist;
-	}
-
-	// 引数vege1で指定された項目で検索して、取得されたデータのリストを返す
-	
-	public List<Menu> selectByVege1(int vege1) {
-		Connection conn = null;
-		List<Menu> menulist = new ArrayList<Menu>();
-
-		try {
-			// JDBCドライバを読み込む
-			Class.forName("com.mysql.cj.jdbc.Driver");
-
-			// データベースに接続する
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/b1?"
-					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
-					"root", "password");
-
-			// SQL文を準備する
-			String sql = "SELECT * FROM menus WHERE vege1 = ? ORDER BY id";
-			PreparedStatement ps = conn.prepareStatement(sql);
 			
-			ps.setInt(1,vege1);
 			
-
-			// SQL文を実行し、結果表を取得する
-			ResultSet rs = ps.executeQuery();
-
-			// 結果表をコレクションにコピーする
-			while (rs.next()) {
-				Menu menus = new Menu(
-						rs.getInt("id"),
-                        rs.getString("name"),
-                        rs.getString("image"),
-                        rs.getInt("buns"),
-                        rs.getInt("patty1"),
-                        rs.getInt("patty2"),
-                        rs.getInt("patty3"),
-                        rs.getInt("vege1"),
-                        rs.getInt("vege2"),
-                        rs.getInt("vege3"),
-                        rs.getInt("topping1"),
-                        rs.getInt("topping2"),
-                        rs.getInt("topping3"),
-                        rs.getInt("sauce"),
-                        rs.getInt("price"),
-                        rs.getInt("judge"),
-                        rs.getTimestamp("created_at").toLocalDateTime(),
-                        rs.getTimestamp("updated_at").toLocalDateTime()
-                );
-				menulist.add(menus);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-			menulist = null;
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-			menulist = null;
-		} finally {
-			// データベースを切断
-			if (conn != null) {
-				try {
-					conn.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-					menulist = null;
-				}
-			}
-		}
-
-		// 結果を返す
-		return menulist;
-	}
-
-	// 引数vege2で指定された項目で検索して、取得されたデータのリストを返す
-	
-	public List<Menu> selectByVege2(int vege2) {
-		Connection conn = null;
-		List<Menu> menulist = new ArrayList<Menu>();
-
-		try {
-			// JDBCドライバを読み込む
-			Class.forName("com.mysql.cj.jdbc.Driver");
-
-			// データベースに接続する
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/b1?"
-					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
-					"root", "password");
-
-			// SQL文を準備する
-			String sql = "SELECT * FROM menus WHERE vege2 = ? ORDER BY id";
-			PreparedStatement ps = conn.prepareStatement(sql);
-			
-			ps.setInt(1,vege2);
-			
-
-			// SQL文を実行し、結果表を取得する
-			ResultSet rs = ps.executeQuery();
-
-			// 結果表をコレクションにコピーする
-			while (rs.next()) {
-				Menu menus = new Menu(
-						rs.getInt("id"),
-                        rs.getString("name"),
-                        rs.getString("image"),
-                        rs.getInt("buns"),
-                        rs.getInt("patty1"),
-                        rs.getInt("patty2"),
-                        rs.getInt("patty3"),
-                        rs.getInt("vege1"),
-                        rs.getInt("vege2"),
-                        rs.getInt("vege3"),
-                        rs.getInt("topping1"),
-                        rs.getInt("topping2"),
-                        rs.getInt("topping3"),
-                        rs.getInt("sauce"),
-                        rs.getInt("price"),
-                        rs.getInt("judge"),
-                        rs.getTimestamp("created_at").toLocalDateTime(),
-                        rs.getTimestamp("updated_at").toLocalDateTime()
-                );
-				menulist.add(menus);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-			menulist = null;
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-			menulist = null;
-		} finally {
-			// データベースを切断
-			if (conn != null) {
-				try {
-					conn.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-					menulist = null;
-				}
-			}
-		}
-
-		// 結果を返す
-		return menulist;
-	}
-		
-	// 引数vege3で指定された項目で検索して、取得されたデータのリストを返す
-	
-	public List<Menu> selectByVege3(int vege3) {
-		Connection conn = null;
-		List<Menu> menulist = new ArrayList<Menu>();
-
-		try {
-			// JDBCドライバを読み込む
-			Class.forName("com.mysql.cj.jdbc.Driver");
-
-			// データベースに接続する
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/b1?"
-					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
-					"root", "password");
-
-			// SQL文を準備する
-			String sql = "SELECT * FROM menus WHERE vege3 = ? ORDER BY id";
-			PreparedStatement ps = conn.prepareStatement(sql);
-			
-			ps.setInt(1,vege3);
-			
-
-			// SQL文を実行し、結果表を取得する
-			ResultSet rs = ps.executeQuery();
-
-			// 結果表をコレクションにコピーする
-			while (rs.next()) {
-				Menu menus = new Menu(
-						rs.getInt("id"),
-                        rs.getString("name"),
-                        rs.getString("image"),
-                        rs.getInt("buns"),
-                        rs.getInt("patty1"),
-                        rs.getInt("patty2"),
-                        rs.getInt("patty3"),
-                        rs.getInt("vege1"),
-                        rs.getInt("vege2"),
-                        rs.getInt("vege3"),
-                        rs.getInt("topping1"),
-                        rs.getInt("topping2"),
-                        rs.getInt("topping3"),
-                        rs.getInt("sauce"),
-                        rs.getInt("price"),
-                        rs.getInt("judge"),
-                        rs.getTimestamp("created_at").toLocalDateTime(),
-                        rs.getTimestamp("updated_at").toLocalDateTime()
-                );
-				menulist.add(menus);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-			menulist = null;
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-			menulist = null;
-		} finally {
-			// データベースを切断
-			if (conn != null) {
-				try {
-					conn.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-					menulist = null;
-				}
-			}
-		}
-
-		// 結果を返す
-		return menulist;
-	}
-
-	// 引数topping1で指定された項目で検索して、取得されたデータのリストを返す
-	
-	public List<Menu> selectByTopping1(int topping1) {
-		Connection conn = null;
-		List<Menu> menulist = new ArrayList<Menu>();
-
-		try {
-			// JDBCドライバを読み込む
-			Class.forName("com.mysql.cj.jdbc.Driver");
-
-			// データベースに接続する
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/b1?"
-					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
-					"root", "password");
-
-			// SQL文を準備する
-			String sql = "SELECT * FROM menus WHERE topping1 = ? ORDER BY id";
-			PreparedStatement ps = conn.prepareStatement(sql);
-			
-			ps.setInt(1,topping1);
-			
-
-			// SQL文を実行し、結果表を取得する
-			ResultSet rs = ps.executeQuery();
-
-			// 結果表をコレクションにコピーする
-			while (rs.next()) {
-				Menu menus = new Menu(
-						rs.getInt("id"),
-                        rs.getString("name"),
-                        rs.getString("image"),
-                        rs.getInt("buns"),
-                        rs.getInt("patty1"),
-                        rs.getInt("patty2"),
-                        rs.getInt("patty3"),
-                        rs.getInt("vege1"),
-                        rs.getInt("vege2"),
-                        rs.getInt("vege3"),
-                        rs.getInt("topping1"),
-                        rs.getInt("topping2"),
-                        rs.getInt("topping3"),
-                        rs.getInt("sauce"),
-                        rs.getInt("price"),
-                        rs.getInt("judge"),
-                        rs.getTimestamp("created_at").toLocalDateTime(),
-                        rs.getTimestamp("updated_at").toLocalDateTime()
-                );
-				menulist.add(menus);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-			menulist = null;
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-			menulist = null;
-		} finally {
-			// データベースを切断
-			if (conn != null) {
-				try {
-					conn.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-					menulist = null;
-				}
-			}
-		}
-
-		// 結果を返す
-		return menulist;
-	}
-
-	// 引数topping2で指定された項目で検索して、取得されたデータのリストを返す
-	
-	public List<Menu> selectByTopping2(int topping2) {
-		Connection conn = null;
-		List<Menu> menulist = new ArrayList<Menu>();
-
-		try {
-			// JDBCドライバを読み込む
-			Class.forName("com.mysql.cj.jdbc.Driver");
-
-			// データベースに接続する
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/b1?"
-					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
-					"root", "password");
-
-			// SQL文を準備する
-			String sql = "SELECT * FROM menus WHERE topping2 = ? ORDER BY id";
-			PreparedStatement ps = conn.prepareStatement(sql);
-			
-			ps.setInt(1,topping2);
-			
-
-			// SQL文を実行し、結果表を取得する
-			ResultSet rs = ps.executeQuery();
-
-			// 結果表をコレクションにコピーする
-			while (rs.next()) {
-				Menu menus = new Menu(
-						rs.getInt("id"),
-                        rs.getString("name"),
-                        rs.getString("image"),
-                        rs.getInt("buns"),
-                        rs.getInt("patty1"),
-                        rs.getInt("patty2"),
-                        rs.getInt("patty3"),
-                        rs.getInt("vege1"),
-                        rs.getInt("vege2"),
-                        rs.getInt("vege3"),
-                        rs.getInt("topping1"),
-                        rs.getInt("topping2"),
-                        rs.getInt("topping3"),
-                        rs.getInt("sauce"),
-                        rs.getInt("price"),
-                        rs.getInt("judge"),
-                        rs.getTimestamp("created_at").toLocalDateTime(),
-                        rs.getTimestamp("updated_at").toLocalDateTime()
-                );
-				menulist.add(menus);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-			menulist = null;
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-			menulist = null;
-		} finally {
-			// データベースを切断
-			if (conn != null) {
-				try {
-					conn.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-					menulist = null;
-				}
-			}
-		}
-
-		// 結果を返す
-		return menulist;
-	}
-
-	// 引数topping3で指定された項目で検索して、取得されたデータのリストを返す
-	
-	public List<Menu> selectByTopping3(int topping3) {
-		Connection conn = null;
-		List<Menu> menulist = new ArrayList<Menu>();
-
-		try {
-			// JDBCドライバを読み込む
-			Class.forName("com.mysql.cj.jdbc.Driver");
-
-			// データベースに接続する
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/b1?"
-					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
-					"root", "password");
-
-			// SQL文を準備する
-			String sql = "SELECT * FROM menus WHERE topping3 = ? ORDER BY id";
-			PreparedStatement ps = conn.prepareStatement(sql);
-			
-			ps.setInt(1,topping3);
-			
-
-			// SQL文を実行し、結果表を取得する
-			ResultSet rs = ps.executeQuery();
-
-			// 結果表をコレクションにコピーする
-			while (rs.next()) {
-				Menu menus = new Menu(
-						rs.getInt("id"),
-                        rs.getString("name"),
-                        rs.getString("image"),
-                        rs.getInt("buns"),
-                        rs.getInt("patty1"),
-                        rs.getInt("patty2"),
-                        rs.getInt("patty3"),
-                        rs.getInt("vege1"),
-                        rs.getInt("vege2"),
-                        rs.getInt("vege3"),
-                        rs.getInt("topping1"),
-                        rs.getInt("topping2"),
-                        rs.getInt("topping3"),
-                        rs.getInt("sauce"),
-                        rs.getInt("price"),
-                        rs.getInt("judge"),
-                        rs.getTimestamp("created_at").toLocalDateTime(),
-                        rs.getTimestamp("updated_at").toLocalDateTime()
-                );
-				menulist.add(menus);
-			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 			menulist = null;
@@ -908,8 +492,7 @@ public class MenusDAO {
 		return menulist;
 	}
 
-
-	// 引数cardで指定されたレコードを登録し、成功したらtrueを返す
+	// 引数menuで指定されたレコードを登録し、成功したらtrueを返す
 	public boolean insert(Menu menu) {
 		Connection conn = null;
 		boolean result = false;
@@ -982,7 +565,7 @@ public class MenusDAO {
 		return result;
 	}
 
-	// 引数cardで指定されたレコードを更新し、成功したらtrueを返す
+	// 引数menuで指定されたレコードを更新し、成功したらtrueを返す
 	public boolean update(Menu menu) {
 		Connection conn = null;
 		boolean result = false;
@@ -1032,7 +615,8 @@ public class MenusDAO {
             ps.setInt(13, menu.getSauce());
             ps.setInt(14, menu.getPrice());
             ps.setInt(15, menu.getJudge());
-
+            ps.setInt(16, menu.getId());
+            
 			// SQL文を実行する
 			if (ps.executeUpdate() == 1) {
 				result = true;
@@ -1056,7 +640,7 @@ public class MenusDAO {
 		return result;
 	}
 
-	// 引数cardで指定された番号のレコードを削除し、成功したらtrueを返す
+	// 引数idで指定された番号のレコードを削除し、成功したらtrueを返す
 	public boolean delete(int id) {
 		Connection conn = null;
 		boolean result = false;
