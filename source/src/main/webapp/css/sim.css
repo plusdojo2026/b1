@@ -1,1 +1,106 @@
 @charset "UTF-8";
+body {
+    overflow: hidden;
+    height: 100vh;
+}
+
+
+h2 {
+    text-align: center;
+    color: #C82518;
+}
+
+.burger {
+    position: relative;
+    width: 170px;
+    margin: 60px auto 0px auto;
+}
+
+.burger img {
+    width: 170px;
+    position: absolute;
+    left: 0;
+}
+
+.buns_top {
+    position: relative;
+    z-index: 999;
+}
+
+.buns_bottom {
+    position: relative;
+    top: 70px;
+}
+
+.illustration-stage {
+    height: 200px;
+    margin: 90px -40px 2px -40px;
+    background: linear-gradient(to bottom, #F9F6EE 65%, #d9b48f 65%); 
+    border-bottom: 5px solid #765e43; 
+    display: flex;
+    justify-content: center;
+}
+
+.choice_material {
+    margin: 0 -40px 0 -40px;
+    padding-left: 20px;
+    background-color: #FFF;
+    overflow-y: auto;
+    padding-right: 20px;
+    max-height: calc(100vh - 300px);
+}
+
+.choice_material h3 {
+    border-bottom: 3px solid #C82518;
+}
+
+input[type=radio] {
+    display: none;
+}
+
+input[type=submit]{
+    position: relative;
+    z-index: 10;
+}
+
+.item_material label {
+    font-weight: bold;
+    display: inline-block;
+    padding: 8px 14px;
+    margin: 6px 6px 0 0;
+    background-color: #F9F6EE;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.1s;
+    position: relative;
+    z-index: 10;
+    box-shadow: 0 3px 2px rgba(0,0,0,0.2);
+}
+
+input[type="radio"]:checked + label {
+    background-color: #C82518;
+    color: #F9F6EE;
+    box-shadow: 0 3px 2px rgba(94, 16, 16, 0.2);
+}
+
+input[type="submit"] {
+    display: block;
+    margin: 0 auto;
+    background: #C82518;
+    color: #F9F6EE;
+    border: none;
+    border-radius: 100px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 20px 0;
+
+    width: 120%;
+    max-width: 320px;
+    min-width: 120px;
+}
+
+
+.space {
+    padding: 150px;
+}
