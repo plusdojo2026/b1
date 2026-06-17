@@ -10,29 +10,29 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class MymenuResistServlet
+ * Servlet implementation class MymenuRegistServlet
  */
-@WebServlet("/mymenuresist")
-public class MymenuResistServlet extends HttpServlet {
+@WebServlet("/mymenuregist")
+public class MymenuRegistServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MymenuResistServlet() {
+    public MymenuRegistServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest rquest, HttpServletResponse response)
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// ログインページにフォワードする
+		// マイメニュー登録ページにフォワードする
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		response.setCharacterEncoding("UTF-8");
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/common.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/regist_sim_mymenu.jsp");
 		dispatcher.forward(request, response);
 	}
 
@@ -46,5 +46,4 @@ public class MymenuResistServlet extends HttpServlet {
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/custom.jsp");
 		dispatcher.forward(request, response);
 	}
-
 }
