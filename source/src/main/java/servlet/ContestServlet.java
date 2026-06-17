@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class TestServlet
  */
-@WebServlet("/ContestServlet")
+@WebServlet("/contest")
 public class ContestServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -28,7 +28,7 @@ public class ContestServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// ログインページにフォワードする
+		// コンテストページにフォワードする
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		response.setCharacterEncoding("UTF-8");

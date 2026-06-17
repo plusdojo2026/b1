@@ -10,14 +10,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-@WebServlet("/CustomServlet")
+@WebServlet("/custom")
 public class CustomServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// ログインページにフォワードする
+		// カスタムページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/custom.jsp");
 		dispatcher.forward(request, response);
 	}
