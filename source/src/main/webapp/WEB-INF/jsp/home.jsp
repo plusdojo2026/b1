@@ -28,7 +28,7 @@
         <!-- 中央の植木鉢イラストエリア -->
         <div class="levelup">
             <div class="illustration-stage">
-                <img src="/b1/images/level/level5.png">
+                <img src="/b1/images/level/level5.png" class="illustration-box">
             </div>
         </div>
 
@@ -44,16 +44,16 @@
     <footer>
         <nav>
             <ul>
-                <li class="nowpage"><a href="/b1/HomeServlet">
+                <li class="nowpage"><a href="/b1/home">
                 		<img src="/b1/images/home_red.png" class="footer_icon"><br>ホーム
                 	</a></li>
-                <li><a href="/b1/CustomServlet">
+                <li><a href="/b1/custom">
                 		<img src="/b1/images/custom.png" class="footer_icon"><br>カスタム
                 	</a></li>
-                <li><a href="/b1/ContestServlet">
+                <li><a href="/b1/contest">
                 		<img src="/b1/images/contest.png" class="footer_icon"><br>コンテスト
                 	</a></li>
-                <li><a href="/b1/AkinatorServlet">
+                <li><a href="/b1/akinator">
                 		<img src="/b1/images/akinator.png" class="footer_icon"><br>診断
                 	</a></li>
                 <li><a href="/b1/mydata">
