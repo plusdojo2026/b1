@@ -28,7 +28,7 @@
         <!-- 中央の植木鉢イラストエリア -->
         <div class="levelup">
             <div class="illustration-stage">
-                <img src="/b1/images/level/level5.png">
+                <img src="/b1/images/level/level5.png" class="illustration-box">
             </div>
         </div>
 

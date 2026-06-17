@@ -35,9 +35,8 @@ body {
 .user-name { font-size: 15px; font-weight: bold; color: #2c3e50; flex-grow: 1; text-align: left; margin-left: 10px; }
 
 .illustration-stage {
-    width: 100vw;
     height: 200px;
-    margin: 60px auto 20px -40px;
+    margin: 60px -40px 20px -40px;
     background: linear-gradient(to bottom, #F9F6EE 65%, #d9b48f 65%); 
     border-bottom: 5px solid #765e43; 
     display: flex;
@@ -45,17 +44,14 @@ body {
 }
 
 .illustration-box {
-    width: 130px;
-    height: 160px;
-    border: 1.5px solid #000000;
-    background-color: #ffffff;
+    height: 180px;
     margin-bottom: 5px;
     font-size: 11px;
-    color: #333333;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
+    padding-bottom:20px;
 }
 
 .diagnostic-card {
