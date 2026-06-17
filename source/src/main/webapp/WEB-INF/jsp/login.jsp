@@ -13,12 +13,12 @@
 <body>
 
 
-    <!-- 【已修复】置顶平铺的Logo区域 -->
+    <!-- Logo -->
     <div class="logo-container">
         <img src="${pageContext.request.contextPath}/images/logo.png" alt="ロゴ" class="logo-img">
     </div>
 
-    <!-- 【已修复】整体包裹容器，使内容在下方居中对齐 -->
+    <!-- 中央揃い -->
     <div class="main-content">
     
        <!-- 未入力エラーメッセージ -->

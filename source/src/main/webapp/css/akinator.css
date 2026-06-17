@@ -1,1 +1,72 @@
 @charset "UTF-8";
+
+/* ページ全体の基本スタイル */
+body { 
+    background-color: #fcfbf4; 
+    font-family: Arial, sans-serif; 
+    padding: 20px 20px 85px 20px; 
+    margin: 0; 
+    text-align: center; 
+    box-sizing: border-box;
+}
+
+/* 画面上部のタイトル */
+.page-title { 
+    font-size: 24px; 
+    color: #4a2c11; 
+    font-weight: bold; 
+    margin-top: 15px;
+    margin-bottom: 5px; 
+}
+
+/* 中央のコンテンツをやや下に配置するためのコンテナ */
+.main-content {
+    width: 100%;
+    max-width: 340px;
+    margin: 50px auto 0 auto; /* 上部の余白で中央に寄せる */
+}
+
+/* 導入のテキスト（中央寄せ・２行） */
+.intro-text {
+    font-size: 16px;
+    font-weight: bold;
+    color: #000000;
+    line-height: 1.6;
+    margin-bottom: 40px;
+}
+
+/* おすすめメニュー診断の大赤カード */
+.diagnostic-card {
+    background-color: #d93333;
+    border-radius: 25px;
+    padding: 35px 20px;
+    color: white;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+/* カード内の白文字タイトル */
+.card-title { 
+    font-size: 18px; 
+    font-weight: bold; 
+    margin-bottom: 25px; 
+    letter-spacing: 1px; 
+}
+
+/* 診断するボタン（白丸角・赤文字） */
+.diag-btn {
+    width: 100%;
+    max-width: 220px;
+    background-color: #ffffff;
+    color: #d93333;
+    border: none;
+    border-radius: 25px;
+    padding: 12px 0;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: transform 0.1s;
+}
+.diag-btn:active {
+    transform: scale(0.98); /* クリック時に少し縮むエフェクト */
+}
