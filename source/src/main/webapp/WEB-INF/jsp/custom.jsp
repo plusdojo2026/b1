@@ -17,8 +17,8 @@
 
     <main>
     
-    <button class="button" onclick="location.href='/b1/servlet/MymenuRegistServlet'">オリジナルバーガーを作る<span class="arrow">≫</span></button>
-	<button class="button" onclick="location.href='/b1/servlet/MymenuViewServlet'">マイメニューを見る<span class="arrow">≫</span></button>
+    <button class="button" onclick="location.href='/b1/servlet/MymenuRegist'">オリジナルバーガーを作る<span class="arrow">≫</span></button>
+	<button class="button" onclick="location.href='/b1/servlet/MymenuView'">マイメニューを見る<span class="arrow">≫</span></button>
 
     </main>
 
