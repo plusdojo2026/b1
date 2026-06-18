@@ -40,8 +40,7 @@
 
 		</div>
 
-        <div class="choice_material">
-        
+        <form class="choice_material" method="post" action="/mymenuregist">        
             <input type="hidden" name="banstop" value="1">
             <input type="hidden" name="bansbottom" value="1">
 
@@ -200,9 +199,8 @@
 
             <input type="submit" value="このメニューをマイメニューに追加する">
             <p></p>
-
             <span class="space">　</span>
-        </div>
+        </form>
 
     </main>
 

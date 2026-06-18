@@ -31,7 +31,7 @@
             <div class="burger">
                 <img src="/b1/images/hamburger/buns_top.png" class="buns_top">
 
-                <div id="stack-area">
+                <div class="stack-area">
                         <section class="vegetable3"><img src="/b1/images/hamburger/onion.png" data-type="onion"></section>
                         <section class="topping3"><img src="/b1/images/hamburger/egg.png" data-type="egg"></section>
                         <section class="patty3"><img src="/b1/images/hamburger/chicken.png" data-type="chicken"></section>
@@ -54,16 +54,16 @@
     <footer>
         <nav>
             <ul>
-                <li><a href="/b1/HomeServlet">
-                		<img src="/b1/images/home.png" class="footer_icon"><br>ホーム
+                <li class="nowpage"><a href="/b1/home">
+                		<img src="/b1/images/home_red.png" class="footer_icon"><br>ホーム
                 	</a></li>
-                <li><a href="/b1/CustomServlet">
+                <li><a href="/b1/custom">
                 		<img src="/b1/images/custom.png" class="footer_icon"><br>カスタム
                 	</a></li>
-                <li class="nowpage"><a href="/b1/ContestServlet">
-                		<img src="/b1/images/contest_red.png" class="footer_icon"><br>コンテスト
+                <li><a href="/b1/contest">
+                		<img src="/b1/images/contest.png" class="footer_icon"><br>コンテスト
                 	</a></li>
-                <li><a href="/b1/AkinatorServlet">
+                <li><a href="/b1/akinator">
                 		<img src="/b1/images/akinator.png" class="footer_icon"><br>診断
                 	</a></li>
                 <li><a href="/b1/mydata">
@@ -74,23 +74,29 @@
     </footer>
 
     <script>
-        const thickness = {
-            chicken: 22,
-            beef: 18,
-            cheese: -2,
-            lettuce: 12,
-            egg: 12,
-            onion: 15,
-            bacon: -4,
-            tomato: 16
-        };
+	"use strict";
+    const thickness = {
+        chicken: 22,
+        beef: 18,
+        cheese: -2,
+        lettuce: 12,
+        egg: 12,
+        onion: 15,
+        bacon: -4,
+        tomato: 16
+    };
 
-        window.addEventListener("load", () => {
-            const ingredients = document.querySelectorAll("#stack-area img");
+    window.addEventListener("load", () => {
+
+        // すべての stack-area を処理（複数バーガー対応）
+        document.querySelectorAll(".stack-area").forEach(stack => {
+
+            const ingredients = stack.querySelectorAll("img");
 
             const startTop = 40;
             let currentTop = startTop;
 
+            // 具材を積み上げる
             ingredients.forEach((img, index) => {
                 const type = img.dataset.type;
                 const thick = thickness[type] || 15;
@@ -102,14 +108,17 @@
                 currentTop += thick;
             });
 
-            const bottom = document.querySelector(".buns_bottom");
+            // 下バンズの位置
+            const bottom = stack.parentElement.querySelector(".buns_bottom");
             bottom.style.position = "absolute";
             bottom.style.top = currentTop + "px";
 
-            const burger = document.querySelector(".burger");
-            burger.style.height = (currentTop + 70) + "px"; 
+            // バーガー全体の高さを調整
+            const burger = stack.closest(".burger");
+            burger.style.height = (currentTop + 70) + "px";
         });
 
+    });
     </script>
 
 </body>
