@@ -194,7 +194,7 @@ CREATE TABLE contestmenus (
     topping3 INT DEFAULT 0,
     sauce INT DEFAULT 0,
     price INT DEFAULT 0,
-    contest_id INT,
+    contest_id INT DEFAULT 0,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
