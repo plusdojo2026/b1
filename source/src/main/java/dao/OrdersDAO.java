@@ -56,13 +56,13 @@ public class OrdersDAO {
 			}
 		}
 
-	    return vote;
+	    return order;
 	}
 	
-	// 引数contest_idで指定された項目のデータを返す
-	public List<Vote> selectByContestId(int contest_id) {
+	// 引数user_idで指定された項目のデータを返す
+	public List<Order> selectByUserId(int user_id) {
 		Connection conn = null;
-		List<Vote> votelist = new ArrayList<Vote>();
+		List<Order> orderlist = new ArrayList<Order>();
 
 		try {
 			// JDBCドライバを読み込む
@@ -74,32 +74,34 @@ public class OrdersDAO {
 					"root", "password");
 
 			// SQL文を準備する
-			String sql = "SELECT * FROM votes WHERE contest_id = ? ORDER BY id";
+			String sql = "SELECT * FROM orders WHERE user_id = ? ORDER BY id";
 			PreparedStatement ps = conn.prepareStatement(sql);
 			
-			ps.setInt(1,contest_id);
+			ps.setInt(1,user_id);
 
 			// SQL文を実行し、結果表を取得する
 			ResultSet rs = ps.executeQuery();
 
 			// 結果表をコレクションにコピーする
 			while (rs.next()) {
-				Vote votes = new Vote(
+				Order orders = new Order(
 						rs.getInt("id"),
-		                rs.getInt("user_id"),
-		                rs.getInt("contest_id"),
-		                rs.getInt("contestmenu_id"),
+		                rs.getInt("user_id"),                
+		                rs.getInt("menu_id"),
+		                rs.getInt("menucount_id"),
+		                rs.getInt("mymenu_id"),
+		                rs.getInt("mymenucount_id"),
 		                rs.getTimestamp("created_at").toLocalDateTime(),
-		                rs.getTimestamp("updated_at").toLocalDateTime()
+		                rs.getTimestamp("updated_at").toLocalDateTime() 
 		            );
-				votelist.add(votes);
+				orderlist.add(orders);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-			votelist = null;
+			orderlist = null;
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
-			votelist = null;
+			orderlist = null;
 		} finally {
 			// データベースを切断
 			if (conn != null) {
@@ -107,7 +109,7 @@ public class OrdersDAO {
 					conn.close();
 				} catch (SQLException e) {
 					e.printStackTrace();
-					votelist = null;
+					orderlist = null;
 				}
 			}
 		}
