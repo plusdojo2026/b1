@@ -1,5 +1,7 @@
+SET SESSION sql_mode = CONCAT(@@sql_mode, ',NO_AUTO_VALUE_ON_ZERO');
 CREATE DATABASE b1;
 USE b1;
+
 
 /* テーブル作成 */
 /* usersテーブル */
@@ -17,6 +19,11 @@ CREATE TABLE users  (
 );
 
 /* usersダミーデータ */
+INSERT INTO users 
+    (id,phone, pw, name, rank_id, icon, vote, levelup_menu)
+VALUES
+    (0,'0', 'pass0000', '管理者', 3, '', 5, 4);
+
 INSERT INTO users 
     (phone, pw, name, rank_id, icon, vote, levelup_menu)
 VALUES
@@ -36,6 +43,9 @@ CREATE TABLE ranks (
 );
 
 /* ranksダミーデータ */
+INSERT INTO ranks (id,name)
+VALUES
+    (0,'')
 INSERT INTO ranks (name)
 VALUES
     ('Bronze'),
@@ -60,6 +70,10 @@ CREATE TABLE materials (
 
 /* materialsダミーデータ */
 INSERT INTO materials
+    (id,name, category, price, image, protein, df)
+VALUES
+    (0,'',0,0,'',0,0);
+INSERT INTO materials
     (name, category, price, image, protein, df)
 VALUES
     ('ビーフパティ', 1, 300, 'images/beef.png', 22, 0),
@@ -78,6 +92,9 @@ CREATE TABLE categories(
 );
 
 /* categoriesダミーデータ */
+INSERT INTO categories (id,name)
+VALUES
+    (0,'');
 INSERT INTO categories (name)
 VALUES
     ('バンズ'),

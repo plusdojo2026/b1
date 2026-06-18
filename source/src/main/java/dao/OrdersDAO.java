@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import dto.Order;
-import dto.Vote;
 
 public class OrdersDAO {
 	// 引数idのデータを返す
@@ -36,9 +35,9 @@ public class OrdersDAO {
 	                rs.getInt("id"),
 	                rs.getInt("user_id"),                
 	                rs.getInt("menu_id"),
-	                rs.getInt("menucount_id"),
+	                rs.getInt("menu_count"),
 	                rs.getInt("mymenu_id"),
-	                rs.getInt("mymenucount_id"),
+	                rs.getInt("mymenu_count"),
 	                rs.getTimestamp("created_at").toLocalDateTime(),
 	                rs.getTimestamp("updated_at").toLocalDateTime()                
 	            );
@@ -88,9 +87,9 @@ public class OrdersDAO {
 						rs.getInt("id"),
 		                rs.getInt("user_id"),                
 		                rs.getInt("menu_id"),
-		                rs.getInt("menucount_id"),
+		                rs.getInt("menu_count"),
 		                rs.getInt("mymenu_id"),
-		                rs.getInt("mymenucount_id"),
+		                rs.getInt("mymenu_count"),
 		                rs.getTimestamp("created_at").toLocalDateTime(),
 		                rs.getTimestamp("updated_at").toLocalDateTime() 
 		            );
@@ -115,12 +114,12 @@ public class OrdersDAO {
 		}
 
 		// 結果を返す
-		return votelist;
+		return orderlist;
 	}
 	
 	
-	// 引数voteのデータを格納する
-	public boolean insert(Vote vote) {
+	// 引数orderのデータを格納する
+	public boolean insert(Order order) {
 	    Connection conn = null;
 	    boolean result = false;
 
@@ -133,13 +132,15 @@ public class OrdersDAO {
 	            "root", "password");
 
 	        String sql =
-	            "INSERT INTO votes(user_id, contest_id, contestmenu_id) VALUES(?,?,?)";
+	            "INSERT INTO orders(user_id, menu_id, menu_count, mymenu_id, mymenu_count) VALUES(?,?,?,?,?)";
 
 	        PreparedStatement ps = conn.prepareStatement(sql);
 
-	        ps.setInt(1, vote.getUser_id());
-	        ps.setInt(2, vote.getContest_id());
-	        ps.setInt(3, vote.getContestmenu_id());
+	        ps.setInt(1, order.getUser_id());
+	        ps.setInt(2, order.getMenu_id());
+	        ps.setInt(3, order.getMenu_count());
+	        ps.setInt(4, order.getMymenu_id());
+	        ps.setInt(5, order.getMymenu_count());
 
 	        if (ps.executeUpdate() == 1) {
 	            result = true;
@@ -160,8 +161,8 @@ public class OrdersDAO {
 	    return result;
 	}
 
-	// 引数voteで指定されたレコードを更新し、成功したらtrueを返す
-	public boolean update(Vote vote) {
+	// 引数orderで指定されたレコードを更新し、成功したらtrueを返す
+	public boolean update(Order order) {
 		Connection conn = null;
 		boolean result = false;
 
@@ -176,18 +177,20 @@ public class OrdersDAO {
 
 			// SQL文を準備する
 			String sql =
-	                "UPDATE votes SET " +
-	                "user_id=?,contest_id=?,contestmenu_id=? " +
+	                "UPDATE orders SET " +
+	                "user_id=?,menu_id=?,menu_count=?,mymenu_id=?,mymenu_count=? " +
 	                "WHERE id=?";
 			
 			PreparedStatement ps = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
-			ps.setInt(1, vote.getUser_id());
-			ps.setInt(2, vote.getContest_id());
-			ps.setInt(3, vote.getContestmenu_id());
-			ps.setInt(4, vote.getId());
-            
+			ps.setInt(1, order.getUser_id());
+	        ps.setInt(2, order.getMenu_id());
+	        ps.setInt(3, order.getMenu_count());
+	        ps.setInt(4, order.getMymenu_id());
+	        ps.setInt(5, order.getMymenu_count());
+	        ps.setInt(6, order.getId());
+	        
 			// SQL文を実行する
 			if (ps.executeUpdate() == 1) {
 				result = true;
@@ -226,7 +229,7 @@ public class OrdersDAO {
 					"root", "password");
 
 			// SQL文を準備する
-			String sql = "DELETE FROM votes WHERE id=?";
+			String sql = "DELETE FROM orders WHERE id=?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
