@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
  * Servlet implementation class AdminContestViewServlet
  */
 
-@WebServlet("/AdminContestViewServlet")
+@WebServlet("/admincontestview")
 public class AdminContestViewServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 

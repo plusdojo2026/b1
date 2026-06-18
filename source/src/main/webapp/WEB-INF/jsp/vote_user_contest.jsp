@@ -19,8 +19,8 @@
     <main>
         <div class="top_contest">
             <section class="class_contest">
-            <span class="choice"><a href="/b1/UserContestVoteServlet">ユーザー考案</a></span>
-            <span><a href="/b1/AdminContestVoteServlet">店主考案　</a></span>
+            <span class="choice"><a href="/b1/usercontestvote">ユーザー考案</a></span>
+            <span><a href="/b1/admincontestvote">店主考案　</a></span>
             </section>
             <p>残り投票数：３票</p>
         </div>
@@ -54,14 +54,14 @@
     <footer>
         <nav>
             <ul>
-                <li class="nowpage"><a href="/b1/home">
-                		<img src="/b1/images/home_red.png" class="footer_icon"><br>ホーム
+                <li><a href="/b1/home">
+                		<img src="/b1/images/home.png" class="footer_icon"><br>ホーム
                 	</a></li>
                 <li><a href="/b1/custom">
                 		<img src="/b1/images/custom.png" class="footer_icon"><br>カスタム
                 	</a></li>
-                <li><a href="/b1/contest">
-                		<img src="/b1/images/contest.png" class="footer_icon"><br>コンテスト
+                <li class="nowpage"><a href="/b1/contest">
+                		<img src="/b1/images/contest_red.png" class="footer_icon"><br>コンテスト
                 	</a></li>
                 <li><a href="/b1/akinator">
                 		<img src="/b1/images/akinator.png" class="footer_icon"><br>診断

@@ -76,12 +76,19 @@ VALUES
 INSERT INTO materials
     (name, category, price, image, protein, df)
 VALUES
-    ('ビーフパティ', 1, 300, 'images/beef.png', 22, 0),
-    ('バンズ', 1, 120, 'images/buns.png', 6, 1),
-    ('チェダーチーズ', 2, 150, 'images/cheddar.png', 8, 0),
-    ('レタス', 3, 80, 'images/lettuce.png', 2, 3),
-    ('ベーコン', 2, 180, 'images/bacon.png', 10, 0);
-
+	('バンズ上', 1, 60, '/b1/images/buns_top.png', 3, 1),
+	('バンズ下', 1, 60, '/b1/images/buns_bottom.png', 3, 1),
+    ('ビーフ', 2, 300, '/b1/images/beef.png', 22, 0),
+    ('チキン', 2, 300, '/b1/images/beef.png', 22, 0),
+    ('チーズ', 3, 150, '/b1/images/cheese.png', 8, 0),
+    ('ベーコン', 3, 180, '/b1/images/bacon.png', 10, 0),
+    ('エッグ', 3, 100, '/b1/images/egg.png', 10, 0),
+    ('レタス', 4, 80, '/b1/images/lettuce.png', 2, 3),
+    ('トマト', 4, 80, '/b1/images/tomato.png', 2, 3),
+    ('タマネギ', 4, 80, '/b1/images/onion.png', 2, 3),
+    ('BBQ', 5, 20, '', 10, 0),
+    ('サルサ', 5, 30, '', 15, 0),
+    ('マスタード', 5, 20, '', 5, 0);
 
 /* categoriesテーブル */
 CREATE TABLE categories(

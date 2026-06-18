@@ -207,11 +207,11 @@
     <footer>
         <nav>
             <ul>
-                <li class="nowpage"><a href="/b1/home">
-                		<img src="/b1/images/home_red.png" class="footer_icon"><br>ホーム
+                <li><a href="/b1/home">
+                		<img src="/b1/images/home.png" class="footer_icon"><br>ホーム
                 	</a></li>
-                <li><a href="/b1/custom">
-                		<img src="/b1/images/custom.png" class="footer_icon"><br>カスタム
+                <li  class="nowpage"><a href="/b1/custom">
+                		<img src="/b1/images/custom_red.png" class="footer_icon"><br>カスタム
                 	</a></li>
                 <li><a href="/b1/contest">
                 		<img src="/b1/images/contest.png" class="footer_icon"><br>コンテスト
