@@ -14,7 +14,6 @@
 
     <!-- 質問メインコンテンツエリア -->
     <div class="question-container">
-        
         <h2 class="question-title">Q.今日の気分は？</h2>
         
         <div class="options-text">
@@ -22,17 +21,14 @@
             <p>B.パティはチキン</p>
         </div>
 
-        <!-- フォーム送信（ボタンを押すと answer の値が POST される） -->
+        <!-- 【仕様共通化】安全なコンテキストパス付きのサーブレットURLへPOST送信 -->
         <form action="${pageContext.request.contextPath}/AkinatorQuestionResultServlet" method="POST" class="btn-row">
-            <!-- A.牛肉按钮（红底） -->
             <button type="submit" name="answer" value="A" class="btn-opt btn-beef">A.ビーフ</button>
-            <!-- B.鸡肉按钮（白底红字圆角边框） -->
             <button type="submit" name="answer" value="B" class="btn-opt btn-chicken">B.チキン</button>
         </form>
-
     </div>
 
-    <!-- 共通フッター（4番目の診断をアクティブ表示） -->
+    <!-- 指定された固定形式の共通フッターナビゲーション -->
     <footer>
         <nav>
             <ul>

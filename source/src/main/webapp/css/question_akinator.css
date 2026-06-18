@@ -1,5 +1,6 @@
 @charset "UTF-8";
 
+/* ページ全体の基本レイアウト設定 */
 body { 
     background-color: #fcfbf4; 
     font-family: Arial, sans-serif; 
@@ -17,7 +18,7 @@ body {
     margin-bottom: 50px; 
 }
 
-/* 質問エリアのレイアウト */
+/* 質問コンテンツの幅制限と中央寄せ */
 .question-container {
     width: 100%;
     max-width: 340px;
@@ -31,7 +32,7 @@ body {
     margin-bottom: 25px;
 }
 
-/* A.B.の選択肢説明テキスト */
+/* 選択肢テキストの配置調整 */
 .options-text {
     font-size: 15px;
     font-weight: bold;
@@ -42,14 +43,14 @@ body {
 }
 .options-text p { margin: 10px 0; }
 
-/* ボタンを横並びにする行 */
+/* 2つのボタンを横並びにするレイアウト */
 .btn-row {
     display: flex;
     justify-content: center;
     gap: 15px;
 }
 
-/* 選択肢ボタンの共通ベーススタイル */
+/* 選択肢ボタンの共通スタイル */
 .btn-opt {
     flex: 1;
     max-width: 130px;
@@ -62,14 +63,14 @@ body {
     box-sizing: border-box;
 }
 
-/* A.ビーフ按钮（赤背景・白文字） */
+/* A.ビーフ：赤背景に白文字 */
 .btn-beef {
     background-color: #d93333;
     color: #ffffff;
     border: none;
 }
 
-/* B.チキン按钮（白背景・赤文字・薄いグレーのボーダー） */
+/* B.チキン：白背景に赤文字、グレーの細いボーダー */
 .btn-chicken {
     background-color: #ffffff;
     color: #d93333;
