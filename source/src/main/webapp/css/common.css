@@ -10,6 +10,16 @@ main {
     margin: 0 40px;
 }
 
+main button,
+main input[type="button"],
+main input[type="submit"],
+main input[type="reset"] {
+    -webkit-tap-highlight-color: transparent; /* iPhone / Android */
+    outline: none; /* フォーカス枠を消す */
+}
+
+
+
 header {
     width: 100%;
     font-weight: bold;

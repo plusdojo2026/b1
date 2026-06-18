@@ -33,11 +33,11 @@
         </div>
 
         <!-- おすすめメニュー診断エリア -->
-        <div class="diagnostic-card">
+        <button class="diagnostic-card"  onclick="location.href='${pageContext.request.contextPath}/akinator'">
             <div class="diag-title">おすすめメニュー診断</div>
             <div class="diag-subtitle">今の気分に合うバーガーは？</div>
-            <button class="diag-btn" onclick="location.href='${pageContext.request.contextPath}/akinator'">診断する</button>
-        </div>
+            <span class="diag-btn">診断する</span>
+        </button>
     </main>
 
     <!-- 共通フッター：画像ナビゲーションバー（1番目のホームをアクティブ表示） -->
