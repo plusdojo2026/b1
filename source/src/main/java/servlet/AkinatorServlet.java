@@ -40,6 +40,6 @@ public class AkinatorServlet extends HttpServlet {
         // TODO: ここでユーザーの選択に合わせたおすすめバーガーの診断アルゴリズムを実装
         
         // 次の質問画面、または結果画面へ遷移（ここでは一旦同じ画面に戻るか結果画面へリダイレクト）
-        response.sendRedirect(request.getContextPath() + "/akinator");
+        response.sendRedirect(request.getContextPath() + "/AkinatorQuestionResultServlet");
     }
 }
