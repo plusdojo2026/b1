@@ -13,7 +13,7 @@
     <header>
     </header>
 
-    <main class="mymenuregist">
+<main class="mymenuregist">
 
         <h2>¥5,000</h2>
 		<div class="illustration-stage">
@@ -211,72 +211,73 @@
     </footer>
 
 	<script>
-		function stackIngredients() {
-		    const thickness = {
-		        chicken: 24,
-		        beef: 18,
-		        cheese: 2,
-		        lettuce: 17,
-		        egg: 14,
-		        onion: 17,
-		        bacon: 1,
-		        tomato: 18
-		    };
-		
-		    const offset = {
-		        lettuce: 15,
-		        cheese: -4,
-		        bacon: -13
-		    };
-		
-		    const bottom = document.querySelector(".buns_bottom");
-		    const ingredients = Array.from(document.querySelectorAll("#stack-area img"));
-		    const top = document.querySelector(".buns_top");
-		
-		    let currentBottom = bottom.offsetHeight - 20;
-		
-		    ingredients.forEach((img, index) => {
-		        const type = img.dataset.type;
-		        const thick = thickness[type] || 15;
-		        const visualOffset = offset[type] || 20;
-		
-		        img.style.position = "absolute";
-		        img.style.bottom = (currentBottom + visualOffset) + "px";
-		        img.style.left = "0";
-		        img.style.zIndex = 50 + index;
-		
-		        currentBottom += Math.max(thick, 1);
-		    });
-		
-		    top.style.position = "absolute";
-		    top.style.bottom = (currentBottom + 20) + "px";
-		    top.style.left = "0";
-		}
-		
-		window.addEventListener("load", stackIngredients);
-		
-		document.querySelectorAll("input[type=radio]").forEach(radio => {
-		    radio.addEventListener("change", e => {
-		
-		        const id = e.target.id;  //
-		        const [sectionName, ingredient] = id.split("_");
-		
-		        const section = document.querySelector(`.${sectionName}`);
-		
-		        if (ingredient === "null") {
-		            // なし → セクションを空にする
-		            section.innerHTML = "";
-		        } else {
-		            // 具材画像を挿入
-		            section.innerHTML = 
-		                <img src="/b1/images/hamburger/${ingredient}.png" data-type="${ingredient}">
-		            ;
-		        }
-		        // 具材を積み直す
-		        stackIngredients();
-		    });
-		});
-		
+	"use strict";
+	function stackIngredients() {
+	    const thickness = {
+	        chicken: 24,
+	        beef: 18,
+	        cheese: 2,
+	        lettuce: 17,
+	        egg: 14,
+	        onion: 17,
+	        bacon: 1,
+	        tomato: 18
+	    };
+
+	    const offset = {
+	        lettuce: 15,
+	        cheese: -8,
+	        bacon: -13
+	    };
+
+	    const bottom = document.querySelector(".buns_bottom");
+	    const ingredients = Array.from(document.querySelectorAll("#stack-area img"));
+	    const top = document.querySelector(".buns_top");
+
+	    let currentBottom = bottom.offsetHeight - 20;
+
+	    ingredients.forEach((img, index) => {
+	        const type = img.dataset.type;
+	        const thick = thickness[type] || 15;
+	        const visualOffset = offset[type] || 20;
+
+	        img.style.position = "absolute";
+	        img.style.bottom = (currentBottom + visualOffset) + "px";
+	        img.style.left = "0";
+	        img.style.zIndex = 50 + index;
+
+	        currentBottom += Math.max(thick, 1);
+	    });
+
+	    top.style.position = "absolute";
+	    top.style.bottom = (currentBottom + 20) + "px";
+	    top.style.left = "0";
+	}
+
+	window.addEventListener("load", stackIngredients);
+
+	document.querySelectorAll("input[type=radio]").forEach(radio => {
+	    radio.addEventListener("change", e => {
+
+	        const id = e.target.id;  //
+	        const [sectionName, ingredient] = id.split("_");
+
+	        const section = document.querySelector(`.${sectionName}`);
+
+	        if (ingredient === "null") {
+	            // なし → セクションを空にする
+	            section.innerHTML = "";
+	        } else {
+	            // 具材画像を挿入
+	            section.innerHTML = `
+	                <img src="/b1/images/hamburger/${ingredient}.png" data-type="${ingredient}">
+	            `;
+	        }
+
+	        // 具材を積み直す
+	        stackIngredients();
+	    });
+	});
 		</script>
 
 </body>

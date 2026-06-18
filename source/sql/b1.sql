@@ -266,20 +266,3 @@ VALUES
     (4, NULL, NULL, 2, 2),
     (5, 4, 1, 3, 1);
 
-
-/* levelupテーブル */
-CREATE TABLE levelup (
-    id int AUTO_INCREMENT PRIMARY KEY,
-    image VARCHAR(100),
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
-
-/* levelupダミーデータ */
-INSERT INTO levelup (image)
-VALUES
-    ('images/levelup1.png'),
-    ('images/levelup2.png'),
-    ('images/levelup3.png'),
-    ('images/levelup4.png'),
-    ('images/levelup5.png');
