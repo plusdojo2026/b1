@@ -41,16 +41,19 @@
 		</div>
 
         <div class="choice_material">
+        
+            <input type="hidden" name="banstop" value="1">
+            <input type="hidden" name="bansbottom" value="1">
 
             <div class="item_material">
                 <h3>パティ1</h3>
                 <input type="radio" name="patty1" value="0" id="patty1_null">
                     <label for="patty1_null">なし</label>
 
-                <input type="radio" name="patty1" value="1" id="patty1_beef">
+                <input type="radio" name="patty1" value="2" id="patty1_beef">
                     <label for="patty1_beef">ビーフ</label>
 
-                <input type="radio" name="patty1" value="2" id="patty1_chicken">
+                <input type="radio" name="patty1" value="3" id="patty1_chicken">
                     <label for="patty1_chicken">チキン</label>
             </div>
             <br>
@@ -60,13 +63,13 @@
                 <input type="radio" name="topping1" value="0" id="topping1_null">
                     <label for="topping1_null">なし</label>
 
-                <input type="radio" name="topping1" value="1" id="topping1_cheese">
+                <input type="radio" name="topping1" value="4" id="topping1_cheese">
                     <label for="topping1_cheese">チーズ</label>
 
-                <input type="radio" name="topping1" value="2" id="topping1_bacon">
+                <input type="radio" name="topping1" value="5" id="topping1_bacon">
                     <label for="topping1_bacon">ベーコン</label>
 
-                <input type="radio" name="topping1" value="3" id="topping1_egg">
+                <input type="radio" name="topping1" value="6" id="topping1_egg">
                     <label for="topping1_egg">エッグ</label>
             </div> 
             <br>
@@ -76,13 +79,13 @@
                 <input type="radio" name="vegetable1" value="0" id="vegetable1_null">
                     <label for="vegetable1_null">なし</label>
 
-                <input type="radio" name="vegetable1" value="1" id="vegetable1_lettuce">
+                <input type="radio" name="vegetable1" value="7" id="vegetable1_lettuce">
                     <label for="vegetable1_lettuce">レタス</label>
 
-                <input type="radio" name="vegetable1" value="2" id="vegetable1_tomato">
+                <input type="radio" name="vegetable1" value="8" id="vegetable1_tomato">
                     <label for="vegetable1_tomato">トマト</label>
 
-                <input type="radio" name="vegetable1" value="3" id="vegetable1_onion">
+                <input type="radio" name="vegetable1" value="9" id="vegetable1_onion">
                     <label for="vegetable1_onion">タマネギ</label>
             </div>
             <br>
@@ -176,6 +179,19 @@
 
                 <input type="radio" name="vegetable3" value="3" id="vegetable3_onion">
                     <label for="vegetable3_onion">タマネギ</label>
+            </div>
+            <br>
+            
+			<div class="item_material">
+                <h3>ソース</h3>
+                <input type="radio" name="sauce" value="10" id="sauce_BBQ">
+                    <label for="sauce_BBQ">BBQ</label>
+
+                <input type="radio" name="sauce" value="11" id="sauce_salsa">
+                    <label for="sauce_salsa">サルサ</label>
+
+                <input type="radio" name="sauce" value="12" id="sauce_mustard">
+                    <label for="sauce_mustard">マスタード</label>
             </div>
             <br>
 
