@@ -179,7 +179,9 @@
             </div>
             <br>
 
-            <br>
+            <h3>メニュー名</h3>
+            <input type="text" name="name" placeholder="メニュー名を入力してください">
+
             <input type="submit" value="このメニューをマイメニューに追加する">
             <p></p>
 
