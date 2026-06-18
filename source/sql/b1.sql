@@ -9,14 +9,14 @@ USE b1;
 CREATE TABLE users  (
     id INT AUTO_INCREMENT PRIMARY KEY,
     phone VARCHAR(20),
-    pw VARCHAR(10),
+    pw VARCHAR(20),
     name VARCHAR(10),
     rank_id INT DEFAULT 0,
     icon VARCHAR(100),
     vote INT DEFAULT 0,
     levelup_menu INT DEFAULT 1,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
 /* usersダミーデータ */
@@ -28,7 +28,7 @@ VALUES
 INSERT INTO users 
     (phone, pw, name, rank_id, icon, vote, levelup_menu)
 VALUES
-	('1', 'pass1111','管理者',3,'',20,5),
+	('admin', 'pass1111','管理者',3,'',20,5),
     ('09012345678', 'pass1234', 'ミスターバーガー', 1, 'icons/user1.png', 5, 1),
     ('08023456789', 'burger99', 'バーガーマスター', 2, 'icons/user2.png', 12, 2),
     ('07034567890', 'cheese77', 'キングバーガー', 1, 'icons/user3.png', 8, 3),
@@ -41,17 +41,15 @@ CREATE TABLE ranks (
     id int AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(10),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
 /* ranksダミーデータ */
 INSERT INTO ranks (id,name)
 VALUES
-    (0,'')
+    (0,'');
 INSERT INTO ranks (name)
 VALUES
-    ('Bronze'),
-    ('Silver'),
     ('Bronze'),
     ('Silver'),
     ('Gold');
@@ -67,7 +65,7 @@ CREATE TABLE materials (
     protein INT DEFAULT 0,
     df INT DEFAULT 0,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
 /* materialsダミーデータ */
@@ -90,7 +88,7 @@ CREATE TABLE categories(
     id int AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(20),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
 /* categoriesダミーデータ */
@@ -125,7 +123,7 @@ CREATE TABLE menus (
     price INT DEFAULT 0,
     judge INT DEFAULT 0,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
 /* menusダミーデータ */
@@ -136,11 +134,11 @@ VALUES
 INSERT INTO menus 
     (name, image, buns, patty1, patty2, patty3, vege1, vege2, vege3, topping1, topping2, topping3, sauce, price, judge)
 VALUES
-    ('トリプルチーズボム', 'images/menu6.png', 2, 1, 1, 1, 4, NULL, NULL, 3, 3, 3, 1, 950, 1),
-    ('アボカドベーコン', 'images/menu7.png', 2, 1, NULL, NULL, 4, 7, NULL, 5, NULL, NULL, 2, 750, 1),
-    ('スパイシーチキンサンド', 'images/menu8.png', 2, 6, NULL, NULL, 4, NULL, NULL, 3, NULL, NULL, 3, 680, 1),
-    ('ベジバーガー', 'images/menu4.png', 2, NULL, NULL, NULL, 4, 5, 4, NULL, NULL, NULL, 3, 450, 0),
-    ('トリプルミート', 'images/menu5.png', 2, 1, 1, 1, 4, NULL, NULL, 5, 3, NULL, 2, 900, 1);
+    ('トリプルチーズボム', 'images/menu6.png', 2, 1, 1, 1, 4, 0, 0, 3, 3, 3, 1, 950, 1),
+    ('アボカドベーコン', 'images/menu7.png', 2, 1, 0, 0, 4, 7, 0, 5, 0, 0, 2, 750, 1),
+    ('スパイシーチキンサンド', 'images/menu8.png', 2, 6, 0, 0, 4, 0, 0, 3, 0, 0, 3, 680, 1),
+    ('ベジバーガー', 'images/menu4.png', 2, 0, 0, 0, 4, 5, 4, 0, 0, 0, 3, 450, 0),
+    ('トリプルミート', 'images/menu5.png', 2, 1, 1, 1, 4, 0, 0, 5, 3, 0, 2, 900, 1);
 
 
 /* mymenusテーブル */
@@ -161,7 +159,7 @@ CREATE TABLE mymenus (
     sauce INT DEFAULT 0,
     price INT DEFAULT 0,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
 /* mymenusダミーデータ */
@@ -172,11 +170,11 @@ VALUES
 INSERT INTO mymenus
     (name, user_id, buns, patty1, patty2, patty3, vege1, vege2, vege3, topping1, topping2, topping3, sauce, price)
 VALUES
-    ('マイダブルチーズ', 1, 2, 1, 1, NULL, 4, NULL, NULL, 3, 3, NULL, 1, 800),
-    ('ヘルシーミックス', 2, 2, NULL, NULL, NULL, 4, 5, 4, NULL, NULL, NULL, 3, 500),
-    ('ベーコンマシマシ', 3, 2, 1, NULL, NULL, 4, NULL, NULL, 5, 5, 5, 2, 900),
-    ('チキンスパイシー', 4, 2, 6, NULL, NULL, 4, NULL, NULL, 3, NULL, NULL, 3, 720),
-    ('よくばりトリプル', 5, 2, 1, 1, 1, 4, 5, NULL, 3, 5, NULL, 2, 1100);
+    ('マイダブルチーズ', 1, 2, 1, 1, 0, 4, 0, 0, 3, 3, 0, 1, 800),
+    ('ヘルシーミックス', 2, 2, 0, 0, 0, 4, 5, 4, 0, 0, 0, 3, 500),
+    ('ベーコンマシマシ', 3, 2, 1, 0, 0, 4, 0, 0, 5, 5, 5, 2, 900),
+    ('チキンスパイシー', 4, 2, 6, 0, 0, 4, 0, 0, 3, 0, 0, 3, 720),
+    ('よくばりトリプル', 5, 2, 1, 1, 1, 4, 5, 0, 3, 5, 0, 2, 1100);
 
 
 /* contestmenusテーブル */
@@ -198,7 +196,7 @@ CREATE TABLE contestmenus (
     price INT DEFAULT 0,
     contest_id INT DEFAULT 0,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
 /* contestmenusダミーデータ */
@@ -209,28 +207,28 @@ VALUES
 INSERT INTO contestmenus
     (name, user_id, buns, patty1, patty2, patty3, vege1, vege2, vege3, topping1, topping2, topping3, sauce, price, contest_id)
 VALUES
-    ('チーズ爆増バーガー', 1, 2, 1, 1, NULL, 4, NULL, NULL, 3, 3, 3, 1, 920, 1),
-    ('アボカドヘルシー', 2, 2, NULL, NULL, NULL, 4, 7, 5, NULL, NULL, NULL, 3, 600, 1),
-    ('ベーコンモンスター', 3, 2, 1, 1, NULL, 4, NULL, NULL, 5, 5, 5, 2, 980, 1),
-    ('スパイシーチキン極', 4, 2, 6, NULL, NULL, 4, NULL, NULL, 3, NULL, NULL, 3, 750, 2),
-    ('トリプルミートキング', 5, 2, 1, 1, 1, 4, 5, NULL, 3, 5, NULL, 2, 1200, 2);
+    ('チーズ爆増バーガー', 1, 2, 1, 1, 0, 4, 0, 0, 3, 3, 3, 1, 920, 1),
+    ('アボカドヘルシー', 2, 2, 0, 0, 0, 4, 7, 5, 0, 0, 0, 3, 600, 1),
+    ('ベーコンモンスター', 3, 2, 1, 1, 0, 4, 0, 0, 5, 5, 5, 2, 980, 1),
+    ('スパイシーチキン極', 4, 2, 6, 0, 0, 4, 0, 0, 3, 0, 0, 3, 750, 2),
+    ('トリプルミートキング', 5, 2, 1, 1, 1, 4, 5, 0, 3, 5, 0, 2, 1200, 2);
 
 
 /* contestsテーブル */
 CREATE TABLE contests (
     id int AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(20) NOT NULL,
-    start_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    end_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    start_at TIMESTAMP NULL DEFAULT NULL,
+	end_at TIMESTAMP NULL DEFAULT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
 /* contestsダミーデータ */
 INSERT INTO contests
     (id,name, start_at, end_at)
 VALUES
-    (0,'', 'NULL', 'NULL');
+    (0,'',NULL,NULL);
 INSERT INTO contests
     (name, start_at, end_at)
 VALUES
@@ -248,7 +246,7 @@ CREATE TABLE votes (
     contest_id INT DEFAULT 0,
     contestmenu_id INT DEFAULT 0,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
 /* votesダミーデータ */
@@ -275,7 +273,7 @@ CREATE TABLE orders (
     mymenu_id INT DEFAULT 0,
     mymenu_count INT DEFAULT 0,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
 /* ordersダミーデータ */
@@ -286,9 +284,9 @@ VALUES
 INSERT INTO orders
     (user_id, menu_id, menu_count, mymenu_id, mymenu_count)
 VALUES
-    (1, 1, 2, NULL, NULL),
+    (1, 1, 2, 0, 0),
     (2, 2, 1, 1, 1),
-    (3, 3, 3, NULL, NULL),
-    (4, NULL, NULL, 2, 2),
+    (3, 3, 3, 0, 0),
+    (4, 0, 0, 2, 2),
     (5, 4, 1, 3, 1);
 
