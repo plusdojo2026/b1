@@ -1,1 +1,77 @@
 @charset "UTF-8";
+
+body { 
+    background-color: #fcfbf4; 
+    font-family: Arial, sans-serif; 
+    padding: 20px 20px 85px 20px; 
+    margin: 0; 
+    text-align: center; 
+    box-sizing: border-box;
+}
+
+.page-title { 
+    font-size: 24px; 
+    color: #4a2c11; 
+    font-weight: bold; 
+    margin-top: 15px;
+    margin-bottom: 50px; 
+}
+
+/* 質問エリアのレイアウト */
+.question-container {
+    width: 100%;
+    max-width: 340px;
+    margin: 0 auto;
+}
+
+.question-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: #000000;
+    margin-bottom: 25px;
+}
+
+/* A.B.の選択肢説明テキスト */
+.options-text {
+    font-size: 15px;
+    font-weight: bold;
+    color: #000000;
+    text-align: center;
+    line-height: 1.8;
+    margin-bottom: 40px;
+}
+.options-text p { margin: 10px 0; }
+
+/* ボタンを横並びにする行 */
+.btn-row {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+/* 選択肢ボタンの共通ベーススタイル */
+.btn-opt {
+    flex: 1;
+    max-width: 130px;
+    padding: 12px 0;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 25px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    box-sizing: border-box;
+}
+
+/* A.ビーフ按钮（赤背景・白文字） */
+.btn-beef {
+    background-color: #d93333;
+    color: #ffffff;
+    border: none;
+}
+
+/* B.チキン按钮（白背景・赤文字・薄いグレーのボーダー） */
+.btn-chicken {
+    background-color: #ffffff;
+    color: #d93333;
+    border: 1.5px solid #bdc3c7;
+}

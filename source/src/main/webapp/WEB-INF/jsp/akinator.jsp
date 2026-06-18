@@ -26,8 +26,8 @@
             <div class="card-title">おすすめメニュー診断</div>
             
             <!-- 诊断表单逻辑（点击触发 doPost） -->
-            <form action="${pageContext.request.contextPath}/AkinatorServlet" method="POST">
-                <button type="submit" class="diag-btn">诊断する</button>
+            <form action="${pageContext.request.contextPath}/akinator" method="POST">
+                <button type="submit" class="diag-btn">診断する</button>
             </form>
         </div>
 
