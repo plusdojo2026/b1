@@ -5,8 +5,6 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
 import dto.Category;
 
@@ -55,9 +53,9 @@ public class CategoriesDAO {
 	}
 	
 	// 引数nameで指定された項目で検索して、取得されたデータのリストを返す
-	public List<Category> selectByName(String name) {
+	public Category selectByName(String name) {
 		Connection conn = null;
-		List<Category> categorylist = new ArrayList<Category>();
+		Category category = null;
 
 		try {
 			// JDBCドライバを読み込む
@@ -82,35 +80,28 @@ public class CategoriesDAO {
 			ResultSet rs = ps.executeQuery();
 
 			// 結果表をコレクションにコピーする
-			while (rs.next()) {
-				Category categories = new Category(
+			if (rs.next()) {
+				category = new Category(
 						rs.getInt("id"),
 		                rs.getString("name"),
 		                rs.getTimestamp("created_at").toLocalDateTime(),
 		                rs.getTimestamp("updated_at").toLocalDateTime()
-		            );
-				categorylist.add(categories);
+				);
 			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-			categorylist = null;
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-			categorylist = null;
-		} finally {
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    } finally {
 			// データベースを切断
 			if (conn != null) {
 				try {
 					conn.close();
 				} catch (SQLException e) {
 					e.printStackTrace();
-					categorylist = null;
 				}
 			}
 		}
 
-		// 結果を返す
-		return categorylist;
+	    return category;
 	}
 
 	// 引数nameを登録し、成功したらtrueを返す
