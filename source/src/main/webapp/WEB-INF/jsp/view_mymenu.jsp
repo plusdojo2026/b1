@@ -42,7 +42,10 @@
 	
 			    <div class="menu-right">
 			        <input id="user_id" type="hidden" name="Mymenu" value="サンプルバーガー1" readonly="readonly">	
-			        <h3>サンプルバーガー１</h3>
+				    <div class="menu-info">
+				        <span class="name">サンプルバーガー１</span><br>
+				        <span class="price">¥1,590</span>
+				    </div>
 			        <div class="btn-group">
 			            <input class="btn-submit" type="submit" name="submit" value="編集">
 			            <input class="btn-delete" type="submit" name="delete" value="削除">
@@ -72,7 +75,10 @@
 	
 			    <div class="menu-right">
 			        <input id="user_id" type="hidden" name="Mymenu" value="サンプルバーガー1" readonly="readonly">	
-			        <h3>サンプルバーガー2</h3>
+				    <div class="menu-info">
+				        <span class="name">サンプルバーガー2</span><br>
+				        <span class="price">¥980</span>
+				    </div>
 			        <div class="btn-group">
 			            <input class="btn-submit" type="submit" name="submit" value="編集">
 			            <input class="btn-delete" type="submit" name="delete" value="削除">
@@ -97,7 +103,10 @@
 	
 			    <div class="menu-right">
 			        <input id="user_id" type="hidden" name="Mymenu" value="サンプルバーガー1" readonly="readonly">	
-			        <h3>サンプルバーガー3</h3>
+				    <div class="menu-info">
+				        <span class="name">サンプルバーガー3</span><br>
+				        <span class="price">¥590</span>
+				    </div>
 			        <div class="btn-group">
 			            <input class="btn-submit" type="submit" name="submit" value="編集">
 			            <input class="btn-delete" type="submit" name="delete" value="削除">
