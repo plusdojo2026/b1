@@ -39,14 +39,22 @@ public class ContestmenusDAOTest {
         // -----------------------------
         System.out.println("---------- selectById()のテスト ----------");
         Contestmenu cm1 = dao.selectById(1);
-        System.out.println(cm1.getName());
+        if (cm1 != null) {
+            System.out.println(cm1.getName());
+        } else {
+            System.out.println("データなし");
+        }
 
         // -----------------------------
         // selectByName テスト
         // -----------------------------
         System.out.println("---------- selectByName()のテスト ----------");
         Contestmenu cm2 = dao.selectByName("チーズ爆増バーガー");
-        System.out.println(cm2.getName());
+        if (cm2 != null) {
+            System.out.println(cm2.getName());
+        } else {
+            System.out.println("データなし");
+        }
 
         // -----------------------------
         // selectByUserId テスト
@@ -107,7 +115,8 @@ public class ContestmenusDAOTest {
 
             if (dao.update(upRec)) {
                 System.out.println("更新成功！");
-                System.out.println(dao.selectByName("更新バーガー"));
+                Contestmenu contestup = dao.selectByName("更新バーガー");
+                System.out.println(contestup.getName());
             } else {
                 System.out.println("更新失敗！");
             }

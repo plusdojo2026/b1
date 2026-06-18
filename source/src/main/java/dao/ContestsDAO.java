@@ -69,7 +69,7 @@ public class ContestsDAO {
 					"root", "password");
 
 			// SQL文を準備する
-			String sql = "SELECT * FROM contests WHERE name = ? ORDER BY　id DESC limit 1";
+			String sql = "SELECT * FROM contests WHERE name = ? ORDER BY id DESC limit 1";
 			PreparedStatement ps = conn.prepareStatement(sql);
 			
 			if (name != null) {
