@@ -49,7 +49,7 @@
                 <input type="radio" name="patty1" value="0" id="patty1_null">
                     <label for="patty1_null">なし</label>
 
-                <input type="radio" name="patty1" value="2" id="patty1_beef">
+                <input type="radio" name="patty1" value="2" id="patty1_beef" checked>
                     <label for="patty1_beef">ビーフ</label>
 
                 <input type="radio" name="patty1" value="3" id="patty1_chicken">
@@ -282,9 +282,6 @@
 	        console.log("sectionName:", sectionName);
 	        console.log("ingredient:", ingredient);
 
-	        
-	        
-
 	        const section = document.querySelector(`.\${sectionName}`);
 
 	        if (ingredient === "null") {
@@ -300,6 +297,7 @@
 	        stackIngredients();
 	    });
 	});
+	
 		</script>
 
 </body>
