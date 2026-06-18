@@ -17,6 +17,13 @@
 		</div>
 	</header>
 	<main>
+	
+        <div class="top_contest">
+            <section class="class_contest">
+            <span class="choice"><a href="/b1/UserContestViewServlet">ユーザー考案</a></span>
+            <span><a href="/b1/AdminContestViewServlet">店主考案　</a></span>
+            </section>
+        </div>
 
 		<!-- 1位 -->
 		<div class="card first">
