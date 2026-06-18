@@ -1,1 +1,82 @@
 @charset "UTF-8";
+
+/* ページ全体の基本レイアウト設定 */
+body { 
+    background-color: #fcfbf4; 
+    font-family: Arial, sans-serif; 
+    padding: 20px 20px 85px 20px; 
+    margin: 0; 
+    text-align: center; 
+    box-sizing: border-box;
+}
+
+.page-title { 
+    font-size: 24px; 
+    color: #4a2c11; 
+    font-weight: bold; 
+    margin-top: 15px;
+    margin-bottom: 25px; 
+}
+
+/* 結果表示エリアの幅制限と中央寄せ */
+.result-container {
+    width: 100%;
+    max-width: 340px;
+    margin: 0 auto;
+}
+
+.result-hint {
+    font-size: 14px;
+    font-weight: bold;
+    color: #000000;
+    margin-bottom: 15px;
+}
+
+/* 白い角丸カードのデザイン定義（超角丸スタイル） */
+.result-card {
+    background-color: #ffffff;
+    border: 1.5px solid #bdc3c7;
+    border-radius: 35px; 
+    padding: 25px 20px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+}
+
+/* 画像表示枠：標準のグレー塗りつぶし背景 */
+.burger-img-box {
+    width: 100%;
+    height: 160px;
+    background-color: #d1d5db; 
+    border-radius: 25px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+.burger-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* 赤色のおすすめバーガーテキスト */
+.burger-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #d93333; 
+    margin: 0;
+    letter-spacing: 0.5px;
+}
+
+/* もう一度診断するボタン：カプセル型の完全な丸角赤ボタン */
+.btn-retry {
+    width: 100%;
+    max-width: 280px;
+    background-color: #d93333;
+    color: #ffffff;
+    border: none;
+    border-radius: 30px; 
+    padding: 14px 0;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
