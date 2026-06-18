@@ -8,6 +8,7 @@
 <title>FanTable │コンテスト結果</title>
 <link rel="stylesheet" href="/b1/css/common.css">
 <link rel="stylesheet" href="/b1/css/result_contest.css">
+    <link rel="stylesheet" href="/b1/css/vote_contest.css">
 </head>
 <body>
 

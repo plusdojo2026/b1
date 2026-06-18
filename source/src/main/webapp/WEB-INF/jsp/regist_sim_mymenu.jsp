@@ -179,7 +179,9 @@
             </div>
             <br>
 
-            <br>
+            <h3>メニュー名</h3>
+            <input type="text" name="name" placeholder="メニュー名を入力してください">
+
             <input type="submit" value="このメニューをマイメニューに追加する">
             <p></p>
 
@@ -261,18 +263,24 @@
 
 	        const id = e.target.id;  //
 	        const [sectionName, ingredient] = id.split("_");
+	        
+	        console.log("id:", id);
+	        console.log("sectionName:", sectionName);
+	        console.log("ingredient:", ingredient);
 
-	        const section = document.querySelector(`.${sectionName}`);
+	        
+	        
+
+	        const section = document.querySelector(`.\${sectionName}`);
 
 	        if (ingredient === "null") {
-	            // なし → セクションを空にする
 	            section.innerHTML = "";
 	        } else {
-	            // 具材画像を挿入
 	            section.innerHTML = `
-	                <img src="/b1/images/hamburger/${ingredient}.png" data-type="${ingredient}">
+	                <img src="/b1/images/hamburger/\${ingredient}.png" data-type="\${ingredient}">
 	            `;
 	        }
+
 
 	        // 具材を積み直す
 	        stackIngredients();
