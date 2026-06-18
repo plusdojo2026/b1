@@ -178,9 +178,10 @@
                     <label for="vegetable3_onion">タマネギ</label>
             </div>
             <br>
+            <h3>メニュー名</h3>
+            <input type="text" name="name" placeholder="メニュー名を入力してください">
 
-            <br>
-            <input type="submit" value="このメニューをマイメニューに追加する">
+            <input type="submit" value="このバーガーをマイメニューに追加する">
             <p></p>
 
             <span class="space">　</span>
