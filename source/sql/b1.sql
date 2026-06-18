@@ -10,10 +10,10 @@ CREATE TABLE users  (
     phone VARCHAR(20) NOT NULL,
     pw VARCHAR(10) NOT NULL,
     name VARCHAR(10) NOT NULL,
-    rank_id INT,
+    rank_id INT DEFAULT 0,
     icon VARCHAR(100),
-    vote INT,
-    levelup_menu INT,
+    vote INT DEFAULT 0,
+    levelup_menu INT DEFAULT 1,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
@@ -27,17 +27,17 @@ VALUES
 INSERT INTO users 
     (phone, pw, name, rank_id, icon, vote, levelup_menu)
 VALUES
-    ('09012345678', 'pass1234', 'ミスターバーガー', 1, 'icons/user1.png', 5, 101),
-    ('08023456789', 'burger99', 'バーガーマスター', 2, 'icons/user2.png', 12, 102),
-    ('07034567890', 'cheese77', 'キングバーガー', 1, 'icons/user3.png', 8, 103),
-    ('09045678901', 'meat555', 'バーガー太郎', 3, 'icons/user4.png', 20, 104),
-    ('08056789012', 'bbq0000', 'チーズ花子', 2, 'icons/user5.png', 15, 105);
+    ('09012345678', 'pass1234', 'ミスターバーガー', 1, 'icons/user1.png', 5, 1),
+    ('08023456789', 'burger99', 'バーガーマスター', 2, 'icons/user2.png', 12, 2),
+    ('07034567890', 'cheese77', 'キングバーガー', 1, 'icons/user3.png', 8, 3),
+    ('09045678901', 'meat555', 'バーガー太郎', 3, 'icons/user4.png', 20, 4),
+    ('08056789012', 'bbq0000', 'チーズ花子', 2, 'icons/user5.png', 15, 5);
 
 
 /* ranksテーブル */
 CREATE TABLE ranks (
     id int AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(10) NOT NULL,
+    name VARCHAR(10),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
@@ -58,12 +58,12 @@ VALUES
 /* materialsテーブル */
 CREATE TABLE materials (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(20) NOT NULL,
-    category INT,
-    price INT,
+    name VARCHAR(20),
+    category INT DEFAULT 0,
+    price INT DEFAULT 0,
     image VARCHAR(100),
-    protein INT,
-    df INT,
+    protein INT DEFAULT 0,
+    df INT DEFAULT 0,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
@@ -86,7 +86,7 @@ VALUES
 /* categoriesテーブル */
 CREATE TABLE categories(
     id int AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(20) NOT NULL,
+    name VARCHAR(20),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
@@ -107,7 +107,7 @@ VALUES
 /* menusテーブル */
 CREATE TABLE menus (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(20) NOT NULL,
+    name VARCHAR(20),
     image VARCHAR(100),
     buns INT DEFAULT 0,
     patty1 INT DEFAULT 0,
@@ -128,6 +128,10 @@ CREATE TABLE menus (
 
 /* menusダミーデータ */
 INSERT INTO menus 
+    (id,name, image, buns, patty1, patty2, patty3, vege1, vege2, vege3, topping1, topping2, topping3, sauce, price, judge)
+VALUES
+    (0,'', '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+INSERT INTO menus 
     (name, image, buns, patty1, patty2, patty3, vege1, vege2, vege3, topping1, topping2, topping3, sauce, price, judge)
 VALUES
     ('トリプルチーズボム', 'images/menu6.png', 2, 1, 1, 1, 4, NULL, NULL, 3, 3, 3, 1, 950, 1),
@@ -141,7 +145,7 @@ VALUES
 CREATE TABLE mymenus (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(20) NOT NULL,
-    user_id INT,
+    user_id INT DEFAULT 0,
     buns INT DEFAULT 0,
     patty1 INT DEFAULT 0,
     patty2 INT DEFAULT 0,
@@ -160,6 +164,10 @@ CREATE TABLE mymenus (
 
 /* mymenusダミーデータ */
 INSERT INTO mymenus
+    (id,name, user_id, buns, patty1, patty2, patty3, vege1, vege2, vege3, topping1, topping2, topping3, sauce, price)
+VALUES
+    (0,'', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+INSERT INTO mymenus
     (name, user_id, buns, patty1, patty2, patty3, vege1, vege2, vege3, topping1, topping2, topping3, sauce, price)
 VALUES
     ('マイダブルチーズ', 1, 2, 1, 1, NULL, 4, NULL, NULL, 3, 3, NULL, 1, 800),
@@ -173,7 +181,7 @@ VALUES
 CREATE TABLE contestmenus (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(20) NOT NULL,
-    user_id INT,
+    user_id INT DEFAULT 0,
     buns INT DEFAULT 0,
     patty1 INT DEFAULT 0,
     patty2 INT DEFAULT 0,
@@ -192,6 +200,10 @@ CREATE TABLE contestmenus (
 );
 
 /* contestmenusダミーデータ */
+INSERT INTO contestmenus
+    (id,name, user_id, buns, patty1, patty2, patty3, vege1, vege2, vege3, topping1, topping2, topping3, sauce, price, contest_id)
+VALUES
+    (0,'', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 INSERT INTO contestmenus
     (name, user_id, buns, patty1, patty2, patty3, vege1, vege2, vege3, topping1, topping2, topping3, sauce, price, contest_id)
 VALUES
@@ -214,6 +226,10 @@ CREATE TABLE contests (
 
 /* contestsダミーデータ */
 INSERT INTO contests
+    (id,name, start_at, end_at)
+VALUES
+    (0,'', 'NULL', 'NULL');
+INSERT INTO contests
     (name, start_at, end_at)
 VALUES
     ('第1回バーガー選手権', '2026-06-01 00:00:00', '2026-06-10 23:59:59'),
@@ -226,14 +242,18 @@ VALUES
 /* votesテーブル */
 CREATE TABLE votes (
     id int AUTO_INCREMENT PRIMARY KEY,
-    user_id INT,
-    contest_id INT,
-    contestmenu_id INT,
+    user_id INT DEFAULT 0,
+    contest_id INT DEFAULT 0,
+    contestmenu_id INT DEFAULT 0,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 /* votesダミーデータ */
+INSERT INTO votes
+    (id,user_id, contest_id, contestmenu_id)
+VALUES
+    (0,0,0,0);
 INSERT INTO votes
     (user_id, contest_id, contestmenu_id)
 VALUES
@@ -247,16 +267,20 @@ VALUES
 /* ordersテーブル */
 CREATE TABLE orders (
     id int AUTO_INCREMENT PRIMARY KEY,
-    user_id INT,
-    menu_id INT,
-    menu_count INT,
-    mymenu_id INT,
-    mymenu_count INT,
+    user_id INT DEFAULT 0,
+    menu_id INT DEFAULT 0,
+    menu_count INT DEFAULT 0,
+    mymenu_id INT DEFAULT 0,
+    mymenu_count INT DEFAULT 0,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 /* ordersダミーデータ */
+INSERT INTO orders
+    (id,user_id, menu_id, menu_count, mymenu_id, mymenu_count)
+VALUES
+    (0,0,0,0,0,0);
 INSERT INTO orders
     (user_id, menu_id, menu_count, mymenu_id, mymenu_count)
 VALUES
