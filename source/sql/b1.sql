@@ -1,3 +1,4 @@
+DROP DATABASE b1;
 SET SESSION sql_mode = CONCAT(@@sql_mode, ',NO_AUTO_VALUE_ON_ZERO');
 CREATE DATABASE b1;
 USE b1;
@@ -7,9 +8,9 @@ USE b1;
 /* usersテーブル */
 CREATE TABLE users  (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    phone VARCHAR(20) NOT NULL,
-    pw VARCHAR(10) NOT NULL,
-    name VARCHAR(10) NOT NULL,
+    phone VARCHAR(20),
+    pw VARCHAR(10),
+    name VARCHAR(10),
     rank_id INT DEFAULT 0,
     icon VARCHAR(100),
     vote INT DEFAULT 0,
@@ -22,11 +23,12 @@ CREATE TABLE users  (
 INSERT INTO users 
     (id,phone, pw, name, rank_id, icon, vote, levelup_menu)
 VALUES
-    (0,'0', 'pass0000', '管理者', 3, '', 5, 4);
+    (0,'','','', 0,'',0,0);
 
 INSERT INTO users 
     (phone, pw, name, rank_id, icon, vote, levelup_menu)
 VALUES
+	('1', 'pass1111','管理者',3,'',20,5),
     ('09012345678', 'pass1234', 'ミスターバーガー', 1, 'icons/user1.png', 5, 1),
     ('08023456789', 'burger99', 'バーガーマスター', 2, 'icons/user2.png', 12, 2),
     ('07034567890', 'cheese77', 'キングバーガー', 1, 'icons/user3.png', 8, 3),
