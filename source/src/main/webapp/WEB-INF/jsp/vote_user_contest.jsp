@@ -19,8 +19,8 @@
     <main>
         <div class="top_contest">
             <section class="class_contest">
-            <span class="choice"><a href="/b1/UserContestVoteServlet">ユーザー考案</a></span>
-            <span><a href="/b1/AdminContestVoteServlet">店主考案　</a></span>
+            <span class="choice"><a href="/b1/usercontestvote">ユーザー考案</a></span>
+            <span><a href="/b1/admincontestvote">店主考案　</a></span>
             </section>
             <p>残り投票数：３票</p>
         </div>
