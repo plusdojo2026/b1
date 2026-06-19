@@ -116,7 +116,8 @@ CREATE TABLE menus (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(20),
     image VARCHAR(100),
-    buns INT DEFAULT 0,
+    buns1 INT DEFAULT 0,
+    buns2 INT DEFAULT 0,
     patty1 INT DEFAULT 0,
     patty2 INT DEFAULT 0,
     patty3 INT DEFAULT 0,
@@ -135,17 +136,17 @@ CREATE TABLE menus (
 
 /* menusダミーデータ */
 INSERT INTO menus 
-    (id,name, image, buns, patty1, patty2, patty3, vege1, vege2, vege3, topping1, topping2, topping3, sauce, price, judge)
+    (id,name, image, buns1, buns2, patty1, patty2, patty3, vege1, vege2, vege3, topping1, topping2, topping3, sauce, price, judge)
 VALUES
-    (0,'', '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+    (0,'', '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 INSERT INTO menus 
-    (name, image, buns, patty1, patty2, patty3, vege1, vege2, vege3, topping1, topping2, topping3, sauce, price, judge)
+    (name, image, buns1, buns2, patty1, patty2, patty3, vege1, vege2, vege3, topping1, topping2, topping3, sauce, price, judge)
 VALUES
-    ('トリプルチーズボム', 'images/menu6.png', 2, 1, 1, 1, 4, 0, 0, 3, 3, 3, 1, 950, 1),
-    ('アボカドベーコン', 'images/menu7.png', 2, 1, 0, 0, 4, 7, 0, 5, 0, 0, 2, 750, 1),
-    ('スパイシーチキンサンド', 'images/menu8.png', 2, 6, 0, 0, 4, 0, 0, 3, 0, 0, 3, 680, 1),
-    ('ベジバーガー', 'images/menu4.png', 2, 0, 0, 0, 4, 5, 4, 0, 0, 0, 3, 450, 0),
-    ('トリプルミート', 'images/menu5.png', 2, 1, 1, 1, 4, 0, 0, 5, 3, 0, 2, 900, 1);
+    ('トリプルチーズボム', 'images/menu6.png', 1, 2, 3, 0, 4, 5, 7, 6, 9, 10, 8, 12, 950, 1),
+    ('アボカドベーコン', 'images/menu7.png', 1, 2, 3, 0, 4, 5, 7, 9, 0, 10, 0, 13, 750, 1),
+    ('スパイシーチキンサンド', 'images/menu8.png', 1, 2, 4, 0, 0, 7, 0, 0, 9, 0, 0, 0, 680, 1),
+    ('ベジバーガー', 'images/menu4.png', 1, 2, 3, 0, 0, 7, 5, 0, 0, 10, 0, 11, 450, 0),
+    ('トリプルミート', 'images/menu5.png', 1, 2, 3, 4, 4, 5, 6, 7, 8, 9, 10, 12, 900, 1);
 
 
 /* mymenusテーブル */
@@ -178,11 +179,11 @@ VALUES
 INSERT INTO mymenus
     (name, user_id, buns1,buns2, patty1, patty2, patty3, vege1, vege2, vege3, topping1, topping2, topping3, sauce, price)
 VALUES
-    ('マイダブルチーズ', 1, 1,2, 1, 1, 0, 4, 0, 0, 3, 3, 0, 1, 800),
-    ('ヘルシーミックス', 2, 1,2, 0, 0, 0, 4, 5, 4, 0, 0, 0, 3, 500),
-    ('ベーコンマシマシ', 3, 1,2, 1, 0, 0, 4, 0, 0, 5, 5, 5, 2, 900),
-    ('チキンスパイシー', 4, 1,2, 6, 0, 0, 4, 0, 0, 3, 0, 0, 3, 720),
-    ('よくばりトリプル', 5, 1,2, 1, 1, 1, 4, 5, 0, 3, 5, 0, 2, 1100);
+    ('マイダブルチーズ', 1, 1,2, 3, 0, 4, 7, 0, 0, 0, 10, 0, 12, 800),
+    ('ヘルシーミックス', 2, 1,2, 4, 3, 0, 6, 5, 6, 0, 0, 0, 13, 500),
+    ('ベーコンマシマシ', 3, 1,2, 1, 0, 0, 7, 0, 0, 10, 10, 10, 0, 900),
+    ('チキンスパイシー', 4, 1,2, 3, 4, 0, 0, 0, 0, 8, 0, 10, 11, 720),
+    ('よくばりトリプル', 5, 1,2, 3, 0, 4, 7, 5, 0, 9, 9, 0, 12, 1100);
 
 
 /* contestmenusテーブル */
@@ -190,7 +191,8 @@ CREATE TABLE contestmenus (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(20) NOT NULL,
     user_id INT DEFAULT 0,
-    buns INT DEFAULT 0,
+    buns1 INT DEFAULT 0,
+    buns2 INT DEFAULT 0,
     patty1 INT DEFAULT 0,
     patty2 INT DEFAULT 0,
     patty3 INT DEFAULT 0,
@@ -209,17 +211,17 @@ CREATE TABLE contestmenus (
 
 /* contestmenusダミーデータ */
 INSERT INTO contestmenus
-    (id,name, user_id, buns, patty1, patty2, patty3, vege1, vege2, vege3, topping1, topping2, topping3, sauce, price, contest_id)
+    (id,name, user_id, buns1, buns2, patty1, patty2, patty3, vege1, vege2, vege3, topping1, topping2, topping3, sauce, price, contest_id)
 VALUES
-    (0,'', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+    (0,'', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 INSERT INTO contestmenus
     (name, user_id, buns, patty1, patty2, patty3, vege1, vege2, vege3, topping1, topping2, topping3, sauce, price, contest_id)
 VALUES
-    ('チーズ爆増バーガー', 1, 1, 2, 1, 1, 0, 4, 0, 0, 3, 3, 3, 1, 920, 1),
-    ('アボカドヘルシー', 2, 1, 2, 0, 0, 0, 4, 7, 5, 0, 0, 0, 3, 600, 1),
-    ('ベーコンモンスター', 3, 1, 2, 1, 1, 0, 4, 0, 0, 5, 5, 5, 2, 980, 1),
-    ('スパイシーチキン極', 4, 1, 2, 6, 0, 0, 4, 0, 0, 3, 0, 0, 3, 750, 2),
-    ('トリプルミートキング', 5, 1, 2, 1, 1, 1, 4, 5, 0, 3, 5, 0, 2, 1200, 2);
+    ('チーズ爆増バーガー', 1, 1, 2, 3, 4, 0, 5, 0, 7, 8, 0, 10, 11, 920, 1),
+    ('アボカドヘルシー', 2, 1, 2, 0, 4, 0, 6, 7, 5, 0, 10, 0, 13, 600, 1),
+    ('ベーコンモンスター', 3, 1, 2, 4, 0, 0, 4, 0, 0, 5, 5, 5, 12, 980, 1),
+    ('スパイシーチキン極', 4, 1, 3, 0, 0, 0, 4, 0, 0, 3, 0, 0, 13, 750, 2),
+    ('トリプルミートキング', 5, 1, 3, 3, 4, 1, 4, 5, 0, 3, 5, 0, 12, 1200, 2);
 
 
 /* contestsテーブル */
