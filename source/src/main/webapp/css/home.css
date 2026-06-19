@@ -36,7 +36,7 @@ body {
 
 .illustration-stage {
     height: 200px;
-    margin: 60px -40px 20px -40px;
+    margin: 60px -20px 20px -20px;
     background: linear-gradient(to bottom, #F9F6EE 65%, #d9b48f 65%); 
     border-bottom: 5px solid #765e43; 
     display: flex;

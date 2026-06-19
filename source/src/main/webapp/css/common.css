@@ -7,15 +7,15 @@ body {
 
 main {
     padding-bottom: 150px;
-    margin: 0 40px;
+    margin: 0 20px;
 }
 
 main button,
 main input[type="button"],
 main input[type="submit"],
 main input[type="reset"] {
-    -webkit-tap-highlight-color: transparent; /* iPhone / Android */
-    outline: none; /* フォーカス枠を消す */
+    -webkit-tap-highlight-color: transparent;
+    outline: none;
 }
 
 

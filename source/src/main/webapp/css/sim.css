@@ -34,7 +34,7 @@ h2 {
 
 .illustration-stage {
     height: 200px;
-    margin: 90px -40px 2px -40px;
+    margin: 90px -20px 2px -20px;
     background: linear-gradient(to bottom, #F9F6EE 65%, #d9b48f 65%); 
     border-bottom: 5px solid #765e43; 
     display: flex;
