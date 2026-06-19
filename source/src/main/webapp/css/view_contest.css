@@ -1,1 +1,162 @@
 @charset "UTF-8";
+
+body {
+  margin: 0;
+  align-items: center;
+  /* background-color: #e0e0e0; */
+  font-family: sans-serif;
+}
+
+.container {
+
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f7f4ee;
+}
+
+/* .card {
+  display: flex;
+  align-items: center;
+  background-color: #f7f4ee;
+  border-radius: 20px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  
+} */
+.card {
+	max-height: 500px;
+    display: flex;
+    align-items: center;
+    background: #fff;
+    border-radius: 16px;
+    padding: 15px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    position: relative;
+    box-shadow:
+        0 0 0 3px #e0d2b3 inset,
+        0 5px 10px rgba(0,0,0,0.1);
+}
+
+.thumbnail {
+  width: 100px;
+  height: 100px;
+  background-color: #bbb;
+  border-radius: 20px;
+  flex-shrink: 0;
+}
+
+.content {
+  margin-left: 20px;
+}
+
+.content h2 {
+  margin: 0 0 10px;
+  font-size: 18px;
+}
+
+.content p {
+  margin: 4px 0;
+  font-size: 14px;
+}
+
+
+
+
+
+
+/* viewmymenuのCSS */
+.ViewMymenu{
+	background-color: #FFF;
+	justify-content: center;
+    display: flex;
+    align-items: center;
+    margin-top:20px ;
+    border-radius: 20px;
+    padding: 5px 30px 30px 30px;
+    box-shadow: 0 5px 6px rgba(0,0,0,0.2);
+}
+
+.ViewMymenu form {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.menu-right{
+	margin-top: 20px;
+    display: flex;
+    flex-direction: column; /* 縦に並べる */
+    gap: 15px;
+}
+
+.menu-info {
+	margin-bottom: 3px;
+}
+
+.name {
+	font-size: 1.3rem;
+	font-weight: bold;
+}
+
+.price {
+	font-weight: bold;
+	color: #C82518;
+	font-size: 1.2rem;
+}
+
+
+.btn-group{
+    display: flex;
+    gap: 10px; /* 編集と削除を横並び */
+    margin-left: auto;
+    margin-top: auto;
+}
+
+.btn-submit{
+	background-color: #C82518; color: white; border: none;
+	width: 60px;
+	height: 35px;
+	border-radius: 10px;
+	font-size:1.1rem;
+	font-weight: bold;
+}
+
+
+.btn-delete{
+	background-color: #2B2523; color: white; border: none;
+	width: 60px;
+	height: 35px;
+	border-radius: 10px;
+	font-size:1.1rem;
+	font-weight: bold;
+}
+
+.contest_user {
+    display: inline-flex;
+    justify-content: center;
+    gap: 30px;
+    font-weight: bold;
+    margin: 0 0 10px 0;
+}
+
+.burger {
+    position: relative;
+    width: 100px;
+}
+
+.burger img {
+    width: 100px;
+    position: relative;
+    left: 0;
+}
+
+.buns_top {
+    top: 0;
+    z-index: 999;
+}
+
+.buns_bottom {
+    z-index: 1;
+}
