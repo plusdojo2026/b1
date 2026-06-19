@@ -26,7 +26,7 @@ body {
 
 .card {
 	max-height: 500px;
-    height: 150px;
+    height: 165px;
     display: flex;
     align-items: center; /* 縦中央 */
     justify-content: center; /* 横中央 */
@@ -144,13 +144,26 @@ body {
     margin: 0 0 10px 0;
 }
 
+/* .burger {
+    position: relative;
+    width: 150px;
+    margin: auto;
+}
+
+.burger img {
+    width: 150px;
+    position: absolute;
+    left: 0;
+} */
 .burger {
     position: relative;
     width: 100px;
+    margin: 0 auto;
 }
 
 .burger img {
     width: 100px;
+    display: block;
     position: relative;
     left: 0;
 }
