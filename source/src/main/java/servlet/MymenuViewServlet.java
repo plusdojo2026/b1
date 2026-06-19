@@ -16,6 +16,7 @@ import javax.servlet.http.HttpSession;
 
 import dao.MaterialsDAO;
 import dao.MymenusDAO;
+import dto.LoginUser;
 import dto.Material;
 import dto.Mymenu;
 
@@ -29,17 +30,24 @@ public class MymenuViewServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
 		HttpSession session = request.getSession();
-		if (session.getAttribute("id") == null) {
+		if (session.getAttribute("loginUser") == null) {
 			response.sendRedirect("/b1/login");
 			return;
 		}
 		
 	// 一覧表示を行う
-		String useridStr = (String) session.getAttribute("loginUser");
-		int userid = Integer.parseInt(useridStr);
+		// 2. 未ログインの場合はログイン画面へ強制遷移        
+        LoginUser loginUser = (LoginUser) session.getAttribute("loginUser");
+
+        if (loginUser == null) {
+            response.sendRedirect(request.getContextPath() + "/login");
+            return;
+        }
+        //ここにメニュー育成機能追加
+        int id = loginUser.getId();
 
 		MymenusDAO mymenusDao = new MymenusDAO();
-		List<Mymenu> mymenuList = mymenusDao.select(userid);
+		List<Mymenu> mymenuList = mymenusDao.select(id);
 		
 		//一覧用のリストの方を作る
 		List<Map<String, Object>> viewList = new ArrayList<>();
