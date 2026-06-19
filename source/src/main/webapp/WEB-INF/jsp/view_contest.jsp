@@ -86,9 +86,9 @@
 	                        <section class="topping3"><img src="/b1/images/hamburger/egg.png" data-type="egg"></section>
 	                        <section class="patty3"><img src="/b1/images/hamburger/chicken.png" data-type="chicken"></section>
 	
-	                        <section class="vegetable2"><img src="/b1/images/hamburger/tomato.png" data-type="tomato"></section>
+	                        <!-- <section class="vegetable2"><img src="/b1/images/hamburger/tomato.png" data-type="tomato"></section>
 	                        <section class="topping2"><img src="/b1/images/hamburger/bacon.png" data-type="bacon"></section>
-	                        <section class="patty2"><img src="/b1/images/hamburger/beef.png" data-type="beef"></section>
+	                        <section class="patty2"><img src="/b1/images/hamburger/beef.png" data-type="beef"></section> -->
 	
 	                        <section class="vegetable1"><img src="/b1/images/hamburger/lettuce.png" data-type="lettuce"></section>
 	                        <section class="topping1"><img src="/b1/images/hamburger/cheese.png" data-type="cheese"></section>
