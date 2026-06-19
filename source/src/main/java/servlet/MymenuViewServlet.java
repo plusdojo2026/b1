@@ -35,7 +35,7 @@ public class MymenuViewServlet extends HttpServlet {
 		}
 		
 	// 一覧表示を行う
-		String useridStr = (String) session.getAttribute("userid");
+		String useridStr = (String) session.getAttribute("loginUser");
 		int userid = Integer.parseInt(useridStr);
 
 		MymenusDAO mymenusDao = new MymenusDAO();
