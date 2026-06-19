@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dao.UsersDAO;
+import dto.LoginUser;
 import dto.User;
 
 
@@ -79,7 +80,8 @@ public class LoginServlet extends HttpServlet {
         HttpSession session = request.getSession();//ここも残す
         //session.setAttribute("loginUser", loginUser);//テストオワタら削除
         //本番用
-        session.setAttribute("loginUser", user);
+        int id = user.getId();
+        session.setAttribute("loginUser", new LoginUser(id));
 
         // ログイン成功後はマイデータ画面（Servlet）へリダイレクト
         response.sendRedirect(request.getContextPath() + "/home");
