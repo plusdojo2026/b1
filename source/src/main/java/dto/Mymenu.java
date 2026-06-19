@@ -10,7 +10,8 @@ public class Mymenu implements Serializable {
 
     private int user_id;
 
-    private int buns;
+    private int buns1;
+    private int buns2;
 
     private int patty1;
     private int patty2;
@@ -36,8 +37,9 @@ public class Mymenu implements Serializable {
         this.name = "";
         this.user_id = 0;
 
-        this.buns = 0;
-
+        this.buns1 = 0;
+        this.buns2 = 0;
+        
         this.patty1 = 0;
         this.patty2 = 0;
         this.patty3 = 0;
@@ -61,7 +63,8 @@ public class Mymenu implements Serializable {
             int id,
             String name,
             int user_id,
-            int buns,
+            int buns1,
+            int buns2,
             int patty1,
             int patty2,
             int patty3,
@@ -80,7 +83,8 @@ public class Mymenu implements Serializable {
         this.name = name;
         this.user_id = user_id;
 
-        this.buns = buns;
+        this.buns1 = buns1;
+        this.buns2 = buns2;
 
         this.patty1 = patty1;
         this.patty2 = patty2;
@@ -109,7 +113,8 @@ public class Mymenu implements Serializable {
 
     public int getUser_id() { return user_id; }
 
-    public int getBuns() { return buns; }
+    public int getBuns1() { return buns1; }
+    public int getBuns2() { return buns2; }
 
     public int getPatty1() { return patty1; }
     public int getPatty2() { return patty2; }
@@ -139,7 +144,8 @@ public class Mymenu implements Serializable {
 
     public void setUser_id(int user_id) { this.user_id = user_id; }
 
-    public void setBuns(int buns) { this.buns = buns; }
+    public void setBuns1(int buns1) { this.buns1 = buns1; }
+    public void setBuns2(int buns2) { this.buns2 = buns2; }
 
     public void setPatty1(int patty1) { this.patty1 = patty1; }
     public void setPatty2(int patty2) { this.patty2 = patty2; }
