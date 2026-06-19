@@ -271,6 +271,25 @@
 	}
 
 	window.addEventListener("load", stackIngredients);
+	
+	window.addEventListener("load", () => {
+	    document.querySelectorAll("input[type=radio]:checked").forEach(radio => {
+	        const id = radio.id;
+	        const [sectionName, ingredient] = id.split("_");
+
+	        const section = document.querySelector("." + sectionName);
+
+	        if (ingredient === "null") {
+	            section.innerHTML = "";
+	        } else {
+	            section.innerHTML =
+	                '<img src="/b1/images/hamburger/' + ingredient + '.png" data-type="' + ingredient + '">';
+	        }
+	    });
+
+	    stackIngredients();
+	});
+
 
 	document.querySelectorAll("input[type=radio]").forEach(radio => {
 	    radio.addEventListener("change", e => {
