@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-@WebServlet("/JoinContestViewServlet")
+@WebServlet("/joincontestview")
 public class JoinContestViewServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
