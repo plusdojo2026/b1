@@ -95,10 +95,10 @@
                 <input type="radio" name="patty2" value="0" id="patty2_null">
                     <label for="patty2_null">なし</label>
 
-                <input type="radio" name="patty2" value="2" id="patty2_beef">
+                <input type="radio" name="patty2" value="3" id="patty2_beef">
                     <label for="patty2_beef">ビーフ</label>
 
-                <input type="radio" name="patty2" value="3" id="patty2_chicken">
+                <input type="radio" name="patty2" value="4" id="patty2_chicken">
                     <label for="patty2_chicken">チキン</label>
             </div>
             <br>
@@ -108,13 +108,13 @@
                 <input type="radio" name="topping2" value="0" id="topping2_null">
                     <label for="topping2_null">なし</label>
 
-                <input type="radio" name="topping2" value="4" id="topping2_cheese">
+                <input type="radio" name="topping2" value="5" id="topping2_cheese">
                     <label for="topping2_cheese">チーズ</label>
 
-                <input type="radio" name="topping2" value="5" id="topping2_bacon">
+                <input type="radio" name="topping2" value="6" id="topping2_bacon">
                     <label for="topping2_bacon">ベーコン</label>
 
-                <input type="radio" name="topping2" value="6" id="topping2_egg">
+                <input type="radio" name="topping2" value="7" id="topping2_egg">
                     <label for="topping2_egg">エッグ</label>
             </div>
             <br>
