@@ -2,18 +2,14 @@
 
 /* ページ全体の基本スタイル */
 body { 
-    background-color: #fcfbf4; 
-    font-family: Arial, sans-serif; 
-    padding: 20px 20px 85px 20px; 
+   padding-top: 10px; 
     margin: 0; 
     text-align: center; 
-    box-sizing: border-box;
 }
 
 /* 画面上部のタイトル */
 .page-title { 
-    font-size: 24px; 
-    color: #4a2c11; 
+    font-size: 27px; 
     font-weight: bold; 
     margin-top: 15px;
     margin-bottom: 5px; 
@@ -37,10 +33,11 @@ body {
 
 /* おすすめメニュー診断の大赤カード */
 .diagnostic-card {
-    background-color: #d93333;
+    background-color: #C82518;
     border-radius: 25px;
-    padding: 35px 20px;
+    border: none;
     color: white;
+    padding: 30px 60px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 
@@ -57,16 +54,15 @@ body {
     width: 100%;
     max-width: 220px;
     background-color: #ffffff;
-    color: #d93333;
+    color: #C82518;
     border: none;
     border-radius: 25px;
     padding: 12px 0;
     font-size: 18px;
     font-weight: bold;
     cursor: pointer;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
     transition: transform 0.1s;
 }
-.diag-btn:active {
+.diagnostic-card:active {
     transform: scale(0.98); /* クリック時に少し縮むエフェクト */
 }
