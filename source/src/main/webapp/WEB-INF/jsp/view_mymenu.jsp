@@ -21,9 +21,8 @@
 		    オリジナルメニューを追加<span class="arrow">≫</span>
 		</button>
 		
-		<div class="ViewMymenu">
-		
 		<c:forEach var="v" items="${menus}" >
+		<div class="ViewMymenu">
 		    <form action="edit.html">
 		           <div class="burger">
 	                <img src="/b1/images/hamburger/buns_top.png" class="buns_top">
@@ -39,7 +38,6 @@
 	                        <c:if test="${v.patty3.id != 0}">
 	                        	<section class="patty3"><img src="${v.patty3.image}" data-type="${v.patty3.id}"></section>
 							</c:if>
-	     
 	                        <c:if test="${v.vege2.id != 0}">
 	                        <section class="vegetable2"><img src="${v.vege2.image}" data-type="${v.vege2.id}"></section>
 	                        </c:if>
@@ -49,14 +47,13 @@
 	                        <c:if test="${v.patty2.id != 0}">
 	                        <section class="patty2"><img src="${v.patty2.image}" data-type="${v.patty2.id}"></section>
 							</c:if>
-	                        
 	                        <c:if test="${v.vege1.id != 0}">
 	                        <section class="vegetable1"><img src="${v.vege1.image}" data-type="${v.vege1.id}"></section>
 	                        </c:if>
 	                        <c:if test="${v.top1.id != 0}">
 	                        <section class="topping1"><img src="${v.top1.image}" data-type="${v.top1.id}"></section>
 	                        </c:if>
-	                        <c:if test="${not empty v.patty1.image}">
+	                        <c:if test="${v.patty1.id != 0}">
 	                        <section class="patty1"><img src="${v.patty1.image}" data-type="${v.patty1.id}"></section>
 	                        </c:if>
 	                </div>
@@ -75,8 +72,8 @@
 			        </div>
 			    </div>
 			</form>
+			</div>
 		</c:forEach>
-		</div>
 
 	</main>
 
@@ -105,14 +102,14 @@
     <script>
     "use strict";
         const thickness = {
-            3: 14,
+            3: 12,
             4: 18,
             5: -2,
             6: -6,
             7: 10,
             8: 9,
             9: 14,
-            10: 13
+            10: 8
         };
 
         window.addEventListener("load", () => {
