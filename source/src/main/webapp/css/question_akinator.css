@@ -2,44 +2,41 @@
 
 /* ページ全体の基本レイアウト設定 */
 body { 
-    background-color: #fcfbf4; 
-    font-family: Arial, sans-serif; 
-    padding: 20px 20px 85px 20px; 
+	padding-top: 10px;
     margin: 0; 
     text-align: center; 
     box-sizing: border-box;
 }
 
 .page-title { 
-    font-size: 24px; 
-    color: #4a2c11; 
+    font-size: 27px; 
     font-weight: bold; 
     margin-top: 15px;
-    margin-bottom: 50px; 
+    margin-bottom: 5px; 
 }
 
 /* 質問コンテンツの幅制限と中央寄せ */
+.question {
+	margin-bottom: 60px;
+}
 .question-container {
     width: 100%;
-    max-width: 340px;
     margin: 0 auto;
 }
 
 .question-title {
-    font-size: 20px;
+    font-size: 25px;
     font-weight: bold;
-    color: #000000;
-    margin-bottom: 25px;
+    margin: 30px 0;
 }
 
 /* 選択肢テキストの配置調整 */
 .options-text {
     font-size: 15px;
     font-weight: bold;
-    color: #000000;
     text-align: center;
     line-height: 1.8;
-    margin-bottom: 40px;
+    margin-bottom: 10px;
 }
 .options-text p { margin: 10px 0; }
 
@@ -51,6 +48,23 @@ body {
 }
 
 /* 選択肢ボタンの共通スタイル */
+input[type="radio"] {
+	display: none;
+	-webkit-tap-highlight-color: transparent;
+    outline: none;
+}
+input[type="radio"]:checked + label {
+    background-color: #C82518;
+    color: #F9F6EE;
+    box-shadow: 0 3px 2px rgba(94, 16, 16, 0.2);
+}
+
+label {
+	transition: 0.1s;
+	-webkit-tap-highlight-color: transparent;
+    outline: none;
+}
+
 .btn-opt {
     flex: 1;
     max-width: 130px;
@@ -61,18 +75,10 @@ body {
     cursor: pointer;
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
     box-sizing: border-box;
-}
-
-/* A.ビーフ：赤背景に白文字 */
-.btn-beef {
-    background-color: #d93333;
-    color: #ffffff;
-    border: none;
-}
-
-/* B.チキン：白背景に赤文字、グレーの細いボーダー */
-.btn-chicken {
     background-color: #ffffff;
-    color: #d93333;
-    border: 1.5px solid #bdc3c7;
+    color: #C82518;
+}
+
+.button{
+	text-align: center;
 }

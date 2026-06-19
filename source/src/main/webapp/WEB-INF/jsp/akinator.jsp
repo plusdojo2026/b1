@@ -4,13 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>おすすめメニュー診断</title>
+    <title>FanTable | おすすめメニュー診断</title>
     <!-- スタイルシートの読み込み（安全なcontextPath付き） -->
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/common.css">
+    <link rel="stylesheet" href="/b1/css/common.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/akinator.css">
 </head>
 <body>
 
+<main>
     <div class="page-title">おすすめメニュー診断</div>
 
     <!-- 画面中央のメインコンテンツエリア -->
@@ -22,16 +23,15 @@
         </p>
 
         <!-- おすすめメニュー診断の大赤カード -->
-        <div class="diagnostic-card">
-            <div class="card-title">おすすめメニュー診断</div>
-            
-            <!-- 诊断表单逻辑（点击触发 doPost） -->
-            <form action="${pageContext.request.contextPath}/akinator" method="POST">
-                <button type="submit" class="diag-btn">診断する</button>
-            </form>
-        </div>
+        <form action="${pageContext.request.contextPath}/akinator" method="POST">
+            <button type="submit" class="diagnostic-card"> 
+	            <div class="card-title">おすすめメニュー診断</div>
+	            <div class="diag-btn">診断する</div>
+            </button>
+        </form>
 
     </div>
+</main>
 
     <!-- 共通フッター：グループ作成の画像ナビゲーションバー（4番目の診断をアクティブ表示） -->
     <footer>
