@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -15,6 +16,12 @@
     <main>        
         <!-- リザルトメッセージエリア -->
         <div class="result-msg">ここにリザルトメッセージが出ます</div>
+         <!-- 上のは仮、本番が下 -->
+         <c:if test="${evolved}">
+        <div class="result-msg">
+        おめでとう！あなたのバーガーは最終進化しました！
+    </div>
+</c:if>
 
         <!-- ユーザー情報表示用角丸カード -->
         <div class="user-card">
@@ -26,10 +33,37 @@
         </div>
 
         <!-- 中央の植木鉢イラストエリア -->
-        <div class="levelup">
+         <h2>あなたの育成レベル：${level}</h2>
+        <!--  <div class="levelup">
             <div class="illustration-stage">
+            
+             <c:choose>
+        <c:when test="${level == 1}">
+        <img src="img/level1.png">
+        </c:when>
+        
+        <c:when test="${level == 2}">
+        <img src="img/level2.png">
+        </c:when>
+        
+        <c:when test="${level == 3}">
+        <img src="img/level3.png">
+        </c:when>
+        
+        <c:when test="${level ==4}">
+        <img src="img/level4.png">
+        </c:when>
+        
+        <c:when test="${level ==5}">
+        <img src="img/level5.png">
+        </c:when>   
+        </c:choose>
+              </div>-->
+              <div class="levelup">
+            <div class="illustration-stage">
+              
                 <img src="/b1/images/level/level5.png" class="illustration-box">
-            </div>
+          
         </div>
 
         <!-- おすすめメニュー診断エリア -->
