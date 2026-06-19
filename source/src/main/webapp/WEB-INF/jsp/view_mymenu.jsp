@@ -30,33 +30,33 @@
 	
 	                <div class="stack-area">
 	                        
-	                        <c:if test="${v.vege3 != null}">
+	                        <c:if test="${v.vege3.id != 0}">
 	                        	<section class="vegetable3"><img src="${v.vege3.image}" data-type="${v.vege3.id}"></section>
 	                        </c:if>
-	                        <c:if test="${v.top3 != null}">
+	                        <c:if test="${v.top3.id != 0}">
 	                        	<section class="topping3"><img src="${v.top3.image}" data-type="${v.top3.id}"></section>
 	                        </c:if>
-	                        <c:if test="${v.patty3 != null}">
+	                        <c:if test="${v.patty3.id != 0}">
 	                        	<section class="patty3"><img src="${v.patty3.image}" data-type="${v.patty3.id}"></section>
 							</c:if>
 	     
-	                        <c:if test="${v.vege2 != null}">
+	                        <c:if test="${v.vege2.id != 0}">
 	                        <section class="vegetable2"><img src="${v.vege2.image}" data-type="${v.vege2.id}"></section>
 	                        </c:if>
-	                        <c:if test="${v.top2 != null}">
+	                        <c:if test="${v.top2.id != 0}">
 	                        <section class="topping2"><img src="${v.top2.image}" data-type="${v.top2.id}"></section>
 	                        </c:if>
-	                        <c:if test="${v.patty2 != null}">
+	                        <c:if test="${v.patty2.id != 0}">
 	                        <section class="patty2"><img src="${v.patty2.image}" data-type="${v.patty2.id}"></section>
 							</c:if>
 	                        
-	                        <c:if test="${v.vege1 != null}">
+	                        <c:if test="${v.vege1.id != 0}">
 	                        <section class="vegetable1"><img src="${v.vege1.image}" data-type="${v.vege1.id}"></section>
 	                        </c:if>
-	                        <c:if test="${v.top1 != null}">
+	                        <c:if test="${v.top1.id != 0}">
 	                        <section class="topping1"><img src="${v.top1.image}" data-type="${v.top1.id}"></section>
 	                        </c:if>
-	                        <c:if test="${v.patty1 != null}">
+	                        <c:if test="${v.patty1.id != 0}">
 	                        <section class="patty1"><img src="${v.patty1.image}" data-type="${v.patty1.id}"></section>
 	                        </c:if>
 	                </div>
