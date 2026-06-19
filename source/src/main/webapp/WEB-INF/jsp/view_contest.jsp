@@ -69,7 +69,7 @@
 
 			<!-- <div class="thumbnail"></div> -->
 			<div class="content">
-			<h2>アボカドベーコン</h2>
+			<h2>トリプルチーズボム</h2>
 			<p>登録日：2026/01/01</p>
 			<p>得票数：集計中</p>
 			</div>
