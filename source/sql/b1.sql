@@ -76,16 +76,16 @@ VALUES
 INSERT INTO materials
     (name, category, price, image, protein, df)
 VALUES
-	('バンズ上', 1, 60, '/b1/images/buns_top.png', 3, 1),
-	('バンズ下', 1, 60, '/b1/images/buns_bottom.png', 3, 1),
-    ('ビーフ', 2, 300, '/b1/images/beef.png', 22, 0),
-    ('チキン', 2, 300, '/b1/images/beef.png', 22, 0),
-    ('チーズ', 3, 150, '/b1/images/cheese.png', 8, 0),
-    ('ベーコン', 3, 180, '/b1/images/bacon.png', 10, 0),
-    ('エッグ', 3, 100, '/b1/images/egg.png', 10, 0),
-    ('レタス', 4, 80, '/b1/images/lettuce.png', 2, 3),
-    ('トマト', 4, 80, '/b1/images/tomato.png', 2, 3),
-    ('タマネギ', 4, 80, '/b1/images/onion.png', 2, 3),
+	('バンズ上', 1, 60, '/b1/hamburger/images/buns_top.png', 3, 1),
+	('バンズ下', 1, 60, '/b1/hamburger/images/buns_bottom.png', 3, 1),
+    ('ビーフ', 2, 300, '/b1/hamburger/images/beef.png', 22, 0),
+    ('チキン', 2, 300, '/b1/hamburger/images/beef.png', 22, 0),
+    ('チーズ', 3, 150, '/b1/hamburger/images/cheese.png', 8, 0),
+    ('ベーコン', 3, 180, '/b1/hamburger/images/bacon.png', 10, 0),
+    ('エッグ', 3, 100, '/b1/hamburger/images/egg.png', 10, 0),
+    ('レタス', 4, 80, '/b1/hamburger/images/lettuce.png', 2, 3),
+    ('トマト', 4, 80, '/b1/hamburger/images/tomato.png', 2, 3),
+    ('タマネギ', 4, 80, '/b1/hamburger/images/onion.png', 2, 3),
     ('BBQ', 5, 20, '', 10, 0),
     ('サルサ', 5, 30, '', 15, 0),
     ('マスタード', 5, 20, '', 5, 0);

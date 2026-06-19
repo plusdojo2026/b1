@@ -56,7 +56,7 @@
 	                        <c:if test="${v.top1.id != 0}">
 	                        <section class="topping1"><img src="${v.top1.image}" data-type="${v.top1.id}"></section>
 	                        </c:if>
-	                        <c:if test="${v.patty1.id != 0}">
+	                        <c:if test="${not empty v.patty1.image}">
 	                        <section class="patty1"><img src="${v.patty1.image}" data-type="${v.patty1.id}"></section>
 	                        </c:if>
 	                </div>
@@ -77,70 +77,7 @@
 			</form>
 		</c:forEach>
 		</div>
-		
-		
-		
-		<div class="ViewMymenu">
-		    <form action="edit.html">
-		           <div class="burger">
-	                <img src="/b1/images/hamburger/buns_top.png" class="buns_top">
-	
-	                <div class="stack-area">
-	                        <section class="vegetable3"><img src="/b1/images/hamburger/onion.png" data-type="onion"></section>
-	                        <section class="topping3"><img src="/b1/images/hamburger/egg.png" data-type="egg"></section>
-	                        <section class="patty3"><img src="/b1/images/hamburger/chicken.png" data-type="chicken"></section>
-	
-	                        <section class="vegetable2"><img src="/b1/images/hamburger/tomato.png" data-type="tomato"></section>
-	                        <section class="topping2"><img src="/b1/images/hamburger/bacon.png" data-type="bacon"></section>
-	                        <section class="patty2"><img src="/b1/images/hamburger/beef.png" data-type="beef"></section>
-	                </div>
-	                <img src="/b1/images/hamburger/buns_bottom.png" class="buns_bottom">
-	            </div>
-	
-			    <div class="menu-right">
-			        <input id="user_id" type="hidden" name="Mymenu" value="サンプルバーガー1" readonly="readonly">	
-				    <div class="menu-info">
-				        <span class="name">サンプルバーガー2</span><br>
-				        <span class="price">¥980</span>
-				    </div>
-			        <div class="btn-group">
-			            <input class="btn-submit" type="submit" name="submit" value="編集">
-			            <input class="btn-delete" type="submit" name="delete" value="削除">
-			        </div>
-			    </div>
-			</form>
-		</div>
-		
-		
-				<div class="ViewMymenu">
-		    <form action="edit.html">
-		           <div class="burger">
-	                <img src="/b1/images/hamburger/buns_top.png" class="buns_top">
-	
-	                <div class="stack-area">
-	                        <section class="vegetable1"><img src="/b1/images/hamburger/lettuce.png" data-type="lettuce"></section>
-	                        <section class="topping1"><img src="/b1/images/hamburger/cheese.png" data-type="cheese"></section>
-	                        <section class="patty1"><img src="/b1/images/hamburger/chicken.png" data-type="chicken"></section>
-	                </div>
-	                <img src="/b1/images/hamburger/buns_bottom.png" class="buns_bottom">
-	            </div>
-	
-			    <div class="menu-right">
-			        <input id="user_id" type="hidden" name="Mymenu" value="サンプルバーガー1" readonly="readonly">	
-				    <div class="menu-info">
-				        <span class="name">サンプルバーガー3</span><br>
-				        <span class="price">¥590</span>
-				    </div>
-			        <div class="btn-group">
-			            <input class="btn-submit" type="submit" name="submit" value="編集">
-			            <input class="btn-delete" type="submit" name="delete" value="削除">
-			        </div>
-			    </div>
-			</form>
-		</div>
-		
-		
-		
+
 	</main>
 
     <footer>
