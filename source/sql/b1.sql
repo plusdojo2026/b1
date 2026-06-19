@@ -153,7 +153,8 @@ CREATE TABLE mymenus (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(20) NOT NULL,
     user_id INT DEFAULT 0,
-    buns INT DEFAULT 0,
+    buns1 INT DEFAULT 0,
+    buns2 INT DEFAULT 0,
     patty1 INT DEFAULT 0,
     patty2 INT DEFAULT 0,
     patty3 INT DEFAULT 0,
@@ -171,17 +172,17 @@ CREATE TABLE mymenus (
 
 /* mymenusダミーデータ */
 INSERT INTO mymenus
-    (id,name, user_id, buns, patty1, patty2, patty3, vege1, vege2, vege3, topping1, topping2, topping3, sauce, price)
+    (id,name, user_id, buns1,buns2, patty1, patty2, patty3, vege1, vege2, vege3, topping1, topping2, topping3, sauce, price)
 VALUES
-    (0,'', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+    (0,'', 0,0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 INSERT INTO mymenus
-    (name, user_id, buns, patty1, patty2, patty3, vege1, vege2, vege3, topping1, topping2, topping3, sauce, price)
+    (name, user_id, buns1,buns2, patty1, patty2, patty3, vege1, vege2, vege3, topping1, topping2, topping3, sauce, price)
 VALUES
-    ('マイダブルチーズ', 1, 2, 1, 1, 0, 4, 0, 0, 3, 3, 0, 1, 800),
-    ('ヘルシーミックス', 2, 2, 0, 0, 0, 4, 5, 4, 0, 0, 0, 3, 500),
-    ('ベーコンマシマシ', 3, 2, 1, 0, 0, 4, 0, 0, 5, 5, 5, 2, 900),
-    ('チキンスパイシー', 4, 2, 6, 0, 0, 4, 0, 0, 3, 0, 0, 3, 720),
-    ('よくばりトリプル', 5, 2, 1, 1, 1, 4, 5, 0, 3, 5, 0, 2, 1100);
+    ('マイダブルチーズ', 1, 1,2, 1, 1, 0, 4, 0, 0, 3, 3, 0, 1, 800),
+    ('ヘルシーミックス', 2, 1,2, 0, 0, 0, 4, 5, 4, 0, 0, 0, 3, 500),
+    ('ベーコンマシマシ', 3, 1,2, 1, 0, 0, 4, 0, 0, 5, 5, 5, 2, 900),
+    ('チキンスパイシー', 4, 1,2, 6, 0, 0, 4, 0, 0, 3, 0, 0, 3, 720),
+    ('よくばりトリプル', 5, 1,2, 1, 1, 1, 4, 5, 0, 3, 5, 0, 2, 1100);
 
 
 /* contestmenusテーブル */
@@ -214,11 +215,11 @@ VALUES
 INSERT INTO contestmenus
     (name, user_id, buns, patty1, patty2, patty3, vege1, vege2, vege3, topping1, topping2, topping3, sauce, price, contest_id)
 VALUES
-    ('チーズ爆増バーガー', 1, 2, 1, 1, 0, 4, 0, 0, 3, 3, 3, 1, 920, 1),
-    ('アボカドヘルシー', 2, 2, 0, 0, 0, 4, 7, 5, 0, 0, 0, 3, 600, 1),
-    ('ベーコンモンスター', 3, 2, 1, 1, 0, 4, 0, 0, 5, 5, 5, 2, 980, 1),
-    ('スパイシーチキン極', 4, 2, 6, 0, 0, 4, 0, 0, 3, 0, 0, 3, 750, 2),
-    ('トリプルミートキング', 5, 2, 1, 1, 1, 4, 5, 0, 3, 5, 0, 2, 1200, 2);
+    ('チーズ爆増バーガー', 1, 1, 2, 1, 1, 0, 4, 0, 0, 3, 3, 3, 1, 920, 1),
+    ('アボカドヘルシー', 2, 1, 2, 0, 0, 0, 4, 7, 5, 0, 0, 0, 3, 600, 1),
+    ('ベーコンモンスター', 3, 1, 2, 1, 1, 0, 4, 0, 0, 5, 5, 5, 2, 980, 1),
+    ('スパイシーチキン極', 4, 1, 2, 6, 0, 0, 4, 0, 0, 3, 0, 0, 3, 750, 2),
+    ('トリプルミートキング', 5, 1, 2, 1, 1, 1, 4, 5, 0, 3, 5, 0, 2, 1200, 2);
 
 
 /* contestsテーブル */
