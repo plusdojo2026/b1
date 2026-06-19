@@ -44,12 +44,20 @@ public class HomeServlet extends HttpServlet {
         
 
         // ログイン時にセッションへ入れてある前提
-        LoginUser loginUser =(LoginUser)session.getAttribute("id");
+        LoginUser loginUser = (LoginUser) session.getAttribute("loginUser");
+
+        if (loginUser == null) {
+            response.sendRedirect(request.getContextPath() + "/login");
+            return;
+        }
+
         int id = loginUser.getId();
+
         UsersDAO dao = new UsersDAO();
         User user = dao.selectById(id);
+
         int level = user.getLevelup_menu();
-        request.setAttribute("level",level);
+        request.setAttribute("level", level);
         
       
         // 4. ホーム画面（JSP）へフォワード
