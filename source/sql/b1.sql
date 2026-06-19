@@ -76,16 +76,16 @@ VALUES
 INSERT INTO materials
     (name, category, price, image, protein, df)
 VALUES
-	('バンズ上', 1, 60, '/b1/hamburger/images/buns_top.png', 3, 1),
-	('バンズ下', 1, 60, '/b1/hamburger/images/buns_bottom.png', 3, 1),
-    ('ビーフ', 2, 300, '/b1/hamburger/images/beef.png', 22, 0),
-    ('チキン', 2, 300, '/b1/hamburger/images/beef.png', 22, 0),
-    ('チーズ', 3, 150, '/b1/hamburger/images/cheese.png', 8, 0),
-    ('ベーコン', 3, 180, '/b1/hamburger/images/bacon.png', 10, 0),
-    ('エッグ', 3, 100, '/b1/hamburger/images/egg.png', 10, 0),
-    ('レタス', 4, 80, '/b1/hamburger/images/lettuce.png', 2, 3),
-    ('トマト', 4, 80, '/b1/hamburger/images/tomato.png', 2, 3),
-    ('タマネギ', 4, 80, '/b1/hamburger/images/onion.png', 2, 3),
+	('バンズ上', 1, 60, '/b1/images/hamburger/buns_top.png', 3, 1),
+	('バンズ下', 1, 60, '/b1/images/hamburger/buns_bottom.png', 3, 1),
+    ('ビーフ', 2, 300, '/b1/images/hamburger/beef.png', 22, 0),
+    ('チキン', 2, 300, '/b1/images/hamburger/beef.png', 22, 0),
+    ('チーズ', 3, 150, '/b1/images/hamburger/cheese.png', 8, 0),
+    ('ベーコン', 3, 180, '/b1/images/hamburger/bacon.png', 10, 0),
+    ('エッグ', 3, 100, '/b1/images/hamburger/egg.png', 10, 0),
+    ('レタス', 4, 80, '/b1/images/hamburger/lettuce.png', 2, 3),
+    ('トマト', 4, 80, '/b1/images/hamburger/tomato.png', 2, 3),
+    ('タマネギ', 4, 80, '/b1/images/hamburger/onion.png', 2, 3),
     ('BBQ', 5, 20, '', 10, 0),
     ('サルサ', 5, 30, '', 15, 0),
     ('マスタード', 5, 20, '', 5, 0);
@@ -215,13 +215,13 @@ INSERT INTO contestmenus
 VALUES
     (0,'', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 INSERT INTO contestmenus
-    (name, user_id, buns, patty1, patty2, patty3, vege1, vege2, vege3, topping1, topping2, topping3, sauce, price, contest_id)
+    (name, user_id, buns1, buns2, patty1, patty2, patty3, vege1, vege2, vege3, topping1, topping2, topping3, sauce, price, contest_id)
 VALUES
     ('チーズ爆増バーガー', 1, 1, 2, 3, 4, 0, 5, 0, 7, 8, 0, 10, 11, 920, 1),
     ('アボカドヘルシー', 2, 1, 2, 0, 4, 0, 6, 7, 5, 0, 10, 0, 13, 600, 1),
-    ('ベーコンモンスター', 3, 1, 2, 4, 0, 0, 4, 0, 0, 5, 5, 5, 12, 980, 1),
-    ('スパイシーチキン極', 4, 1, 3, 0, 0, 0, 4, 0, 0, 3, 0, 0, 13, 750, 2),
-    ('トリプルミートキング', 5, 1, 3, 3, 4, 1, 4, 5, 0, 3, 5, 0, 12, 1200, 2);
+    ('ベーコンモンスター', 3, 1, 2, 4, 0, 3, 7, 0, 6, 10, 10, 10,  12, 980, 1),
+    ('スパイシーチキン極', 4, 1, 2, 3, 0, 0, 0, 6, 0, 0, 8, 10, 13, 750, 2),
+    ('トリプルミートキング', 5, 1, 2, 3, 3, 4, 7, 6, 5, 10, 9, 8, 12, 1200, 2);
 
 
 /* contestsテーブル */
@@ -268,10 +268,10 @@ INSERT INTO votes
     (user_id, contest_id, contestmenu_id)
 VALUES
     (1, 1, 1),
-    (2, 1, 3),
-    (3, 1, 2),
-    (4, 2, 5),
-    (5, 2, 4);
+    (2, 1, 2),
+    (3, 1, 3),
+    (4, 2, 4),
+    (5, 2, 5);
 
 
 /* ordersテーブル */
@@ -295,8 +295,8 @@ INSERT INTO orders
     (user_id, menu_id, menu_count, mymenu_id, mymenu_count)
 VALUES
     (1, 1, 2, 0, 0),
-    (2, 2, 1, 1, 1),
+    (2, 2, 1, 2, 1),
     (3, 3, 3, 0, 0),
-    (4, 0, 0, 2, 2),
-    (5, 4, 1, 3, 1);
+    (4, 0, 0, 4, 2),
+    (5, 4, 1, 5, 1);
 
