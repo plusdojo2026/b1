@@ -75,11 +75,11 @@ public class LoginServlet extends HttpServlet {
 
         
         // 認証が成功したと仮定して、あなたのDTO（LoginUser）をSessionに保存
-        dto.LoginUser loginUser = new dto.LoginUser("U001"); // テスト用ユーザーIDを設定
+        //dto.LoginUser loginUser = new dto.LoginUser("U001"); // テスト用ユーザーIDを設定
         HttpSession session = request.getSession();//ここも残す
-        session.setAttribute("loginUser", loginUser);//テストオワタら削除
+        //session.setAttribute("loginUser", loginUser);//テストオワタら削除
         //本番用
-        //session.setAttribute("loginUser", user);
+        session.setAttribute("loginUser", user);
 
         // ログイン成功後はマイデータ画面（Servlet）へリダイレクト
         response.sendRedirect(request.getContextPath() + "/home");

@@ -7,6 +7,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import dao.UsersDAO;
+import dto.LoginUser;
+import dto.User;
 
 // ホーム画面の遷移およびデータ制御を行うServlet
 @WebServlet("/home")
@@ -29,9 +34,24 @@ public class HomeServlet extends HttpServlet {
         //}
 
         // 3. テストデータとして画像に合わせ「ミスターバーガー」「Gold」を設定
-        request.setAttribute("userName", "ミスターバーガー");
-        request.setAttribute("userRank", "Gold");
+        HttpSession session = request.getSession();
         
+        
+        
+        
+        //ここにメニュー育成機能追加
+     // ★ 育成機能（計算は他で済んでいる前提）
+        
+
+        // ログイン時にセッションへ入れてある前提
+        LoginUser loginUser =(LoginUser)session.getAttribute("id");
+        int id = loginUser.getId();
+        UsersDAO dao = new UsersDAO();
+        User user = dao.selectById(id);
+        int level = user.getLevelup_menu();
+        request.setAttribute("level",level);
+        
+      
         // 4. ホーム画面（JSP）へフォワード
         request.getRequestDispatcher("/WEB-INF/jsp/home.jsp").forward(request, response);
     }
