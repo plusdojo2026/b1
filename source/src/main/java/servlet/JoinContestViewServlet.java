@@ -1,7 +1,10 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,40 +15,109 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dao.ContestmenusDAO;
+import dao.ContestsDAO;
+import dao.MaterialsDAO;
+import dto.Contest;
 import dto.Contestmenu;
 import dto.LoginUser;
-import dto.Result;
+import dto.Material;
 
-/**
- * Servlet implementation class MymenuRegistServlet
- */
+
 @WebServlet("/joincontestview")
 public class JoinContestViewServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public JoinContestViewServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// マイメニュー登録ページにフォワードする
-		request.setCharacterEncoding("UTF-8");
-		response.setContentType("text/html; charset=UTF-8");
-		response.setCharacterEncoding("UTF-8");
+		// もしもログインしていなかったらログインサーブレットにリダイレクトする
 		HttpSession session = request.getSession();
-		LoginUser loginUser =(LoginUser)session.getAttribute("loginUser");
-		int user_id = loginUser.getId();
-		ContestmenusDAO contestmenusDAO = new ContestmenusDAO();
-		List<Contestmenu> contestmenulist = contestmenusDAO.selectByUserId(user_id);
-		request.setAttribute("contestmenulist", contestmenulist);
+		if (session.getAttribute("loginUser") == null) {
+			response.sendRedirect("/b1/login");
+			return;
+		}
 		
+	// 一覧表示を行う
+		// 2. 未ログインの場合はログイン画面へ強制遷移        
+        LoginUser loginUser = (LoginUser) session.getAttribute("loginUser");
+
+        if (loginUser == null) {
+            response.sendRedirect(request.getContextPath() + "/login");
+            return;
+        }
+        //ここにメニュー育成機能追加
+        int user_id = loginUser.getId();
+
+		ContestmenusDAO contestmenusDao = new ContestmenusDAO();
+		List<Contestmenu> contestmenuList = contestmenusDao.selectByUserId(user_id);
+		
+		//一覧用のリストの方を作る
+		List<Map<String, Object>> viewList = new ArrayList<>();
+
+		// リストが終わりまでループ
+		for(int i = 0; i < contestmenuList.size(); i++) {
+
+		    Contestmenu contestmenu = contestmenuList.get(i);
+		    
+		    // mymenuList(i)の素材IDを取得
+		    int id = contestmenu.getId();
+		    String name = contestmenu.getName();
+		    int price = contestmenu.getPrice();
+		    
+		    int patty1_Id = contestmenu.getPatty1();
+		    int patty2_Id = contestmenu.getPatty2();
+		    int patty3_Id = contestmenu.getPatty3();
+		    int top1_Id = contestmenu.getTopping1();
+		    int top2_Id = contestmenu.getTopping2();
+		    int top3_Id = contestmenu.getTopping3();
+		    int vege1_Id = contestmenu.getVege1();
+		    int vege2_Id = contestmenu.getVege2();
+		    int vege3_Id = contestmenu.getVege3();
+		    int contest_Id = contestmenu.getContest_id();
+
+		    MaterialsDAO materialsDao = new MaterialsDAO();
+
+		 // 素材IDから対応する素材カラムを取得
+		    Material patty1 = materialsDao.selectById(patty1_Id);
+		    Material patty2 = materialsDao.selectById(patty2_Id);
+		    Material patty3 = materialsDao.selectById(patty3_Id);
+		    Material top1 = materialsDao.selectById(top1_Id);
+		    Material top2 = materialsDao.selectById(top2_Id);
+		    Material top3 = materialsDao.selectById(top3_Id);
+		    Material vege1 = materialsDao.selectById(vege1_Id);
+		    Material vege2 = materialsDao.selectById(vege2_Id);
+		    Material vege3 = materialsDao.selectById(vege3_Id);
+		    
+		    ContestsDAO contestsDao = new ContestsDAO();
+		    Contest contest = contestsDao.selectById(contest_Id);
+		    String contest_name = contest.getName();
+
+		    // マップにメニュー情報・各素材情報を格納
+		    Map<String, Object> map = new HashMap<>();
+		    
+		    map.put("id",id);
+		    map.put("menu", contestmenu);
+		    map.put("name", name);
+		    map.put("price", price);
+		    map.put("patty1", patty1);
+		    map.put("patty2", patty2);
+		    map.put("patty3", patty3);
+		    map.put("top1", top1);
+		    map.put("top2", top2);
+		    map.put("top3", top3);
+		    map.put("vege1", vege1);
+		    map.put("vege2", vege2);
+		    map.put("vege3", vege3);
+		    map.put("contest_name",contest_name);
+
+		    viewList.add(map);
+		}
+
+		// リクエストスコープに格納する
+		request.setAttribute("menus", viewList);
+
+
+		//マイメニュー一覧ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/view_contest.jsp");
 		dispatcher.forward(request, response);
 	}
@@ -54,39 +126,8 @@ public class JoinContestViewServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
-		response.setContentType("text/html; charset=UTF-8");
-		response.setCharacterEncoding("UTF-8");
-		HttpSession session = request.getSession();
-		
-		LoginUser loginUser =(LoginUser)session.getAttribute("loginUser");
-		String name = request.getParameter("name");
-		int user_id = loginUser.getId();
-		int buns1 = Integer.parseInt(request.getParameter("bunstop"));
-		int buns2 = Integer.parseInt(request.getParameter("bunsbottom"));
-		int patty1 = Integer.parseInt(request.getParameter("patty1"));
-		int patty2 = Integer.parseInt(request.getParameter("patty2"));
-		int patty3 = Integer.parseInt(request.getParameter("patty3"));
-		int vege1 = Integer.parseInt(request.getParameter("vegetable1"));
-		int vege2 = Integer.parseInt(request.getParameter("vegetable2"));
-		int vege3 = Integer.parseInt(request.getParameter("vegetable3"));
-		int topping1 = Integer.parseInt(request.getParameter("topping1"));
-		int topping2 = Integer.parseInt(request.getParameter("topping2"));
-		int topping3 = Integer.parseInt(request.getParameter("topping3"));
-		int sauce = Integer.parseInt(request.getParameter("sauce"));
-		int price = Integer.parseInt(request.getParameter("price"));
-		int contest_id = Integer.parseInt(request.getParameter("contest_id"));
-		
-		// 登録処理を行う
-		ContestmenusDAO Dao = new ContestmenusDAO();;
-		if (Dao.insert(new Contestmenu(0,name,user_id,buns1,buns2,patty1,patty2,patty3,vege1,vege2,vege3,topping1,topping2,topping3,sauce,price,contest_id,null,null))) { // 登録成功
-			request.setAttribute("result", new Result("登録成功！", "レコードを登録しました。", "/webapp/MenuServlet"));
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/home");
-			dispatcher.forward(request, response);
-		} else { // 登録失敗
-			request.setAttribute("result", new Result("登録失敗！", "データを登録できませんでした。", "/webapp/MenuServlet"));
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/home");
-			dispatcher.forward(request, response);
-		}
+		// TODO Auto-generated method stub
+		doGet(request, response);
 	}
+
 }
