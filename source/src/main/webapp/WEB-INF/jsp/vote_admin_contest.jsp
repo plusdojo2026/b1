@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,40 +24,64 @@
             <span><a href="/b1/usercontestvote">ユーザー考案</a></span>
             <span class="choice"><a href="/b1/admincontestvote">店主考案　</a></span>
             </section>
-            <p>残り投票数：３票</p>
+            <p>残り投票数：${vote}票</p>
         </div>
-
+	
+	
+		<c:forEach var="v" items="${menus}" >
         <div class="contest_menu_item">
-            <h2>トリプルチーズボム</h2>
-            <p class="contest_user">ミスターバーガー<img src="/b1/images/gold.png" width="60px"></p>
+            <h2>${v.name}</h2>
+            <p class="contest_user">${v.user_name}<img src="/b1/images/gold.png" width="60px"></p>
             <div class="burger">
                 <img src="/b1/images/hamburger/buns_top.png" class="buns_top">
 
-                <div class="stack-area">
-                        <section class="vegetable3"><img src="/b1/images/hamburger/onion.png" data-type="onion"></section>
-                        <section class="topping3"><img src="/b1/images/hamburger/egg.png" data-type="egg"></section>
-                        <section class="patty3"><img src="/b1/images/hamburger/chicken.png" data-type="chicken"></section>
-
-                        <section class="vegetable2"><img src="/b1/images/hamburger/tomato.png" data-type="tomato"></section>
-                        <section class="topping2"><img src="/b1/images/hamburger/bacon.png" data-type="bacon"></section>
-                        <section class="patty2"><img src="/b1/images/hamburger/beef.png" data-type="beef"></section>
-
-                        <section class="vegetable1"><img src="/b1/images/hamburger/lettuce.png" data-type="lettuce"></section>
-                        <section class="topping1"><img src="/b1/images/hamburger/cheese.png" data-type="cheese"></section>
-                        <section class="patty1"><img src="/b1/images/hamburger/chicken.png" data-type="chicken"></section>
-                </div>
+	                <div class="stack-area">
+	                        
+	                        <c:if test="${v.vege3.id ne '0'}">
+	                        	<section class="vegetable3"><img src="${v.vege3.image}" data-type="${v.vege3.id}"></section>
+	                        </c:if>
+	                        <c:if test="${v.top3.id ne '0'}">
+	                        	<section class="topping3"><img src="${v.top3.image}" data-type="${v.top3.id}"></section>
+	                        </c:if>
+	                        <c:if test="${v.patty3.id ne '0'}">
+	                        	<section class="patty3"><img src="${v.patty3.image}" data-type="${v.patty3.id}"></section>
+							</c:if>
+	                        <c:if test="${v.vege2.id ne '0'}">
+	                        <section class="vegetable2"><img src="${v.vege2.image}" data-type="${v.vege2.id}"></section>
+	                        </c:if>
+	                        <c:if test="${v.top2.id ne '0'}">
+	                        <section class="topping2"><img src="${v.top2.image}" data-type="${v.top2.id}"></section>
+	                        </c:if>
+	                        <c:if test="${v.patty2.id ne '0'}">
+	                        <section class="patty2"><img src="${v.patty2.image}" data-type="${v.patty2.id}"></section>
+							</c:if>
+	                        <c:if test="${v.vege1.id ne '0'}">
+	                        <section class="vegetable1"><img src="${v.vege1.image}" data-type="${v.vege1.id}"></section>
+	                        </c:if>
+	                        <c:if test="${v.top1.id ne '0'}">
+	                        <section class="topping1"><img src="${v.top1.image}" data-type="${v.top1.id}"></section>
+	                        </c:if>
+	                        <c:if test="${v.patty1.id ne '0'}">
+	                        <section class="patty1"><img src="${v.patty1.image}" data-type="${v.patty1.id}"></section>
+	                        </c:if>
+	                        
+	                </div>
 
                 <img src="/b1/images/hamburger/buns_bottom.png" class="buns_bottom">
             </div>
-            <button class="vote_button">投票する</button>
+            <form>
+            <input type="hidden" value="${v.id}">
+            <input type="submit" class="vote_button" value="投票する">
+            </form>
         </div>
+        </c:forEach>
     </main>
 
     <footer>
         <nav>
             <ul>
-                <li class="nowpage"><a href="/b1/home">
-                		<img src="/b1/images/home_red.png" class="footer_icon"><br>ホーム
+                <li><a href="/b1/home">
+                		<img src="/b1/images/home.png" class="footer_icon"><br>ホーム
                 	</a></li>
                 <li><a href="/b1/custom">
                 		<img src="/b1/images/custom.png" class="footer_icon"><br>カスタム
@@ -76,14 +102,14 @@
     <script>
 	"use strict";
     const thickness = {
-        chicken: 22,
-        beef: 18,
-        cheese: -2,
-        lettuce: 12,
-        egg: 12,
-        onion: 15,
-        bacon: -4,
-        tomato: 16
+        3: 18,
+   		4: 22,
+        5: -2,
+        6: -4,
+        7: 12,
+        8: 12,
+        9: 16,
+       	10: 15
     };
 
     window.addEventListener("load", () => {

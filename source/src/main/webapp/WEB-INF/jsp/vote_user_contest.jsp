@@ -36,7 +36,6 @@
                 <img src="/b1/images/hamburger/buns_top.png" class="buns_top">
 
 	                <div class="stack-area">
-	                        
 	                        <c:if test="${v.vege3.id ne '0'}">
 	                        	<section class="vegetable3"><img src="${v.vege3.image}" data-type="${v.vege3.id}"></section>
 	                        </c:if>
@@ -69,7 +68,10 @@
 
                 <img src="/b1/images/hamburger/buns_bottom.png" class="buns_bottom">
             </div>
-            <button class="vote_button">投票する</button>
+            <form>
+            <input type="hidden" value="${v.id}">
+            <input type="submit" class="vote_button" value="投票する">
+            </form>
         </div>
         </c:forEach>
     </main>

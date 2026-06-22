@@ -73,6 +73,7 @@ public class UserContestVoteServlet extends HttpServlet {
 		    Contestmenu cmenu = cmenuList.get(i);
 		    
 		    // cmenuList(i)の素材IDを取得
+		    int id = cmenu.getId();
 		    String name = cmenu.getName();
 		    int price = cmenu.getPrice();
 		    
@@ -111,6 +112,7 @@ public class UserContestVoteServlet extends HttpServlet {
 		    Map<String, Object> map = new HashMap<>();
 
 		    map.put("menu", cmenu);
+		    map.put("id", id);
 		    map.put("name", name);
 		    map.put("user_name", user_name);
 		    map.put("price", price);
