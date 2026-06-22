@@ -18,11 +18,13 @@ import dao.ContestmenusDAO;
 import dao.ContestsDAO;
 import dao.MaterialsDAO;
 import dao.UsersDAO;
+import dao.VotesDAO;
 import dto.Contest;
 import dto.Contestmenu;
 import dto.LoginUser;
 import dto.Material;
 import dto.User;
+import dto.Vote;
 
 
 @WebServlet("/usercontestvote")
@@ -52,6 +54,7 @@ public class UserContestVoteServlet extends HttpServlet {
 	    int vote = login_user.getVote();
 	    
 	    // リクエストスコープに投票数を格納
+	    request.setAttribute("login_id", login_id);	
 	    request.setAttribute("vote", vote);	
 
         //現在開催中のコンテストIDを取得
@@ -59,6 +62,7 @@ public class UserContestVoteServlet extends HttpServlet {
 		Contest contest = contestsDao.selectByNowDate();
 		
 		int contest_id = contest.getId();
+		request.setAttribute("contest_id", contest_id);	
 		
 		//対象コンテストに登録されたメニュー表を取得
 		ContestmenusDAO cmenusDao = new ContestmenusDAO();
@@ -141,8 +145,74 @@ public class UserContestVoteServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		// TODO Auto-generated method stub		
+		// 2. 未ログインの場合はログイン画面へ強制遷移      
+		HttpSession session = request.getSession();
+        LoginUser loginUser = (LoginUser) session.getAttribute("loginUser");
+        
+        if (loginUser == null) {
+            response.sendRedirect(request.getContextPath() + "/login");
+            return;
+        }
+        
+        // リクエストパラメータを取得
+        request.setCharacterEncoding("UTF-8");
+        int user_id = Integer.parseInt(request.getParameter("user_id"));
+        int contest_id = Integer.parseInt(request.getParameter("contest_id"));
+		int cmenu_id = Integer.parseInt(request.getParameter("cmenu_id"));
+		
+		// ログインユーザーの投票数を取得
+	    int login_id = loginUser.getId();
+	    
+	    UsersDAO uDao = new UsersDAO();
+	    User login_user = uDao.selectById(login_id);
+	    
+	    int user_vote = login_user.getVote();
+		
+	    //投票権チェック
+	    if (user_vote <= 0) {
+	        request.setAttribute("result_message", "投票権がないため投票できません。<br>ご参加いただきありがとうございました。");
+	        RequestDispatcher dispatcher = request.getRequestDispatcher("/home");
+	        dispatcher.forward(request, response);
+	        return;
+	    }
+
+	    // 投票処理
+	    Vote vote = new Vote(0, user_id, contest_id, cmenu_id, null, null);
+	    VotesDAO vDao = new VotesDAO();
+	    boolean result = vDao.insert(vote);
+
+	 //投票成功したら user_voteを1減らす
+	    if (result) {
+	        int newVote = user_vote - 1;
+
+	        // User オブジェクトを作成
+	        User update_User = new User(
+	            login_user.getId(),
+	            login_user.getPhone(),
+	            login_user.getPw(),
+	            login_user.getName(),
+	            login_user.getRank_id(),
+	            login_user.getIcon(),
+	            newVote,
+	            login_user.getLevelup_menu(),
+	            login_user.getCreated_at(),
+	            login_user.getUpdated_at()
+	        );
+
+	        //　Usersテーブルを更新
+	        uDao.update(update_User);
+
+	        request.setAttribute("result_message", "投票が完了しました。残り投票数：" + newVote);
+	    } else {
+	        request.setAttribute("result_message", "投票に失敗しました。もう一度やり直してください。");
+	    }
+
+	    RequestDispatcher dispatcher =
+	            request.getRequestDispatcher("/home");
+	        dispatcher.forward(request, response);
+		
+		
 	}
 
 }
