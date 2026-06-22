@@ -8,7 +8,8 @@ public class Contestmenu implements Serializable {
     private int id;
     private String name;
     private int user_id;
-    private int buns;
+    private int buns1;
+    private int buns2;
     private int patty1;
     private int patty2;
     private int patty3;
@@ -24,14 +25,15 @@ public class Contestmenu implements Serializable {
     private LocalDateTime created_at;
     private LocalDateTime updated_at;
 	
-    public Contestmenu(int id, String name, int user_id, int buns, int patty1, int patty2, int patty3, int vege1,
+    public Contestmenu(int id, String name, int user_id, int buns1, int buns2, int patty1, int patty2, int patty3, int vege1,
 			int vege2, int vege3, int topping1, int topping2, int topping3, int sauce, int price, int contest_id,
 			 LocalDateTime created_at, LocalDateTime updated_at) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.user_id = user_id;
-		this.buns = buns;
+		this.buns1 = buns1;
+		this.buns2 = buns2;
 		this.patty1 = patty1;
 		this.patty2 = patty2;
 		this.patty3 = patty3;
@@ -53,7 +55,8 @@ public class Contestmenu implements Serializable {
 		this.id = 0;
 		this.name = "";
 		this.user_id = 0;
-		this.buns = 0;
+		this.buns1 = 0;
+		this.buns2 = 0;
 		this.patty1 = 0;
 		this.patty2 = 0;
 		this.patty3 = 0;
@@ -82,8 +85,12 @@ public class Contestmenu implements Serializable {
 		return user_id;
 	}
 
-	public int getBuns() {
-		return buns;
+	public int getBuns1() {
+		return buns1;
+	}
+	
+	public int getBuns2() {
+		return buns2;
 	}
 
 	public int getPatty1() {
@@ -154,8 +161,12 @@ public class Contestmenu implements Serializable {
 		this.user_id = user_id;
 	}
 
-	public void setBuns(int buns) {
-		this.buns = buns;
+	public void setBuns1(int buns1) {
+		this.buns1 = buns1;
+	}
+	
+	public void setBuns2(int buns2) {
+		this.buns2 = buns2;
 	}
 
 	public void setPatty1(int patty1) {

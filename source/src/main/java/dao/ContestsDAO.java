@@ -259,4 +259,54 @@ public class ContestsDAO {
 		// 結果を返す
 		return result;
 	}
+
+	// 現在日時が含まれる項目のデータを返す
+	public Contest selectByNowDate() {
+		Connection conn = null;
+		Contest contest = null;
+	
+		try {
+			// JDBCドライバを読み込む
+			Class.forName("com.mysql.cj.jdbc.Driver");
+	
+			// データベースに接続する
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/b1?"
+					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
+					"root", "password");
+	
+			// SQL文を準備する
+			String sql = "SELECT * FROM contests WHERE NOW() BETWEEN start_at AND end_at;"
+					+ "";
+			PreparedStatement ps = conn.prepareStatement(sql);
+	
+			// SQL文を実行し、結果表を取得する
+			ResultSet rs = ps.executeQuery();
+	
+			// 結果表をコレクションにコピーする
+			if (rs.next()) {
+	            contest = new Contest(
+	                rs.getInt("id"),
+	                rs.getString("name"),                
+	                rs.getTimestamp("start_at").toLocalDateTime(),
+	                rs.getTimestamp("end_at").toLocalDateTime(),
+	                rs.getTimestamp("created_at").toLocalDateTime(),
+	                rs.getTimestamp("updated_at").toLocalDateTime()                
+	            );
+	        }
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    } finally {
+			// データベースを切断
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+	
+	    return contest;
+    
+	}
 }

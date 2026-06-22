@@ -246,18 +246,51 @@ CREATE TABLE contestmenus (
 
 /* contestmenusダミーデータ */
 INSERT INTO contestmenus
-    (id,name, user_id, buns1, buns2, patty1, patty2, patty3, vege1, vege2, vege3, topping1, topping2, topping3, sauce, price, contest_id)
+    (id,name, user_id, buns1, buns2, patty1, patty2, patty3,
+     vege1, vege2, vege3, topping1, topping2, topping3,
+     sauce, price, contest_id)
 VALUES
     (0,'', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
-INSERT INTO contestmenus
-    (name, user_id, buns1, buns2, patty1, patty2, patty3, vege1, vege2, vege3, topping1, topping2, topping3, sauce, price, contest_id)
-VALUES
-    ('チーズ爆増バーガー', 1, 1, 2, 3, 4, 0, 5, 0, 7, 8, 0, 10, 11, 920, 1),
-    ('アボカドヘルシー', 2, 1, 2, 0, 4, 0, 6, 7, 5, 0, 10, 0, 13, 600, 1),
-    ('ベーコンモンスター', 3, 1, 2, 4, 0, 3, 7, 0, 6, 10, 10, 10,  12, 980, 1),
-    ('スパイシーチキン極', 4, 1, 2, 3, 0, 0, 0, 6, 0, 0, 8, 10, 13, 750, 2),
-    ('トリプルミートキング', 5, 1, 2, 3, 3, 4, 7, 6, 5, 10, 9, 8, 12, 1200, 2);
 
+INSERT INTO contestmenus
+    (name, user_id, buns1, buns2, patty1, patty2, patty3,
+     vege1, vege2, vege3, topping1, topping2, topping3,
+     sauce, price, contest_id)
+VALUES
+    ('チーズ爆増バーガー', 1,
+        1, 2,
+        3, 4, 0,
+        8, 0, 9,
+        5, 5, 5,
+        11, 920, 1),
+
+    ('ベジベジヘルシー', 1,
+        1, 2,
+        3, 4, 0,
+        8, 9, 10,
+        5, 0, 7,
+        13, 600, 1),
+
+    ('ベーコンモンスター', 3,
+        1, 2,
+        4, 3, 0,
+        8, 0, 9,
+        6, 6, 6,
+        12, 980, 1),
+
+    ('チキン極', 4,
+        1, 2,
+        4, 0, 0,
+        8, 9, 0,
+        7, 6, 5,
+        13, 750, 1),
+
+    ('トリプルミートキング', 5,
+        1, 2,
+        3, 3, 3,
+        8, 9, 10,
+        7, 6, 5,
+        12, 1200, 1);
 
 /* contestsテーブル */
 CREATE TABLE contests (
@@ -277,7 +310,7 @@ VALUES
 INSERT INTO contests
     (name, start_at, end_at)
 VALUES
-    ('第1回バーガー選手権', '2026-06-01 00:00:00', '2026-06-10 23:59:59'),
+    ('第1回バーガー選手権', '2026-06-01 00:00:00', '2037-12-31 23:59:59'),
     ('夏のスパイシーフェス', '2026-07-01 00:00:00', '2026-07-15 23:59:59'),
     ('チーズラバー大会', '2026-08-01 00:00:00', '2026-08-20 23:59:59'),
     ('ヘルシーバーガー杯', '2026-09-01 00:00:00', '2026-09-10 23:59:59'),
