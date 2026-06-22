@@ -15,7 +15,7 @@
     
     <main>        
         <!-- リザルトメッセージエリア -->
-        <div class="result-msg">ここにリザルトメッセージが出ます</div>
+        <div class="result-msg">${result_message}</div>
 
         <!-- ユーザー情報表示用角丸カード -->
         <div class="user-card">

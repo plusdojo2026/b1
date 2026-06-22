@@ -69,8 +69,10 @@
 
                 <img src="/b1/images/hamburger/buns_bottom.png" class="buns_bottom">
             </div>
-            <form>
-            <input type="hidden" value="${v.id}">
+            <form method="post" action="${pageContext.request.contextPath}/admincontestvote">
+            <input type="hidden" name="user_id" value="${login_id}">
+            <input type="hidden" name="contest_id" value="${contest_id}">
+            <input type="hidden" name="cmenu_id" value="${v.id}">
             <input type="submit" class="vote_button" value="投票する">
             </form>
         </div>

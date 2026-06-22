@@ -1,33 +1,65 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FanTable │コンテスト結果</title>
-<link rel="stylesheet" href="/b1/css/common.css">
-<link rel="stylesheet" href="/b1/css/result_contest.css">
-<link rel="stylesheet" href="/b1/css/vote_contest.css">
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	<!-- <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> -->
+	<!DOCTYPE html>
+	<html>
 
-</head>
-<body>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>FanTable │コンテスト結果</title>
+		<link rel="stylesheet" href="/b1/css/common.css">
+		<link rel="stylesheet" href="/b1/css/result_contest.css">
+		<link rel="stylesheet" href="/b1/css/vote_contest.css">
 
-	<header>
-		<div class="main">
-			<h1>コンテスト結果</h1>
-		</div>
-	</header>
-	<main>
-	
-        <div class="top_contest">
-            <section class="class_contest">
-            <span class="choice"><a href="/b1/usercontestview">ユーザー考案</a></span>
-            <span><a href="/b1/admincontestview">店主考案　</a></span>
-            </section>
-        </div>
+	</head>
 
-		<!-- 1位 -->
+	<body>
+
+		<header>
+			<div class="main">
+				<h1>コンテスト結果</h1>
+			</div>
+		</header>
+		<main>
+
+			<div class="top_contest">
+				<section class="class_contest">
+					<span class="choice"><a href="/b1/usercontestview">ユーザー考案</a></span>
+					<span><a href="/b1/admincontestview">店主考案　</a></span>
+				</section>
+			</div>
+
+			<c:forEach var="vote" items="${rankList}" varStatus="status">
+
+				<c:choose>
+
+					<c:when test="${status.index == 0}">
+						<!-- 1位 -->
+						<div class="card first">
+							<div class="rank-badge">第1位</div>
+							<div class="info">
+								ID ${vote.contestmenu_id}
+								<span class="votes">${vote.voteCount}票</span>
+							</div>
+						</div>
+					</c:when>
+
+					<c:otherwise>
+						<!-- 2位・3位 -->
+						<div class="item">
+							<div class="rank">第${status.index + 1}位</div>
+							<div class="text">
+								ID ${vote.contestmenu_id}
+								（${vote.voteCount}票）
+							</div>
+						</div>
+					</c:otherwise>
+
+				</c:choose>
+
+			</c:forEach>
+
+			<!-- 1位
 		<div class="card first">
 
 			<div class="rank-badge">第1位</div>
@@ -65,7 +97,7 @@
 
 		</div>
 
-		<!-- 2位 -->
+		2位
 		<div class="item">
 			<div class="rank">第2位</div>
 			<div class="text">
@@ -76,7 +108,7 @@
 			</div>
 		</div>
 
-		<!-- 3位 -->
+		3位
 		<div class="item">
 			<div class="rank">第3位</div>
 			<div class="text">
@@ -85,81 +117,78 @@
 					<span class="brand-icon">ア</span> キング・バーガー
 				</div>
 			</div>
-		</div>
+		</div> -->
 
-	</main>
+		</main>
 
-	<footer>
-		<nav>
-			<ul>
-				<li><a href="/b1/home"> <img
-						src="/b1/images/home.png" class="footer_icon"><br>ホーム
-				</a></li>
-				<li><a href="/b1/custom"> <img src="/b1/images/custom.png"
-						class="footer_icon"><br>カスタム
-				</a></li>
-				<li class="nowpage"><a href="/b1/contest"> <img
-						src="/b1/images/contest_red.png" class="footer_icon"><br>コンテスト
-				</a></li>
-				<li><a href="/b1/akinator"> <img
-						src="/b1/images/akinator.png" class="footer_icon"><br>診断
-				</a></li>
-				<li><a href="/b1/mydata"> <img src="/b1/images/mydata.png"
-						class="footer_icon"><br>マイデータ
-				</a></li>
-			</ul>
-		</nav>
-	</footer>
-	
-	<script>
-	"use strict";
-    const thickness = {
-        chicken: 22,
-        beef: 18,
-        cheese: -2,
-        lettuce: 12,
-        egg: 12,
-        onion: 15,
-        bacon: -4,
-        tomato: 16
-    };
+		<footer>
+			<nav>
+				<ul>
+					<li><a href="/b1/home"> <img src="/b1/images/home.png" class="footer_icon"><br>ホーム
+						</a></li>
+					<li><a href="/b1/custom"> <img src="/b1/images/custom.png" class="footer_icon"><br>カスタム
+						</a></li>
+					<li class="nowpage"><a href="/b1/contest"> <img src="/b1/images/contest_red.png"
+								class="footer_icon"><br>コンテスト
+						</a></li>
+					<li><a href="/b1/akinator"> <img src="/b1/images/akinator.png" class="footer_icon"><br>診断
+						</a></li>
+					<li><a href="/b1/mydata"> <img src="/b1/images/mydata.png" class="footer_icon"><br>マイデータ
+						</a></li>
+				</ul>
+			</nav>
+		</footer>
 
-    window.addEventListener("load", () => {
+		<script>
+			"use strict";
+			const thickness = {
+				chicken: 22,
+				beef: 18,
+				cheese: -2,
+				lettuce: 12,
+				egg: 12,
+				onion: 15,
+				bacon: -4,
+				tomato: 16
+			};
 
-        // すべての stack-area を処理（複数バーガー対応）
-        document.querySelectorAll(".stack-area").forEach(stack => {
+			window.addEventListener("load", () => {
 
-            const ingredients = stack.querySelectorAll("img");
+				// すべての stack-area を処理（複数バーガー対応）
+				document.querySelectorAll(".stack-area").forEach(stack => {
 
-            const startTop = 40;
-            let currentTop = startTop;
+					const ingredients = stack.querySelectorAll("img");
 
-            // 具材を積み上げる
-            ingredients.forEach((img, index) => {
-                const type = img.dataset.type;
-                const thick = thickness[type] || 15;
+					const startTop = 40;
+					let currentTop = startTop;
 
-                img.style.position = "absolute";
-                img.style.top = currentTop + "px";
-                img.style.zIndex = 500 - index;
+					// 具材を積み上げる
+					ingredients.forEach((img, index) => {
+						const type = img.dataset.type;
+						const thick = thickness[type] || 15;
 
-                currentTop += thick;
-            });
+						img.style.position = "absolute";
+						img.style.top = currentTop + "px";
+						img.style.zIndex = 500 - index;
 
-            // 下バンズの位置
-            const bottom = stack.parentElement.querySelector(".buns_bottom");
-            bottom.style.position = "absolute";
-            bottom.style.top = currentTop + "px";
+						currentTop += thick;
+					});
 
-            // バーガー全体の高さを調整
-            const burger = stack.closest(".burger");
-            burger.style.height = (currentTop + 70) + "px";
-        });
+					// 下バンズの位置
+					const bottom = stack.parentElement.querySelector(".buns_bottom");
+					bottom.style.position = "absolute";
+					bottom.style.top = currentTop + "px";
 
-    });
-    </script>
-	
-	
+					// バーガー全体の高さを調整
+					const burger = stack.closest(".burger");
+					burger.style.height = (currentTop + 70) + "px";
+				});
 
-</body>
-</html>
+			});
+		</script>
+
+
+
+	</body>
+
+	</html>
