@@ -61,10 +61,11 @@
 	            </div>
 	
 			    <div class="menu-right">
-			        <input id="user_id" type="hidden" name="Mymenu" value="サンプルバーガー1" readonly="readonly">	
+			        <input type="hidden" name="mymenu_name" value="${v.name}" readonly="readonly">
+			        <input type="hidden" name="mymenu_price" value="${v.price}" readonly="readonly">	
 				    <div class="menu-info">
-				        <span class="name">サンプルバーガー１</span><br>
-				        <span class="price">¥1,590</span>
+				        <span class="name">${v.name}</span><br>
+				        <span class="price">${v.price}</span>
 				    </div>
 			        <div class="btn-group">
 			            <input class="btn-submit" type="submit" name="submit" value="編集">

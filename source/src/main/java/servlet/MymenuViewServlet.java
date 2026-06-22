@@ -58,6 +58,9 @@ public class MymenuViewServlet extends HttpServlet {
 		    Mymenu mymenu = mymenuList.get(i);
 		    
 		    // mymenuList(i)の素材IDを取得
+		    String name = mymenu.getName();
+		    int price = mymenu.getPrice();
+		    
 		    int patty1_Id = mymenu.getPatty1();
 		    int patty2_Id = mymenu.getPatty2();
 		    int patty3_Id = mymenu.getPatty3();
@@ -85,6 +88,8 @@ public class MymenuViewServlet extends HttpServlet {
 		    Map<String, Object> map = new HashMap<>();
 
 		    map.put("menu", mymenu);
+		    map.put("name", name);
+		    map.put("price", price);
 		    map.put("patty1", patty1);
 		    map.put("patty2", patty2);
 		    map.put("patty3", patty3);
