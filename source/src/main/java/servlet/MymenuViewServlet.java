@@ -44,10 +44,10 @@ public class MymenuViewServlet extends HttpServlet {
             return;
         }
         //ここにメニュー育成機能追加
-        int id = loginUser.getId();
+        int user_id = loginUser.getId();
 
 		MymenusDAO mymenusDao = new MymenusDAO();
-		List<Mymenu> mymenuList = mymenusDao.select(id);
+		List<Mymenu> mymenuList = mymenusDao.select(user_id);
 		
 		//一覧用のリストの方を作る
 		List<Map<String, Object>> viewList = new ArrayList<>();
@@ -58,6 +58,7 @@ public class MymenuViewServlet extends HttpServlet {
 		    Mymenu mymenu = mymenuList.get(i);
 		    
 		    // mymenuList(i)の素材IDを取得
+		    int id = mymenu.getId();
 		    String name = mymenu.getName();
 		    int price = mymenu.getPrice();
 		    
@@ -86,7 +87,8 @@ public class MymenuViewServlet extends HttpServlet {
 
 		    // マップにメニュー情報・各素材情報を格納
 		    Map<String, Object> map = new HashMap<>();
-
+		    
+		    map.put("id",id);
 		    map.put("menu", mymenu);
 		    map.put("name", name);
 		    map.put("price", price);

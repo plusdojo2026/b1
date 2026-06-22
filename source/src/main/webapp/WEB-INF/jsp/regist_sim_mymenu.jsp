@@ -15,7 +15,7 @@
 
 <main class="mymenuregist">
 
-        <h2>¥5,000</h2>
+        
 		<div class="illustration-stage">
 
             <div class="burger">
@@ -62,7 +62,7 @@
                 <input type="radio" name="topping1" value="0" id="topping1_null">
                     <label for="topping1_null">なし</label>
 
-                <input type="radio" name="topping1" value="5" id="topping1_cheese">
+                <input type="radio" name="topping1" value="5" id="topping1_cheese" checked>
                     <label for="topping1_cheese">チーズ</label>
 
                 <input type="radio" name="topping1" value="6" id="topping1_bacon">
@@ -78,7 +78,7 @@
                 <input type="radio" name="vegetable1" value="0" id="vegetable1_null">
                     <label for="vegetable1_null">なし</label>
 
-                <input type="radio" name="vegetable1" value="8" id="vegetable1_lettuce">
+                <input type="radio" name="vegetable1" value="8" id="vegetable1_lettuce" checked>
                     <label for="vegetable1_lettuce">レタス</label>
 
                 <input type="radio" name="vegetable1" value="9" id="vegetable1_tomato">
@@ -92,7 +92,7 @@
 
             <div class="item_material">
                 <h3>パティ2</h3>
-                <input type="radio" name="patty2" value="0" id="patty2_null">
+                <input type="radio" name="patty2" value="0" id="patty2_null" checked>
                     <label for="patty2_null">なし</label>
 
                 <input type="radio" name="patty2" value="3" id="patty2_beef">
@@ -105,7 +105,7 @@
 
             <div class="item_material">
                 <h3>トッピング2</h3>
-                <input type="radio" name="topping2" value="0" id="topping2_null">
+                <input type="radio" name="topping2" value="0" id="topping2_null" checked>
                     <label for="topping2_null">なし</label>
 
                 <input type="radio" name="topping2" value="5" id="topping2_cheese">
@@ -121,7 +121,7 @@
 
             <div class="item_material">
                 <h3>野菜2</h3>
-                <input type="radio" name="vegetable2" value="0" id="vegetable2_null">
+                <input type="radio" name="vegetable2" value="0" id="vegetable2_null" checked>
                     <label for="vegetable2_null">なし</label>
 
                 <input type="radio" name="vegetable2" value="8" id="vegetable2_lettuce">
@@ -138,7 +138,7 @@
 
             <div class="item_material">
                 <h3>パティ3</h3>
-                <input type="radio" name="patty3" value="0" id="patty3_null">
+                <input type="radio" name="patty3" value="0" id="patty3_null" checked>
                     <label for="patty3_null">なし</label>
 
                 <input type="radio" name="patty3" value="3" id="patty3_beef">
@@ -151,7 +151,7 @@
 
             <div class="item_material">
                 <h3>トッピング3</h3>
-                <input type="radio" name="topping3" value="0" id="topping3_null">
+                <input type="radio" name="topping3" value="0" id="topping3_null" checked>
                     <label for="topping3_null">なし</label>
 
                 <input type="radio" name="topping3" value="5" id="topping3_cheese">
@@ -167,7 +167,7 @@
 
             <div class="item_material">
                 <h3>野菜3</h3>
-                <input type="radio" name="vegetable3" value="0" id="vegetable3_null">
+                <input type="radio" name="vegetable3" value="0" id="vegetable3_null" checked>
                     <label for="vegetable3_null">なし</label>
 
                 <input type="radio" name="vegetable3" value="8" id="vegetable3_lettuce">
@@ -183,7 +183,7 @@
             
 			<div class="item_material">
                 <h3>ソース</h3>
-                <input type="radio" name="sauce" value="11" id="sauce_BBQ">
+                <input type="radio" name="sauce" value="11" id="sauce_BBQ" checked>
                     <label for="sauce_BBQ">BBQ</label>
 
                 <input type="radio" name="sauce" value="12" id="sauce_salsa">
@@ -194,11 +194,11 @@
             </div>
             <br>
             <div>
-            	<input type="hidden" name="price" value="5000">
+            	<input type="hidden" name="price" value="800">
             </div>
 
             <h3>メニュー名</h3>
-            <input type="text" name="name" placeholder="メニュー名を入力してください">
+            <input type="text" name="name" value="サンプル" placeholder="メニュー名を入力してください">
 
             <input type="submit" value="このメニューをマイメニューに追加する">
             <p></p>
@@ -282,6 +282,8 @@
 
 	        const section = document.querySelector("." + sectionName);
 
+	        if (!section) return;
+
 	        if (ingredient === "null") {
 	            section.innerHTML = "";
 	        } else {
@@ -290,7 +292,12 @@
 	        }
 	    });
 
-	    stackIngredients();
+	    // ★ここが重要：2回待つ
+	    requestAnimationFrame(() => {
+	        requestAnimationFrame(() => {
+	            stackIngredients();
+	        });
+	    });
 	});
 
 

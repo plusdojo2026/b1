@@ -23,7 +23,7 @@
 		
 		<c:forEach var="v" items="${menus}" >
 		<div class="ViewMymenu">
-		    <form action="edit.html">
+		    <form action="${pageContext.request.contextPath}/gomymenuedit" method="post">
 		           <div class="burger">
 	                <img src="/b1/images/hamburger/buns_top.png" class="buns_top">
 	
@@ -68,8 +68,10 @@
 				        <span class="price">¥${v.price}</span>
 				    </div>
 			        <div class="btn-group">
+			        	<input type="hidden" name="mymenuId" value="${v.id}">
 			            <input class="btn-submit" type="submit" name="submit" value="編集">
-			            <input class="btn-delete" type="submit" name="delete" value="削除">
+			            <input class="btn-delete" type="submit" name="delete" value="削除" 
+			            formaction="${pageContext.request.contextPath}/mymenudelete">
 			        </div>
 			    </div>
 			</form>
