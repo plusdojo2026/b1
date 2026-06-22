@@ -5,14 +5,14 @@ import java.time.LocalDateTime;
 
 public class Vote implements Serializable {
 
-    private int id;
-    private int user_id;
-    private int contest_id;
-    private int contestmenu_id;
-    private LocalDateTime created_at;
-    private LocalDateTime updated_at;
-	
-    public Vote(int id, int user_id, int contest_id, int contestmenu_id, LocalDateTime created_at,
+	private int id;
+	private int user_id;
+	private int contest_id;
+	private int contestmenu_id;
+	private LocalDateTime created_at;
+	private LocalDateTime updated_at;
+
+	public Vote(int id, int user_id, int contest_id, int contestmenu_id, LocalDateTime created_at,
 			LocalDateTime updated_at) {
 		super();
 		this.id = id;
@@ -22,8 +22,8 @@ public class Vote implements Serializable {
 		this.created_at = created_at;
 		this.updated_at = updated_at;
 	}
-    
-    public Vote() {
+
+	public Vote() {
 		super();
 		this.id = 0;
 		this.user_id = 0;
@@ -80,8 +80,16 @@ public class Vote implements Serializable {
 	public void setUpdated_at(LocalDateTime updated_at) {
 		this.updated_at = updated_at;
 	}
-    
-    
-    
+
+	// 投票テーブルから多い順にソート
+	private int voteCount;
+
+	public int getVoteCount() {
+		return voteCount;
+	}
+
+	public void setVoteCount(int voteCount) {
+		this.voteCount = voteCount;
+	}
+
 }
-	

@@ -20,104 +20,103 @@ import dto.LoginUser;
 import dto.Material;
 import dto.Mymenu;
 
-
 @WebServlet("/mymenuview")
 public class MymenuViewServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
 
-
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
 		HttpSession session = request.getSession();
 		if (session.getAttribute("loginUser") == null) {
 			response.sendRedirect("/b1/login");
 			return;
 		}
-		
-	// 一覧表示を行う
-		// 2. 未ログインの場合はログイン画面へ強制遷移        
-        LoginUser loginUser = (LoginUser) session.getAttribute("loginUser");
 
-        if (loginUser == null) {
-            response.sendRedirect(request.getContextPath() + "/login");
-            return;
-        }
-        //ここにメニュー育成機能追加
-        int user_id = loginUser.getId();
+		// 一覧表示を行う
+		// 2. 未ログインの場合はログイン画面へ強制遷移
+		LoginUser loginUser = (LoginUser) session.getAttribute("loginUser");
+
+		if (loginUser == null) {
+			response.sendRedirect(request.getContextPath() + "/login");
+			return;
+		}
+		// ここにメニュー育成機能追加
+		int user_id = loginUser.getId();
 
 		MymenusDAO mymenusDao = new MymenusDAO();
 		List<Mymenu> mymenuList = mymenusDao.select(user_id);
-		
-		//一覧用のリストの方を作る
+
+		// 一覧用のリストの方を作る
 		List<Map<String, Object>> viewList = new ArrayList<>();
 
 		// リストが終わりまでループ
-		for(int i = 0; i < mymenuList.size(); i++) {
+		for (int i = 0; i < mymenuList.size(); i++) {
 
-		    Mymenu mymenu = mymenuList.get(i);
-		    
-		    // mymenuList(i)の素材IDを取得
-		    int id = mymenu.getId();
-		    String name = mymenu.getName();
-		    int price = mymenu.getPrice();
-		    
-		    int patty1_Id = mymenu.getPatty1();
-		    int patty2_Id = mymenu.getPatty2();
-		    int patty3_Id = mymenu.getPatty3();
-		    int top1_Id = mymenu.getTopping1();
-		    int top2_Id = mymenu.getTopping2();
-		    int top3_Id = mymenu.getTopping3();
-		    int vege1_Id = mymenu.getVege1();
-		    int vege2_Id = mymenu.getVege2();
-		    int vege3_Id = mymenu.getVege3();
+			Mymenu mymenu = mymenuList.get(i);
 
-		    MaterialsDAO materialsDao = new MaterialsDAO();
+			// mymenuList(i)の素材IDを取得
+			int id = mymenu.getId();
+			String name = mymenu.getName();
+			int price = mymenu.getPrice();
 
-		 // 素材IDから対応する素材カラムを取得
-		    Material patty1 = materialsDao.selectById(patty1_Id);
-		    Material patty2 = materialsDao.selectById(patty2_Id);
-		    Material patty3 = materialsDao.selectById(patty3_Id);
-		    Material top1 = materialsDao.selectById(top1_Id);
-		    Material top2 = materialsDao.selectById(top2_Id);
-		    Material top3 = materialsDao.selectById(top3_Id);
-		    Material vege1 = materialsDao.selectById(vege1_Id);
-		    Material vege2 = materialsDao.selectById(vege2_Id);
-		    Material vege3 = materialsDao.selectById(vege3_Id);
+			int patty1_Id = mymenu.getPatty1();
+			int patty2_Id = mymenu.getPatty2();
+			int patty3_Id = mymenu.getPatty3();
+			int top1_Id = mymenu.getTopping1();
+			int top2_Id = mymenu.getTopping2();
+			int top3_Id = mymenu.getTopping3();
+			int vege1_Id = mymenu.getVege1();
+			int vege2_Id = mymenu.getVege2();
+			int vege3_Id = mymenu.getVege3();
 
-		    // マップにメニュー情報・各素材情報を格納
-		    Map<String, Object> map = new HashMap<>();
-		    
-		    map.put("id",id);
-		    map.put("menu", mymenu);
-		    map.put("name", name);
-		    map.put("price", price);
-		    map.put("patty1", patty1);
-		    map.put("patty2", patty2);
-		    map.put("patty3", patty3);
-		    map.put("top1", top1);
-		    map.put("top2", top2);
-		    map.put("top3", top3);
-		    map.put("vege1", vege1);
-		    map.put("vege2", vege2);
-		    map.put("vege3", vege3);
+			MaterialsDAO materialsDao = new MaterialsDAO();
 
-		    viewList.add(map);
+			// 素材IDから対応する素材カラムを取得
+			Material patty1 = materialsDao.selectById(patty1_Id);
+			Material patty2 = materialsDao.selectById(patty2_Id);
+			Material patty3 = materialsDao.selectById(patty3_Id);
+			Material top1 = materialsDao.selectById(top1_Id);
+			Material top2 = materialsDao.selectById(top2_Id);
+			Material top3 = materialsDao.selectById(top3_Id);
+			Material vege1 = materialsDao.selectById(vege1_Id);
+			Material vege2 = materialsDao.selectById(vege2_Id);
+			Material vege3 = materialsDao.selectById(vege3_Id);
+
+			// マップにメニュー情報・各素材情報を格納
+			Map<String, Object> map = new HashMap<>();
+
+			map.put("id", id);
+			map.put("menu", mymenu);
+			map.put("name", name);
+			map.put("price", price);
+			map.put("patty1", patty1);
+			map.put("patty2", patty2);
+			map.put("patty3", patty3);
+			map.put("top1", top1);
+			map.put("top2", top2);
+			map.put("top3", top3);
+			map.put("vege1", vege1);
+			map.put("vege2", vege2);
+			map.put("vege3", vege3);
+
+			viewList.add(map);
 		}
 
 		// リクエストスコープに格納する
 		request.setAttribute("menus", viewList);
 
-
-		//マイメニュー一覧ページにフォワードする
+		// マイメニュー一覧ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/view_mymenu.jsp");
 		dispatcher.forward(request, response);
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
