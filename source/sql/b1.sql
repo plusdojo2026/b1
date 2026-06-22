@@ -79,7 +79,7 @@ VALUES
 	('バンズ上', 1, 60, '/b1/images/hamburger/buns_top.png', 3, 1),
 	('バンズ下', 1, 60, '/b1/images/hamburger/buns_bottom.png', 3, 1),
     ('ビーフ', 2, 300, '/b1/images/hamburger/beef.png', 22, 0),
-    ('チキン', 2, 300, '/b1/images/hamburger/beef.png', 22, 0),
+    ('チキン', 2, 300, '/b1/images/hamburger/chicken.png', 22, 0),
     ('チーズ', 3, 150, '/b1/images/hamburger/cheese.png', 8, 0),
     ('ベーコン', 3, 180, '/b1/images/hamburger/bacon.png', 10, 0),
     ('エッグ', 3, 100, '/b1/images/hamburger/egg.png', 10, 0),
