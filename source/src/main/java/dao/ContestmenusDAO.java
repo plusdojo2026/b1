@@ -35,7 +35,8 @@ public class ContestmenusDAO {
 	                rs.getInt("id"),
 	                rs.getString("name"),
 	                rs.getInt("user_id"),
-	                rs.getInt("buns"),
+	                rs.getInt("buns1"),
+	                rs.getInt("buns2"),
 	                rs.getInt("patty1"),
 	                rs.getInt("patty2"),
 	                rs.getInt("patty3"),
@@ -96,7 +97,8 @@ public class ContestmenusDAO {
 	                rs.getInt("id"),
 	                rs.getString("name"),
 	                rs.getInt("user_id"),
-	                rs.getInt("buns"),
+	                rs.getInt("buns1"),
+	                rs.getInt("buns2"),
 	                rs.getInt("patty1"),
 	                rs.getInt("patty2"),
 	                rs.getInt("patty3"),
@@ -159,7 +161,8 @@ public class ContestmenusDAO {
 						rs.getInt("id"),
                         rs.getString("name"),
                         rs.getInt("user_id"),
-                        rs.getInt("buns"),
+                        rs.getInt("buns1"),
+                        rs.getInt("buns2"),
                         rs.getInt("patty1"),
                         rs.getInt("patty2"),
                         rs.getInt("patty3"),
@@ -229,7 +232,8 @@ public class ContestmenusDAO {
 						rs.getInt("id"),
                         rs.getString("name"),
                         rs.getInt("user_id"),
-                        rs.getInt("buns"),
+                        rs.getInt("buns1"),
+                        rs.getInt("buns2"),
                         rs.getInt("patty1"),
                         rs.getInt("patty2"),
                         rs.getInt("patty3"),
@@ -301,7 +305,8 @@ public class ContestmenusDAO {
 				ps.setString(1, "");
 			}
             ps.setInt(2, contestmenu.getUser_id());
-            ps.setInt(3, contestmenu.getBuns());
+            ps.setInt(3, contestmenu.getBuns1());
+            ps.setInt(3, contestmenu.getBuns2());
             ps.setInt(4, contestmenu.getPatty1());
             ps.setInt(5, contestmenu.getPatty2());
             ps.setInt(6, contestmenu.getPatty3());
@@ -371,7 +376,8 @@ public class ContestmenusDAO {
 				ps.setString(1, "");
 			}
 			ps.setInt(2, contestmenu.getUser_id());
-            ps.setInt(3, contestmenu.getBuns());
+            ps.setInt(3, contestmenu.getBuns1());
+            ps.setInt(3, contestmenu.getBuns2());
             ps.setInt(4, contestmenu.getPatty1());
             ps.setInt(5, contestmenu.getPatty2());
             ps.setInt(6, contestmenu.getPatty3());
@@ -451,5 +457,133 @@ public class ContestmenusDAO {
 
 		// 結果を返す
 		return result;
+	}
+	
+	// コンテストIDからユーザー限定のリストを返す
+	public List<Contestmenu> selectByContestId_User(int contest_id) {
+	    Connection conn = null;
+	    List<Contestmenu> contestmenulist = new ArrayList<>();
+
+	    try {
+	        Class.forName("com.mysql.cj.jdbc.Driver");
+
+	        conn = DriverManager.getConnection(
+	            "jdbc:mysql://localhost:3306/b1?characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9",
+	            "root", "password"
+	        );
+
+	        String sql = "SELECT * FROM contestmenus WHERE contest_id = ? AND user_id != 1 ORDER BY id";
+	        PreparedStatement ps = conn.prepareStatement(sql);
+
+	        ps.setInt(1, contest_id);
+
+	        ResultSet rs = ps.executeQuery();
+
+	        while (rs.next()) {
+	            Contestmenu contestmenus = new Contestmenu(
+	                rs.getInt("id"),
+	                rs.getString("name"),
+	                rs.getInt("user_id"),
+	                rs.getInt("buns1"),
+	                rs.getInt("buns2"),
+	                rs.getInt("patty1"),
+	                rs.getInt("patty2"),
+	                rs.getInt("patty3"),
+	                rs.getInt("vege1"),
+	                rs.getInt("vege2"),
+	                rs.getInt("vege3"),
+	                rs.getInt("topping1"),
+	                rs.getInt("topping2"),
+	                rs.getInt("topping3"),
+	                rs.getInt("sauce"),
+	                rs.getInt("price"),
+	                rs.getInt("contest_id"),
+	                rs.getTimestamp("created_at").toLocalDateTime(),
+	                rs.getTimestamp("updated_at").toLocalDateTime()
+	            );
+	            contestmenulist.add(contestmenus);
+	        }
+
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	        // ここで null にしない！空リストのまま返す
+	    } finally {
+	        if (conn != null) {
+	            try { conn.close(); } catch (SQLException e) {}
+	        }
+	    }
+
+	    return contestmenulist;  // ← 空でも絶対 null にならない
+	}
+	
+	// コンテストIDから店主限定のリストを返す
+	public List<Contestmenu> selectByContestId_Admin(int contest_id) {
+		Connection conn = null;
+		List<Contestmenu> contestmenulist = new ArrayList<Contestmenu>();
+
+		try {
+			// JDBCドライバを読み込む
+			Class.forName("com.mysql.cj.jdbc.Driver");
+
+			// データベースに接続する
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/b1?"
+					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
+					"root", "password");
+
+			// SQL文を準備する
+			String sql = "SELECT * FROM contestmenus WHERE contest_id = ? AND user_id = 1 ORDER BY id";
+			PreparedStatement ps = conn.prepareStatement(sql);
+			
+			ps.setInt(1,contest_id);
+			
+
+			// SQL文を実行し、結果表を取得する
+			ResultSet rs = ps.executeQuery();
+
+			// 結果表をコレクションにコピーする
+			while (rs.next()) {
+				Contestmenu contestmenus = new Contestmenu(
+						rs.getInt("id"),
+                        rs.getString("name"),
+                        rs.getInt("user_id"),
+                        rs.getInt("buns1"),
+                        rs.getInt("buns2"),
+                        rs.getInt("patty1"),
+                        rs.getInt("patty2"),
+                        rs.getInt("patty3"),
+                        rs.getInt("vege1"),
+                        rs.getInt("vege2"),
+                        rs.getInt("vege3"),
+                        rs.getInt("topping1"),
+                        rs.getInt("topping2"),
+                        rs.getInt("topping3"),
+                        rs.getInt("sauce"),
+                        rs.getInt("price"),
+                        rs.getInt("contest_id"),
+                        rs.getTimestamp("created_at").toLocalDateTime(),
+                        rs.getTimestamp("updated_at").toLocalDateTime()
+                );
+				contestmenulist.add(contestmenus);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			contestmenulist = null;
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			contestmenulist = null;
+		} finally {
+			// データベースを切断
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+					contestmenulist = null;
+				}
+			}
+		}
+
+		// 結果を返す
+		return contestmenulist;
 	}
 }
