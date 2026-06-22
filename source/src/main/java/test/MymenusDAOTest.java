@@ -19,7 +19,8 @@ public class MymenusDAOTest {
             System.out.println("ID：" + m.getId());
             System.out.println("名前：" + m.getName());
             System.out.println("ユーザーID：" + m.getUser_id());
-            System.out.println("バンズ：" + m.getBuns());
+            System.out.println("バンズ：" + m.getBuns1());
+            System.out.println("バンズ：" + m.getBuns2());
             System.out.println("パティ1：" + m.getPatty1());
             System.out.println("パティ2：" + m.getPatty2());
             System.out.println("パティ3：" + m.getPatty3());
@@ -65,7 +66,7 @@ public class MymenusDAOTest {
         Mymenu ins = new Mymenu(
                 0,
                 "テストマイメニュー",
-                1,      // user_id
+                1,1,      // user_id
                 1,
                 1, 1, 1,
                 1, 1, 1,
