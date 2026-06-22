@@ -18,6 +18,8 @@ public class MymenuEditServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// マイメニュー編集ページにフォワードする
+		
+		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/edit_sim_mymenu.jsp");
 		dispatcher.forward(request, response);
 	}
