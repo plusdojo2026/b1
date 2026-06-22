@@ -18,7 +18,8 @@ public class MenusDAOTest {
             System.out.println("ID：" + m.getId());
             System.out.println("名前：" + m.getName());
             System.out.println("画像：" + m.getImage());
-            System.out.println("バンズ：" + m.getBuns());
+            System.out.println("バンズ1：" + m.getBuns1());
+            System.out.println("バンズ2：" + m.getBuns2());
             System.out.println("パティ1：" + m.getPatty1());
             System.out.println("パティ2：" + m.getPatty2());
             System.out.println("パティ3：" + m.getPatty3());
@@ -101,6 +102,7 @@ public class MenusDAOTest {
                 "テストメニュー",
                 "test.png",
                 1,
+                0,
                 1,
                 0,
                 0,
@@ -136,7 +138,8 @@ public class MenusDAOTest {
                     up.getId(),
                     "更新メニュー",
                     "update.png",
-                    up.getBuns(),
+                    up.getBuns1(),
+                    up.getBuns2(),
                     up.getPatty1(),
                     up.getPatty2(),
                     up.getPatty3(),

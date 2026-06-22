@@ -7,6 +7,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import dao.UsersDAO;
+import dto.LoginUser;
+import dto.User;
 
 // 新規会員登録画面の遷移およびバリデーションを制御するServlet
 @WebServlet("/regist_user")
@@ -60,6 +65,27 @@ public class UserRegistServlet extends HttpServlet {
         }
 
         // TODO: ここでデータベースへの会員登録（Insert）処理を実行
+        //DTO作成
+        User user = new User(
+        		0,     //id自動採番
+        	    phone, //電話番号
+        	    pass,    
+        	    name,  //ユーザー名
+        		0,  //ランクID
+        		"bacon.png", //ここにアイコンまだない
+        		0,    //vote
+        		0,    //levelup_menu
+        		null,
+        		null
+        		);
+        		
+        UsersDAO dao  = new UsersDAO();
+        //boolean result = dao.insert(user);  
+        dao.insert(user);   // 戻り値を見ない
+     
+     // 登録成功後にログイン状態にする
+        HttpSession session = request.getSession();
+        session.setAttribute("loginUser", new LoginUser(user.getId()));
         
         // 登録成功後はログイン画面、またはマイデータ画面へ遷移（ここでは一旦mydataへ）
         response.sendRedirect(request.getContextPath() + "/mydata");

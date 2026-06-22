@@ -8,7 +8,8 @@ public class Menu implements Serializable {
     private int id;
     private String name;
     private String image;
-    private int buns;
+    private int buns1;
+    private int buns2;
     private int patty1;
     private int patty2;
     private int patty3;
@@ -28,7 +29,8 @@ public class Menu implements Serializable {
         this.id = 0;
         this.name = "";
         this.image = "";
-        this.buns = 0;
+        this.buns1 = 0;
+        this.buns2 = 0;
         this.patty1 = 0;
         this.patty2 = 0;
         this.patty3 = 0;
@@ -49,7 +51,8 @@ public class Menu implements Serializable {
             int id,
             String name,
             String image,
-            int buns,
+            int buns1,
+            int buns2,
             int patty1,
             int patty2,
             int patty3,
@@ -68,7 +71,8 @@ public class Menu implements Serializable {
         this.id = id;
         this.name = name;
         this.image = image;
-        this.buns = buns;
+        this.buns1 = buns1;
+        this.buns2 = buns2;
         this.patty1 = patty1;
         this.patty2 = patty2;
         this.patty3 = patty3;
@@ -90,7 +94,8 @@ public class Menu implements Serializable {
     public int getId() { return id; }
     public String getName() { return name; }
     public String getImage() { return image; }
-    public int getBuns() { return buns; }
+    public int getBuns1() { return buns1; }
+    public int getBuns2() { return buns2; }
     public int getPatty1() { return patty1; }
     public int getPatty2() { return patty2; }
     public int getPatty3() { return patty3; }
@@ -111,7 +116,8 @@ public class Menu implements Serializable {
     public void setId(int id) { this.id = id; }
     public void setName(String name) { this.name = name; }
     public void setImage(String image) { this.image = image; }
-    public void setBuns(int buns) { this.buns = buns; }
+    public void setBuns1(int buns1) { this.buns1 = buns1; }
+    public void setBuns2(int buns2) { this.buns2 = buns2; }
     public void setPatty1(int patty1) { this.patty1 = patty1; }
     public void setPatty2(int patty2) { this.patty2 = patty2; }
     public void setPatty3(int patty3) { this.patty3 = patty3; }
