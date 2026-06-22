@@ -1,8 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c"
+    uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="dto.Mymenu" %>
-<%
-Mymenu mymenu = (Mymenu)request.getAttribute("mymenu");
-%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,7 +18,7 @@ Mymenu mymenu = (Mymenu)request.getAttribute("mymenu");
 
 <main class="mymenuregist">
 
-        <h2>¥5,000</h2>
+        
 		<div class="illustration-stage">
 
             <div class="burger">
@@ -44,13 +43,14 @@ Mymenu mymenu = (Mymenu)request.getAttribute("mymenu");
 
 		</div>
 
-        <form class="choice_material" method="post" action="/b1/mymenuregist">        
+        <form class="choice_material" method="post" action="/b1/mymenuedit">  
+        	  
             <input type="hidden" name="bunstop" value="1">
             <input type="hidden" name="bunsbottom" value="2">
 
             <div class="item_material">
                 <h3>パティ1</h3>
-                <input type="radio" name="patty1" value="0" id="patty1_null" ${mymenu.patty1 == 0 ? 'checked' : ''}>
+                <input type="radio" name="patty1" value="0" id="patty1_null" ${mymenu.patty1 != null && mymenu.patty1 == 0 ? 'checked' : ''}>
                     <label for="patty1_null">なし</label>
 
                 <input type="radio" name="patty1" value="3" id="patty1_beef" ${mymenu.patty1 == 3 ? 'checked' : ''}>
@@ -63,7 +63,7 @@ Mymenu mymenu = (Mymenu)request.getAttribute("mymenu");
 
             <div class="item_material">
                 <h3>トッピング1</h3>
-                <input type="radio" name="topping1" value="0" id="topping1_null" ${mymenu.topping1 == 0 ? 'checked' : ''}>
+                <input type="radio" name="topping1" value="0" id="topping1_null" ${mymenu.topping1 != null && mymenu.topping1 == 0 ? 'checked' : ''}>
                     <label for="topping1_null">なし</label>
 
                 <input type="radio" name="topping1" value="5" id="topping1_cheese" ${mymenu.topping1 == 5 ? 'checked' : ''}>
@@ -79,7 +79,7 @@ Mymenu mymenu = (Mymenu)request.getAttribute("mymenu");
         
             <div class="item_material">
             <h3>野菜1</h3>
-                <input type="radio" name="vegetable1" value="0" id="vegetable1_null" ${mymenu.vege1 == 0 ? 'checked' : ''}>
+                <input type="radio" name="vegetable1" value="0" id="vegetable1_null" ${mymenu.vege1 != null && mymenu.vege1 == 0 ? 'checked' : ''}>
                     <label for="vegetable1_null">なし</label>
 
                 <input type="radio" name="vegetable1" value="8" id="vegetable1_lettuce" ${mymenu.vege1 == 8 ? 'checked' : ''}>
@@ -96,7 +96,7 @@ Mymenu mymenu = (Mymenu)request.getAttribute("mymenu");
 
             <div class="item_material">
                 <h3>パティ2</h3>
-                <input type="radio" name="patty2" value="0" id="patty2_null" ${mymenu.patty2 == 0 ? 'checked' : ''}>
+                <input type="radio" name="patty2" value="0" id="patty2_null" ${mymenu.patty2 != null && mymenu.patty2 == 0 ? 'checked' : ''}>
                     <label for="patty2_null">なし</label>
 
                 <input type="radio" name="patty2" value="3" id="patty2_beef" ${mymenu.patty2 == 3 ? 'checked' : ''}>
@@ -109,7 +109,7 @@ Mymenu mymenu = (Mymenu)request.getAttribute("mymenu");
 
             <div class="item_material">
                 <h3>トッピング2</h3>
-                <input type="radio" name="topping2" value="0" id="topping2_null"  ${mymenu.topping2 == 0 ? 'checked' : ''}>
+                <input type="radio" name="topping2" value="0" id="topping2_null"  ${mymenu.topping2 != null && mymenu.topping2 == 0 ? 'checked' : ''}>
                     <label for="topping2_null">なし</label>
 
                 <input type="radio" name="topping2" value="5" id="topping2_cheese" ${mymenu.topping2 == 5 ? 'checked' : ''}>
@@ -125,7 +125,7 @@ Mymenu mymenu = (Mymenu)request.getAttribute("mymenu");
 
             <div class="item_material">
                 <h3>野菜2</h3>
-                <input type="radio" name="vegetable2" value="0" id="vegetable2_null" ${mymenu.vege2 == 0 ? 'checked' : ''}>
+                <input type="radio" name="vegetable2" value="0" id="vegetable2_null" ${mymenu.vege2 != null && mymenu.vege2 == 0 ? 'checked' : ''}>
                     <label for="vegetable2_null">なし</label>
 
                 <input type="radio" name="vegetable2" value="8" id="vegetable2_lettuce" ${mymenu.vege2 == 8 ? 'checked' : ''}>
@@ -142,7 +142,7 @@ Mymenu mymenu = (Mymenu)request.getAttribute("mymenu");
 
             <div class="item_material">
                 <h3>パティ3</h3>
-                <input type="radio" name="patty3" value="0" id="patty3_null" ${mymenu.patty3 == 0 ? 'checked' : ''}>
+                <input type="radio" name="patty3" value="0" id="patty3_null" ${mymenu.patty3 != null && mymenu.patty3 == 0 ? 'checked' : ''}>
                     <label for="patty3_null">なし</label>
 
                 <input type="radio" name="patty3" value="3" id="patty3_beef" ${mymenu.patty3 == 3 ? 'checked' : ''}>
@@ -155,7 +155,7 @@ Mymenu mymenu = (Mymenu)request.getAttribute("mymenu");
 
             <div class="item_material">
                 <h3>トッピング3</h3>
-                <input type="radio" name="topping3" value="0" id="topping3_null" ${mymenu.topping3 == 0 ? 'checked' : ''}>
+                <input type="radio" name="topping3" value="0" id="topping3_null" ${mymenu.topping3 != null && mymenu.topping3 == 0 ? 'checked' : ''}>
                     <label for="topping3_null">なし</label>
 
                 <input type="radio" name="topping3" value="5" id="topping3_cheese" ${mymenu.topping3 == 5 ? 'checked' : ''}>
@@ -171,7 +171,7 @@ Mymenu mymenu = (Mymenu)request.getAttribute("mymenu");
 
             <div class="item_material">
                 <h3>野菜3</h3>
-                <input type="radio" name="vegetable3" value="0" id="vegetable3_null" ${mymenu.vege3 == 0 ? 'checked' : ''}>
+                <input type="radio" name="vegetable3" value="0" id="vegetable3_null" ${mymenu.vege3 != null && mymenu.vege3 == 0 ? 'checked' : ''}>
                     <label for="vegetable3_null">なし</label>
 
                 <input type="radio" name="vegetable3" value="8" id="vegetable3_lettuce" ${mymenu.vege3 == 8 ? 'checked' : ''}>
@@ -198,13 +198,14 @@ Mymenu mymenu = (Mymenu)request.getAttribute("mymenu");
             </div>
             <br>
             <div>
-            	<input type="hidden" name="price" value="5000">
+            	<input type="hidden" name="price" value="${mymenu.price}">
             </div>
 
             <h3>メニュー名</h3>
+            <input type="hidden" name="id" value="${mymenu.id}">
             <input type="text" name="name" value="${mymenu.name}">
 
-            <input type="submit" value="このメニューをマイメニューに追加する">
+            <input type="submit" value="マイメニューを更新する">
             <p></p>
             <span class="space">　</span>
         </form>
@@ -277,7 +278,7 @@ Mymenu mymenu = (Mymenu)request.getAttribute("mymenu");
 	    top.style.left = "0";
 	}
 
-	window.addEventListener("load", stackIngredients);
+	
 	
 	window.addEventListener("load", () => {
 	    document.querySelectorAll("input[type=radio]:checked").forEach(radio => {
@@ -285,6 +286,8 @@ Mymenu mymenu = (Mymenu)request.getAttribute("mymenu");
 	        const [sectionName, ingredient] = id.split("_");
 
 	        const section = document.querySelector("." + sectionName);
+
+	        if (!section) return;
 
 	        if (ingredient === "null") {
 	            section.innerHTML = "";
@@ -294,7 +297,12 @@ Mymenu mymenu = (Mymenu)request.getAttribute("mymenu");
 	        }
 	    });
 
-	    stackIngredients();
+	    // ★ここが重要：2回待つ
+	    requestAnimationFrame(() => {
+	        requestAnimationFrame(() => {
+	            stackIngredients();
+	        });
+	    });
 	});
 
 
@@ -308,13 +316,13 @@ Mymenu mymenu = (Mymenu)request.getAttribute("mymenu");
 	        console.log("sectionName:", sectionName);
 	        console.log("ingredient:", ingredient);
 
-	        const section = document.querySelector(`.${sectionName}`);
+	        const section = document.querySelector(`.\${sectionName}`);
 
 	        if (ingredient === "null") {
 	            section.innerHTML = "";
 	        } else {
 	            section.innerHTML = `
-	                <img src="/b1/images/hamburger/${ingredient}.png" data-type="${ingredient}">
+	                <img src="/b1/images/hamburger/\${ingredient}.png" data-type="\${ingredient}">
 	            `;
 	        }
 
