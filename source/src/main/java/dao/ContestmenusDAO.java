@@ -290,12 +290,12 @@ public class ContestmenusDAO {
 			// SQL文を準備する
 			String sql =
 	                "INSERT INTO contestmenus (" +
-	                "name,user_id,buns," +
+	                "name,user_id,buns1,buns2," +
 	                "patty1,patty2,patty3," +
 	                "vege1,vege2,vege3," +
 	                "topping1,topping2,topping3," +
 	                "sauce,price,contest_id" +
-	                ") VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+	                ") VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 			PreparedStatement ps = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
@@ -306,19 +306,19 @@ public class ContestmenusDAO {
 			}
             ps.setInt(2, contestmenu.getUser_id());
             ps.setInt(3, contestmenu.getBuns1());
-            ps.setInt(3, contestmenu.getBuns2());
-            ps.setInt(4, contestmenu.getPatty1());
-            ps.setInt(5, contestmenu.getPatty2());
-            ps.setInt(6, contestmenu.getPatty3());
-            ps.setInt(7, contestmenu.getVege1());
-            ps.setInt(8, contestmenu.getVege2());
-            ps.setInt(9, contestmenu.getVege3());
-            ps.setInt(10, contestmenu.getTopping1());
-            ps.setInt(11, contestmenu.getTopping2());
-            ps.setInt(12, contestmenu.getTopping3());
-            ps.setInt(13, contestmenu.getSauce());
-            ps.setInt(14, contestmenu.getPrice());
-            ps.setInt(15, contestmenu.getContest_id());
+            ps.setInt(4, contestmenu.getBuns2());
+            ps.setInt(5, contestmenu.getPatty1());
+            ps.setInt(6, contestmenu.getPatty2());
+            ps.setInt(7, contestmenu.getPatty3());
+            ps.setInt(8, contestmenu.getVege1());
+            ps.setInt(9, contestmenu.getVege2());
+            ps.setInt(10, contestmenu.getVege3());
+            ps.setInt(11, contestmenu.getTopping1());
+            ps.setInt(12, contestmenu.getTopping2());
+            ps.setInt(13, contestmenu.getTopping3());
+            ps.setInt(14, contestmenu.getSauce());
+            ps.setInt(15, contestmenu.getPrice());
+            ps.setInt(16, contestmenu.getContest_id());
 
 			// SQL文を実行する
 			if (ps.executeUpdate() == 1) {
@@ -360,7 +360,7 @@ public class ContestmenusDAO {
 			// SQL文を準備する
 			String sql =
 	                "UPDATE contestmenus SET " +
-	                "name=?,user_id=?,buns=?," +
+	                "name=?,user_id=?,buns1=?,buns2=?," +
 	                "patty1=?,patty2=?,patty3=?," +
 	                "vege1=?,vege2=?,vege3=?," +
 	                "topping1=?,topping2=?,topping3=?," +
@@ -377,20 +377,20 @@ public class ContestmenusDAO {
 			}
 			ps.setInt(2, contestmenu.getUser_id());
             ps.setInt(3, contestmenu.getBuns1());
-            ps.setInt(3, contestmenu.getBuns2());
-            ps.setInt(4, contestmenu.getPatty1());
-            ps.setInt(5, contestmenu.getPatty2());
-            ps.setInt(6, contestmenu.getPatty3());
-            ps.setInt(7, contestmenu.getVege1());
-            ps.setInt(8, contestmenu.getVege2());
-            ps.setInt(9, contestmenu.getVege3());
-            ps.setInt(10, contestmenu.getTopping1());
-            ps.setInt(11, contestmenu.getTopping2());
-            ps.setInt(12, contestmenu.getTopping3());
-            ps.setInt(13, contestmenu.getSauce());
-            ps.setInt(14, contestmenu.getPrice());
-            ps.setInt(15, contestmenu.getContest_id());
-            ps.setInt(16, contestmenu.getId());
+            ps.setInt(4, contestmenu.getBuns2());
+            ps.setInt(5, contestmenu.getPatty1());
+            ps.setInt(6, contestmenu.getPatty2());
+            ps.setInt(7, contestmenu.getPatty3());
+            ps.setInt(8, contestmenu.getVege1());
+            ps.setInt(9, contestmenu.getVege2());
+            ps.setInt(10, contestmenu.getVege3());
+            ps.setInt(11, contestmenu.getTopping1());
+            ps.setInt(12, contestmenu.getTopping2());
+            ps.setInt(13, contestmenu.getTopping3());
+            ps.setInt(14, contestmenu.getSauce());
+            ps.setInt(15, contestmenu.getPrice());
+            ps.setInt(16, contestmenu.getContest_id());
+            ps.setInt(17, contestmenu.getId());
 
 			// SQL文を実行する
 			if (ps.executeUpdate() == 1) {
