@@ -154,37 +154,72 @@ CREATE TABLE mymenus (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(20) NOT NULL,
     user_id INT DEFAULT 0,
+    
     buns1 INT DEFAULT 0,
     buns2 INT DEFAULT 0,
+    
     patty1 INT DEFAULT 0,
     patty2 INT DEFAULT 0,
     patty3 INT DEFAULT 0,
+    
     vege1 INT DEFAULT 0,
     vege2 INT DEFAULT 0,
     vege3 INT DEFAULT 0,
+    
     topping1 INT DEFAULT 0,
     topping2 INT DEFAULT 0,
     topping3 INT DEFAULT 0,
+    
     sauce INT DEFAULT 0,
     price INT DEFAULT 0,
+    
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
-/* mymenusダミーデータ */
+/* mymenusダミーデータ（修正版） */
 INSERT INTO mymenus
-    (id,name, user_id, buns1,buns2, patty1, patty2, patty3, vege1, vege2, vege3, topping1, topping2, topping3, sauce, price)
+    (id, name, user_id, buns1, buns2, patty1, patty2, patty3, vege1, vege2, vege3, topping1, topping2, topping3, sauce, price)
 VALUES
-    (0,'', 0,0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
-INSERT INTO mymenus
-    (name, user_id, buns1,buns2, patty1, patty2, patty3, vege1, vege2, vege3, topping1, topping2, topping3, sauce, price)
-VALUES
-    ('マイダブルチーズ', 1, 1,2, 3, 0, 4, 7, 0, 0, 0, 10, 0, 12, 800),
-    ('ヘルシーミックス', 2, 1,2, 4, 3, 0, 6, 5, 6, 0, 0, 0, 13, 500),
-    ('ベーコンマシマシ', 3, 1,2, 3, 0, 0, 7, 0, 0, 10, 10, 10, 0, 900),
-    ('チキンスパイシー', 4, 1,2, 3, 4, 0, 0, 0, 0, 8, 0, 10, 11, 720),
-    ('よくばりトリプル', 5, 1,2, 3, 0, 4, 7, 5, 0, 9, 9, 0, 12, 1100);
+    (0, '', 0, 1, 2, 3, 3, 3, 8, 8, 8, 5, 5, 5, 0, 0);
 
+INSERT INTO mymenus
+    (name, user_id, buns1, buns2, patty1, patty2, patty3, vege1, vege2, vege3, topping1, topping2, topping3, sauce, price)
+VALUES
+    ('マイダブルチーズ', 1,
+        1, 2,      -- buns
+        3, 0, 4,   -- patty1=3, patty2=0, patty3=4
+        8, 0, 0,   -- vege1=8
+        5, 0, 7,   -- topping1=5, topping3=7
+        12, 800),
+
+    ('ヘルシーミックス', 2,
+        1, 2,
+        4, 3, 0,   -- patty
+        9, 8, 9,   -- vege
+        0, 0, 0,   -- topping
+        13, 500),
+
+    ('ベーコンマシマシ', 3,
+        1, 2,
+        3, 0, 0,   -- patty
+        8, 0, 0,   -- vege
+        6, 6, 6,   -- topping
+        0, 900),
+
+    ('チキンスパイシー', 4,
+        1, 2,
+        3, 4, 0,   -- patty
+        0, 0, 0,   -- vege
+        7, 0, 6,   -- topping
+        11, 720),
+
+    ('よくばりトリプル', 5,
+        1, 2,
+        3, 0, 4,   -- patty
+        9, 0, 10,  -- vege
+        7, 0, 5,   -- topping
+        12, 1100);
 
 /* contestmenusテーブル */
 CREATE TABLE contestmenus (

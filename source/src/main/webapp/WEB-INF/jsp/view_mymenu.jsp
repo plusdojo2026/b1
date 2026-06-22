@@ -104,12 +104,12 @@
     "use strict";
         const thickness = {
             3: 12,
-            4: 18,
+            4: 16,
             5: -2,
-            6: -6,
+            6: -4,
             7: 10,
             8: 9,
-            9: 14,
+            9: 9,
             10: 8
         };
 
@@ -120,7 +120,7 @@
 
                 const ingredients = stack.querySelectorAll("img");
 
-                let currentTop = 27;
+                let currentTop = 28;
 
                 ingredients.forEach((img, index) => {
                     const type = img.dataset.type;
