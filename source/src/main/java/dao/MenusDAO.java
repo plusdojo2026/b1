@@ -35,7 +35,8 @@ public class MenusDAO {
 	                rs.getInt("id"),
 	                rs.getString("name"),
 	                rs.getString("image"),
-	                rs.getInt("buns"),
+	                rs.getInt("buns1"),
+	                rs.getInt("buns2"),
 	                rs.getInt("patty1"),
 	                rs.getInt("patty2"),
 	                rs.getInt("patty3"),
@@ -96,7 +97,8 @@ public class MenusDAO {
 	                rs.getInt("id"),
 	                rs.getString("name"),
 	                rs.getString("image"),
-	                rs.getInt("buns"),
+	                rs.getInt("buns1"),
+	                rs.getInt("buns2"),
 	                rs.getInt("patty1"),
 	                rs.getInt("patty2"),
 	                rs.getInt("patty3"),
@@ -144,10 +146,11 @@ public class MenusDAO {
 					"root", "password");
 
 			// SQL文を準備する
-			String sql = "SELECT * FROM menus WHERE buns = ? ORDER BY id";
+			String sql = "SELECT * FROM menus WHERE buns1 = ? or buns2=? ORDER BY id";
 			PreparedStatement ps = conn.prepareStatement(sql);
 			
 			ps.setInt(1,buns);
+			ps.setInt(2,buns);
 			
 
 			// SQL文を実行し、結果表を取得する
@@ -159,7 +162,8 @@ public class MenusDAO {
 						rs.getInt("id"),
                         rs.getString("name"),
                         rs.getString("image"),
-                        rs.getInt("buns"),
+                        rs.getInt("buns1"),
+                        rs.getInt("buns2"),
                         rs.getInt("patty1"),
                         rs.getInt("patty2"),
                         rs.getInt("patty3"),
@@ -231,7 +235,8 @@ public class MenusDAO {
 						rs.getInt("id"),
                         rs.getString("name"),
                         rs.getString("image"),
-                        rs.getInt("buns"),
+                        rs.getInt("buns1"),
+                        rs.getInt("buns2"),
                         rs.getInt("patty1"),
                         rs.getInt("patty2"),
                         rs.getInt("patty3"),
@@ -305,7 +310,8 @@ public class MenusDAO {
 						rs.getInt("id"),
                         rs.getString("name"),
                         rs.getString("image"),
-                        rs.getInt("buns"),
+                        rs.getInt("buns1"),
+                        rs.getInt("buns2"),
                         rs.getInt("patty1"),
                         rs.getInt("patty2"),
                         rs.getInt("patty3"),
@@ -379,7 +385,8 @@ public class MenusDAO {
 						rs.getInt("id"),
                         rs.getString("name"),
                         rs.getString("image"),
-                        rs.getInt("buns"),
+                        rs.getInt("buns1"),
+                        rs.getInt("buns2"),
                         rs.getInt("patty1"),
                         rs.getInt("patty2"),
                         rs.getInt("patty3"),
@@ -452,7 +459,8 @@ public class MenusDAO {
 						rs.getInt("id"),
                         rs.getString("name"),
                         rs.getString("image"),
-                        rs.getInt("buns"),
+                        rs.getInt("buns1"),
+                        rs.getInt("buns2"),
                         rs.getInt("patty1"),
                         rs.getInt("patty2"),
                         rs.getInt("patty3"),
@@ -509,12 +517,13 @@ public class MenusDAO {
 			// SQL文を準備する
 			String sql =
 	                "INSERT INTO menus (" +
-	                "name,image,buns," +
+	                "name,image," +
+	                "buns1,buns2" +
 	                "patty1,patty2,patty3," +
 	                "vege1,vege2,vege3," +
 	                "topping1,topping2,topping3," +
 	                "sauce,price,judge" +
-	                ") VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+	                ") VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 			PreparedStatement ps = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
@@ -528,19 +537,20 @@ public class MenusDAO {
 			} else {
 				ps.setString(2, "");
 			}
-            ps.setInt(3, menu.getBuns());
-            ps.setInt(4, menu.getPatty1());
-            ps.setInt(5, menu.getPatty2());
-            ps.setInt(6, menu.getPatty3());
-            ps.setInt(7, menu.getVege1());
-            ps.setInt(8, menu.getVege2());
-            ps.setInt(9, menu.getVege3());
-            ps.setInt(10, menu.getTopping1());
-            ps.setInt(11, menu.getTopping2());
-            ps.setInt(12, menu.getTopping3());
-            ps.setInt(13, menu.getSauce());
-            ps.setInt(14, menu.getPrice());
-            ps.setInt(15, menu.getJudge());
+            ps.setInt(3, menu.getBuns1());
+            ps.setInt(4, menu.getBuns2());
+            ps.setInt(5, menu.getPatty1());
+            ps.setInt(6, menu.getPatty2());
+            ps.setInt(7, menu.getPatty3());
+            ps.setInt(8, menu.getVege1());
+            ps.setInt(9, menu.getVege2());
+            ps.setInt(10, menu.getVege3());
+            ps.setInt(11, menu.getTopping1());
+            ps.setInt(12, menu.getTopping2());
+            ps.setInt(13, menu.getTopping3());
+            ps.setInt(14, menu.getSauce());
+            ps.setInt(15, menu.getPrice());
+            ps.setInt(16, menu.getJudge());
 
 			// SQL文を実行する
 			if (ps.executeUpdate() == 1) {
@@ -582,7 +592,8 @@ public class MenusDAO {
 			// SQL文を準備する
 			String sql =
 	                "UPDATE menus SET " +
-	                "name=?,image=?,buns=?," +
+	                "name=?,image=?," +
+	                "buns1=?,buns2=?," +
 	                "patty1=?,patty2=?,patty3=?," +
 	                "vege1=?,vege2=?,vege3=?," +
 	                "topping1=?,topping2=?,topping3=?," +
@@ -602,20 +613,21 @@ public class MenusDAO {
 			} else {
 				ps.setString(2, "");
 			}
-			ps.setInt(3, menu.getBuns());
-            ps.setInt(4, menu.getPatty1());
-            ps.setInt(5, menu.getPatty2());
-            ps.setInt(6, menu.getPatty3());
-            ps.setInt(7, menu.getVege1());
-            ps.setInt(8, menu.getVege2());
-            ps.setInt(9, menu.getVege3());
-            ps.setInt(10, menu.getTopping1());
-            ps.setInt(11, menu.getTopping2());
-            ps.setInt(12, menu.getTopping3());
-            ps.setInt(13, menu.getSauce());
-            ps.setInt(14, menu.getPrice());
-            ps.setInt(15, menu.getJudge());
-            ps.setInt(16, menu.getId());
+			ps.setInt(3, menu.getBuns1());
+			ps.setInt(4, menu.getBuns2());
+            ps.setInt(5, menu.getPatty1());
+            ps.setInt(6, menu.getPatty2());
+            ps.setInt(7, menu.getPatty3());
+            ps.setInt(8, menu.getVege1());
+            ps.setInt(9, menu.getVege2());
+            ps.setInt(10, menu.getVege3());
+            ps.setInt(11, menu.getTopping1());
+            ps.setInt(12, menu.getTopping2());
+            ps.setInt(13, menu.getTopping3());
+            ps.setInt(14, menu.getSauce());
+            ps.setInt(15, menu.getPrice());
+            ps.setInt(16, menu.getJudge());
+            ps.setInt(17, menu.getId());
             
 			// SQL文を実行する
 			if (ps.executeUpdate() == 1) {
