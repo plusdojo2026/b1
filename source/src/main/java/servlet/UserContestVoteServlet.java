@@ -156,9 +156,13 @@ public class UserContestVoteServlet extends HttpServlet {
         }
         
         // リクエストパラメータを取得
+        int user_id = loginUser.getId();
+        
+        ContestsDAO cDao = new ContestsDAO();
+        Contest contest = cDao.selectByNowDate();
+        int contest_id = contest.getId();
+        
         request.setCharacterEncoding("UTF-8");
-        int user_id = Integer.parseInt(request.getParameter("user_id"));
-        int contest_id = Integer.parseInt(request.getParameter("contest_id"));
 		int cmenu_id = Integer.parseInt(request.getParameter("cmenu_id"));
 		
 		// ログインユーザーの投票数を取得
