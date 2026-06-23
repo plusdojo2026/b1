@@ -84,12 +84,11 @@ public class JoinContestViewServlet extends HttpServlet {
 		    int vege3_Id = contestmenu.getVege3();
 		    int contest_Id = contestmenu.getContest_id();
 
-		 // ★ contest_id が 0 のメニューはスキップ
+		 // contest_id が 0 のメニューはスキップ
 		 if (contest_Id == 0) {
 		     continue;
 		 }
-
-
+		 
 		    MaterialsDAO materialsDao = new MaterialsDAO();
 
 		 // 素材IDから対応する素材カラムを取得
