@@ -45,7 +45,7 @@
     </form>
 
     <!-- 会员情報を削除するボタン -->
-    <button type="button" class="btn-large btn-delete" onclick="location.href='${pageContext.request.contextPath}/delete_user'">会員情報を削除する</button>
+   <button type="button" class="btn-large btn-delete" onclick="location.href='${pageContext.request.contextPath}/UserDeleteServlet'">会員情報を削除する</button>
 	<br>
     <!-- 変更せずに戻るリンク -->
     <div class="back-link" onclick="location.href='${pageContext.request.contextPath}/mydata'">« 変更せずに戻る</div>
