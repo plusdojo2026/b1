@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
@@ -18,46 +20,49 @@
         <h2 class="question-title">Q.今日の気分は？</h2>
         <div class="question">
 	        <div class="options-text">
-	            <p>A.パティはビーフ</p>
-	            <p>B.パティはチキン</p>
+	            <p>A.${category1}は${material11}</p>
+	            <p>B.${category1}は${material12}</p>
 	        </div>
 	
 	        <!-- 【仕様共通化】安全なコンテキストパス付きのサーブレットURLへPOST送信 -->
 	        <div class="btn-row">
-	            <input type="radio" name="answer_q1" value="A" id="q1_A">
-	            	<label for="q1_A" class="btn-opt">A.ビーフ</label>
-	            <input id="q1_B" type="radio" name="answer_q1" value="B">
-	            <label for="q1_B" class="btn-opt">B.チキン</label>
+	        	<input type="hidden" name="category1" value="${category1}">
+	            <input type="radio" name="material1" value="${material11}" id="q1_A" required>
+	            	<label for="q1_A" class="btn-opt">A.${material11}</label>
+	            <input id="q1_B" type="radio" name="material1" value="${material12}">
+	            <label for="q1_B" class="btn-opt">B.${material12}</label>
 	        </div>
         </div>
         
         <div class="question">
 	        <div class="options-text">
-	            <p>A.パティはビーフ</p>
-	            <p>B.パティはチキン</p>
+	            <p>A.${category2}は${material21}</p>
+	            <p>B.${category2}は${material22}</p>
 	        </div>
 	
 	        <!-- 【仕様共通化】安全なコンテキストパス付きのサーブレットURLへPOST送信 -->
 	        <div class="btn-row">
-	            <input type="radio" name="answer_q2" value="A" id="q2_A">
-	            	<label for="q2_A" class="btn-opt">A.ビーフ</label>
-	            <input id="q2_B" type="radio" name="answer_q2" value="B">
-	            <label for="q2_B" class="btn-opt">B.チキン</label>
+	        	<input type="hidden" name="category2" value="${category2}">
+	            <input type="radio" name="material2" value="${material21}" id="q2_A" required>
+	            	<label for="q2_A" class="btn-opt">A.${material21}</label>
+	            <input id="q2_B" type="radio" name="material2" value="${material22}">
+	            <label for="q2_B" class="btn-opt">B.${material22}</label>
 	        </div>
         </div>
         
         <div class="question">
 	        <div class="options-text">
-	            <p>A.パティはビーフ</p>
-	            <p>B.パティはチキン</p>
+	            <p>A.${category3}は${material31}</p>
+	            <p>B.${category3}は${material32}</p>
 	        </div>
 	
 	        <!-- 【仕様共通化】安全なコンテキストパス付きのサーブレットURLへPOST送信 -->
 	        <div class="btn-row">
-	            <input type="radio" name="answer_q3" value="A" id="q3_A">
-	            	<label for="q3_A" class="btn-opt">A.ビーフ</label>
-	            <input id="q3_B" type="radio" name="answer_q3" value="B">
-	            <label for="q3_B" class="btn-opt">B.チキン</label>
+	        	<input type="hidden" name="category3" value="${category3}">
+	            <input type="radio" name="material3" value="${material31}" id="q3_A" required>
+	            	<label for="q3_A" class="btn-opt">A.${material31}</label>
+	            <input id="q3_B" type="radio" name="material3" value="${material32}">
+	            <label for="q3_B" class="btn-opt">B.${material32}</label>
 	        </div>
         </div>
     <input type="submit" class="button" value="一致するメニューを診断する">

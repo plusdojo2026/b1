@@ -17,7 +17,6 @@ public class MenusDAOTest {
         for (Menu m : list) {
             System.out.println("ID：" + m.getId());
             System.out.println("名前：" + m.getName());
-            System.out.println("画像：" + m.getImage());
             System.out.println("バンズ1：" + m.getBuns1());
             System.out.println("バンズ2：" + m.getBuns2());
             System.out.println("パティ1：" + m.getPatty1());
@@ -100,7 +99,6 @@ public class MenusDAOTest {
         Menu ins = new Menu(
                 0,
                 "テストメニュー",
-                "test.png",
                 1,
                 0,
                 1,
@@ -137,7 +135,6 @@ public class MenusDAOTest {
             up = new Menu(
                     up.getId(),
                     "更新メニュー",
-                    "update.png",
                     up.getBuns1(),
                     up.getBuns2(),
                     up.getPatty1(),

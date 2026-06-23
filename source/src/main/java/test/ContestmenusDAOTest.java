@@ -13,7 +13,8 @@ public class ContestmenusDAOTest {
             System.out.println("ID：" + cm.getId());
             System.out.println("名前：" + cm.getName());
             System.out.println("ユーザーID：" + cm.getUser_id());
-            System.out.println("バンズ：" + cm.getBuns());
+            System.out.println("バンズ上：" + cm.getBuns1());
+            System.out.println("バンズ下：" + cm.getBuns2());
             System.out.println("パティ1：" + cm.getPatty1());
             System.out.println("パティ2：" + cm.getPatty2());
             System.out.println("パティ3：" + cm.getPatty3());
@@ -80,6 +81,7 @@ public class ContestmenusDAOTest {
                 "テストバーガー",
                 1,
                 2,
+                0,
                 1,
                 0,
                 0,
