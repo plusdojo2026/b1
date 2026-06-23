@@ -30,6 +30,12 @@
     <c:if test="${loginError}">
         <div class="error-txt">電話番号またはパスワードに誤りがあります。</div>
     </c:if>
+    
+        <!-- 新規登録成功 -->
+    <c:if test="${not empty sessionScope.result_message}">
+        <div class="error-txt">${sessionScope.result_message}</div>
+        <%session.removeAttribute("result_message");%>
+    </c:if>
 
         <!-- ログインフォーム -->
         <form action="${pageContext.request.contextPath}/login" method="POST">

@@ -22,8 +22,18 @@
             <div class="avatar-box">
                 <img src="${pageContext.request.contextPath}/images/mydata.png" alt="icon">
             </div>
-            <div class="user-name">ミスターバーガー</div>
-            <div class="rank-badge"><img src="/b1/images/gold.png" width="70px"></div>
+            <div class="user-name">${name}</div>
+            <div class="rank-badge">
+            	<c:if test="${rank_id == 1}">
+            		<img src="/b1/images/bronze.png" width="70px">
+            	</c:if>
+            	<c:if test="${rank_id == 2}">
+            		<img src="/b1/images/silver.png" width="70px">
+            	</c:if>
+            	<c:if test="${rank_id == 3}">
+            		<img src="/b1/images/gold.png" width="70px">
+            	</c:if>
+            </div>
         </div>
 
         <!-- 中央の植木鉢イラストエリア -->

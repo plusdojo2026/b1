@@ -63,6 +63,24 @@ public class UserRegistServlet extends HttpServlet {
             request.getRequestDispatcher("/WEB-INF/jsp/regist_user.jsp").forward(request, response);
             return;
         }
+        
+        // ユーザーネームの文字数チェック
+        if (name.length() >= 9) {
+            request.setAttribute("errorMessage", "ユーザー名は8文字以内で設定してください。");
+            request.setAttribute("userName", name);
+            request.setAttribute("phoneNumber", phone);
+            request.getRequestDispatcher("/WEB-INF/jsp/regist_user.jsp").forward(request, response);
+            return;
+        }
+        
+        // 電話番号の文字チェック
+        if (phone.length() >= 12 || !phone.matches("[0-9]+")) {
+            request.setAttribute("errorMessage", "電話番号に誤りがあります。");
+            request.setAttribute("userName", name);
+            request.setAttribute("phoneNumber", phone);
+            request.getRequestDispatcher("/WEB-INF/jsp/regist_user.jsp").forward(request, response);
+            return;
+        }
 
         // TODO: ここでデータベースへの会員登録（Insert）処理を実行
         //DTO作成
@@ -71,10 +89,10 @@ public class UserRegistServlet extends HttpServlet {
         	    phone, //電話番号
         	    pass,    
         	    name,  //ユーザー名
-        		0,  //ランクID
+        		1,  //ランクID
         		"bacon.png", //ここにアイコンまだない
-        		0,    //vote
-        		0,    //levelup_menu
+        		5,    //vote
+        		1,    //levelup_menu
         		null,
         		null
         		);
@@ -87,7 +105,10 @@ public class UserRegistServlet extends HttpServlet {
         HttpSession session = request.getSession();
         session.setAttribute("loginUser", new LoginUser(user.getId()));
         
-        // 登録成功後はログイン画面、またはマイデータ画面へ遷移（ここでは一旦mydataへ）
-        response.sendRedirect(request.getContextPath() + "/mydata");
+     //登録成功メッセージをスコープへ
+        session.setAttribute("result_message", "会員情報を登録しました。");
+        
+        // 登録成功後はログイン画面、またはホーム画面へ遷移
+        response.sendRedirect(request.getContextPath() + "/login");
     }
 }

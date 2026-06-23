@@ -34,14 +34,20 @@ public class HomeServlet extends HttpServlet {
             response.sendRedirect(request.getContextPath() + "/login");
             return;
         }
+        
         //ここにメニュー育成機能追加
         int id = loginUser.getId();
 
         UsersDAO dao = new UsersDAO();
         User user = dao.selectById(id);
-
+        
+        String name = user.getName();
+        int rank_id = user.getRank_id();
         int level = user.getLevelup_menu();
+        
         request.setAttribute("level", level);
+        request.setAttribute("rank_id", rank_id);
+        request.setAttribute("name", name);
         
       
         // 4. ホーム画面（JSP）へフォワード
