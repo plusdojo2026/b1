@@ -40,8 +40,12 @@ public class MaterialsDAOTest {
         // selectByName
         // -------------------------
         System.out.println("---------- selectByName()のテスト ----------");
-        List<Material> list1 = dao.selectByName("バンズ");
-        showAllData(list1);
+        Material m2 = dao.selectByName("バンズ");
+        if (m2 != null) {
+            System.out.println(m2.getName());
+        } else {
+            System.out.println("データなし");
+        }
 
         // -------------------------
         // selectByCategory
@@ -69,7 +73,7 @@ public class MaterialsDAOTest {
 
         if (dao.insert(ins)) {
             System.out.println("登録成功！");
-            showAllData(dao.selectByName("テスト食材"));
+            System.out.println(dao.selectByName("テスト食材"));
         } else {
             System.out.println("登録失敗！");
         }
@@ -87,7 +91,7 @@ public class MaterialsDAOTest {
 
             if (dao.update(up)) {
                 System.out.println("更新成功！");
-                showAllData(dao.selectByName("更新食材"));
+                System.out.println(dao.selectByName("更新食材"));
             } else {
                 System.out.println("更新失敗！");
             }

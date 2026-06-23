@@ -60,9 +60,9 @@ public class MaterialsDAO {
 	}
 	
 	// 引数nameで指定された項目で検索して、取得されたデータのリストを返す
-	public List<Material> selectByName(String name) {
+	public Material selectByName(String name) {
 		Connection conn = null;
-		List<Material> materiallist = new ArrayList<Material>();
+		Material material = null;
 
 		try {
 			// JDBCドライバを読み込む
@@ -87,40 +87,33 @@ public class MaterialsDAO {
 			ResultSet rs = ps.executeQuery();
 
 			// 結果表をコレクションにコピーする
-			while (rs.next()) {
-				Material materials = new Material(
-						rs.getInt("id"),
-		                rs.getString("name"),
-		                rs.getInt("category"),
-		                rs.getInt("price"),
-		                rs.getString("image"),
-		                rs.getInt("protein"),
-		                rs.getInt("df"),
-		                rs.getTimestamp("created_at").toLocalDateTime(),
-		                rs.getTimestamp("updated_at").toLocalDateTime()
-		            );
-				materiallist.add(materials);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-			materiallist = null;
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-			materiallist = null;
-		} finally {
+			if (rs.next()) {
+	        	material = new Material(
+	                rs.getInt("id"),
+	                rs.getString("name"),
+	                rs.getInt("category"),
+	                rs.getInt("price"),
+	                rs.getString("image"),
+	                rs.getInt("protein"),
+	                rs.getInt("df"),
+	                rs.getTimestamp("created_at").toLocalDateTime(),
+	                rs.getTimestamp("updated_at").toLocalDateTime()
+	            );
+	        }
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    } finally {
 			// データベースを切断
 			if (conn != null) {
 				try {
 					conn.close();
 				} catch (SQLException e) {
 					e.printStackTrace();
-					materiallist = null;
 				}
 			}
 		}
 
-		// 結果を返す
-		return materiallist;
+	    return material;
 	}
 	
 	// 引数categoryで指定された項目で検索して、取得されたデータのリストを返す
