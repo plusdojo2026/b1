@@ -1,5 +1,11 @@
 @charset "UTF-8";
 
+body { 
+    margin: 0; 
+    text-align: center; 
+    box-sizing: border-box;
+}
+
 		.card {
         	background-color: white;
         	border-radius: 20px;

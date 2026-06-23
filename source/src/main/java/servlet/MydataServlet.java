@@ -1,6 +1,7 @@
 package servlet; 
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,8 +10,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import dao.MaterialsDAO;
+import dao.MenusDAO;
+import dao.OrdersDAO;
 import dao.UsersDAO;  // 既存のUsersDAOを使用
 import dto.LoginUser;
+import dto.Material;
+import dto.Menu;
+import dto.Order;
 import dto.User;
 
 // マイデータ画面の遷移およびデータ制御を行うServlet
@@ -65,34 +72,92 @@ public class MydataServlet extends HttpServlet {
                 userRank = "Standard"; // 0や想定外の値が入っていた場合のセーフティ
                 break;
         }
-
-        // 4. 【营养素逻辑校正】在不动 DAO 的前提下，根据用户 ID 分流，精准模拟不同账号的动态数字
-        int protein; 
-        int fiber;
         
-        // 💡 结合之前提供的 SQL 虚拟数据进行精准匹配：
-        // 管理者(id=1)、ミスターバーガー(id=2)、バーガーマスター(id=3) 
-        if (id == 2) { 
-            // 如果是 ミスターバーガー / 大谷翔平 (假设为ID 2)
-            protein = 58;
-            fiber = 14;
-        } else if (id == 3) { 
-            protein = 42;
-            fiber = 11;
-        } else if (id == 4) {
-            protein = 35;
-            fiber = 8;
-        } else {
-            // 其余账号（包括管理员或新注册用户）的默认保底显示
-            protein = 45;
-            fiber = 12;
+        OrdersDAO oDao = new OrdersDAO();
+        List<Order> orderList = oDao.selectByUserId(id);
+        
+        MenusDAO mDao = new MenusDAO();
+        MaterialsDAO maDao = new MaterialsDAO();
+        
+        // 4. 【营养素逻辑校正】在不动 DAO 的前提下，根据用户 ID 分流，精准模拟不同账号的动态数字
+        int protein = 0; 
+        int df = 0;
+        
+        for(int i = 0; i < orderList.size(); i++) {
+        	
+        	Order order = orderList.get(i);
+        	int menu_id = order.getMenu_id();
+        	
+        	Menu menu = mDao.selectById(menu_id);
+        	
+        	int buns1_id = menu.getBuns1();
+        	int buns2_id = menu.getBuns2();
+        	int patty1_id = menu.getPatty1();
+		    int patty2_id = menu.getPatty2();
+		    int patty3_id = menu.getPatty3();
+		    int top1_id = menu.getTopping1();
+		    int top2_id = menu.getTopping2();
+		    int top3_id = menu.getTopping3();
+		    int vege1_id = menu.getVege1();
+		    int vege2_id = menu.getVege2();
+		    int vege3_id = menu.getVege3();
+        	
+		    Material mate_buns1 = maDao.selectById(buns1_id);
+		    Material mate_buns2 = maDao.selectById(buns2_id);
+		    Material mate_patty1 = maDao.selectById(patty1_id);
+		    Material mate_patty2 = maDao.selectById(patty2_id);
+		    Material mate_patty3 = maDao.selectById(patty3_id);
+		    Material mate_top1 = maDao.selectById(top1_id);
+		    Material mate_top2 = maDao.selectById(top2_id);
+		    Material mate_top3 = maDao.selectById(top3_id);
+		    Material mate_vege1 = maDao.selectById(vege1_id);
+		    Material mate_vege2 = maDao.selectById(vege2_id);
+		    Material mate_vege3 = maDao.selectById(vege3_id);
+		    
+		    int pro_buns1 = mate_buns1.getProtein();
+		    int df_buns1 = mate_buns1.getDf();
+		    
+		    int pro_buns2 = mate_buns2.getProtein();
+		    int df_buns2 = mate_buns2.getDf();
+		    
+		    int pro_patty1 = mate_patty1.getProtein();
+		    int df_patty1 = mate_patty1.getDf();
+		    int pro_patty2 = mate_patty2.getProtein();
+		    int df_patty2 = mate_patty2.getDf();
+		    int pro_patty3 = mate_patty3.getProtein();
+		    int df_patty3 = mate_patty3.getDf();
+		    
+		    int pro_top1 = mate_top1.getProtein();
+		    int df_top1 = mate_top1.getDf();
+		    int pro_top2 = mate_top2.getProtein();
+		    int df_top2 = mate_top2.getDf();
+		    int pro_top3 = mate_top3.getProtein();
+		    int df_top3 = mate_top3.getDf();
+		    
+		    int pro_vege1 = mate_vege1.getProtein();
+		    int df_vege1 = mate_vege1.getDf();
+		    int pro_vege2 = mate_vege2.getProtein();
+		    int df_vege2 = mate_vege2.getDf();
+		    int pro_vege3 = mate_vege3.getProtein();
+		    int df_vege3 = mate_vege3.getDf();
+		    
+		    protein = protein + pro_buns1 + pro_buns2 +
+		    		pro_patty1 + pro_patty2 + pro_patty3 +
+		    		pro_top1 + pro_top2 + pro_top3 +
+		    		pro_vege1 + pro_vege2 + pro_vege3;
+		    
+		    df = df + df_buns1 + df_buns2 +
+	    		df_patty1 + df_patty2 + df_patty3 +
+	    		df_top1 + df_top2 + df_top3 +
+	    		df_vege1 + df_vege2 + df_vege3;
+        	
         }
 
         // 5. JSP側で表示できるように、取得したデータをrequestオブジェクトに格納
         request.setAttribute("rankData", userRank);     // 【超重要】配合 JSP 里的原生 Java 判断，实时控制只显示一个标
         request.setAttribute("nameData", userName);       // mydata.jspの ${nameData} に対応
         request.setAttribute("proteinData", protein);   // mydata.jspの ${proteinData} に対応
-        request.setAttribute("fiberData", fiber);       // mydata.jspの ${fiberData} に対応
+        request.setAttribute("fiberData", df);       // mydata.jspの ${fiberData} に対応
 
         // 6. マイデータ画面（JSP）へフォワード
         request.getRequestDispatcher("/WEB-INF/jsp/mydata.jsp").forward(request, response);
