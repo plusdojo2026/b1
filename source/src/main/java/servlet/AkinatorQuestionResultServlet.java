@@ -96,135 +96,82 @@ public class AkinatorQuestionResultServlet extends HttpServlet {
 		    return;
 		}
 		
-		int user_id = loginUser.getId();
-		String category1_name = request.getParameter("category1");
-		String category2_name = request.getParameter("category2");
-		String category3_name = request.getParameter("category3");
-		String material11_name = request.getParameter("material11");
-		String material12_name = request.getParameter("material12");
-		String material21_name = request.getParameter("material21");
-		String material22_name = request.getParameter("material22");
-		String material31_name = request.getParameter("material31");
-		String material32_name = request.getParameter("material32");
 		
-		CategoriesDAO categorydao = new CategoriesDAO();
-		Category category1 = categorydao.selectByName(category1_name);
-		int category1_id = category1.getId();
-		Category category2 = categorydao.selectByName(category2_name);
-		int category2_id = category2.getId();
-		Category category3 = categorydao.selectByName(category3_name);
-		int category3_id = category3.getId();
+		
+		String material1_name = request.getParameter("material1");
+		String material2_name = request.getParameter("material2");
+		String material3_name = request.getParameter("material3");
+		if (material1_name == null || material2_name == null || material3_name == null) {
+		    response.sendRedirect(request.getContextPath() + "/akinator");
+		    return;
+		}
+		
 		MaterialsDAO materialdao = new MaterialsDAO();
-		Material material11 = materialdao.selectByName(material11_name);
-		int material11_id = material11.getId();
-		Material material12 = materialdao.selectByName(material12_name);
-		int material12_id = material12.getId();
-		Material material21 = materialdao.selectByName(material21_name);
-		int material21_id = material21.getId();
-		Material material22 = materialdao.selectByName(material22_name);
-		int material22_id = material22.getId();
-		Material material31 = materialdao.selectByName(material31_name);
-		int material31_id = material31.getId();
-		Material material32 = materialdao.selectByName(material32_name);
-		int material32_id = material32.getId();
+		Material material1 = materialdao.selectByName(material1_name);
+		int material1_id = material1.getId();
+		Material material2 = materialdao.selectByName(material2_name);
+		int material2_id = material2.getId();
+		Material material3 = materialdao.selectByName(material3_name);
+		int material3_id = material3.getId();
+		
+		
+		if (material1 == null || material2 == null || material3 == null) {
+		    response.sendRedirect(request.getContextPath() + "/akinator");
+		    return;
+		}
+		
 		
 		List<Menu> answerlist = new ArrayList<Menu>();
 		List<Menu> ans1 = new ArrayList<Menu>();
 		MenusDAO menudao = new MenusDAO();
-		ans1 = menudao.selectByPatty(material11_id);
+		ans1 = menudao.selectByPatty(material1_id);
 		answerlist.addAll(ans1);
 		List<Menu> ans2 = new ArrayList<Menu>();
 		MenusDAO menudao2 = new MenusDAO();
-		ans2 = menudao2.selectBySauce(material11_id);
+		ans2 = menudao2.selectBySauce(material1_id);
 		answerlist.addAll(ans2);
 		List<Menu> ans3 = new ArrayList<Menu>();
 		MenusDAO menudao3 = new MenusDAO();
-		ans3 = menudao3.selectByTopping(material11_id);
+		ans3 = menudao3.selectByTopping(material1_id);
 		answerlist.addAll(ans3);
 		List<Menu> ans4 = new ArrayList<Menu>();
 		MenusDAO menudao4 = new MenusDAO();
-		ans4 = menudao4.selectByVege(material11_id);
+		ans4 = menudao4.selectByVege(material1_id);
 		answerlist.addAll(ans4);
 		List<Menu> ans5 = new ArrayList<Menu>();
 		MenusDAO menudao5 = new MenusDAO();
-		ans5 = menudao5.selectByPatty(material12_id);
+		ans5 = menudao5.selectByPatty(material2_id);
 		answerlist.addAll(ans5);
 		List<Menu> ans6 = new ArrayList<Menu>();
 		MenusDAO menudao6 = new MenusDAO();
-		ans6 = menudao6.selectBySauce(material12_id);
+		ans6 = menudao6.selectBySauce(material2_id);
 		answerlist.addAll(ans6);
 		List<Menu> ans7 = new ArrayList<Menu>();
 		MenusDAO menudao7 = new MenusDAO();
-		ans7 = menudao7.selectByTopping(material12_id);
+		ans7 = menudao7.selectByTopping(material2_id);
 		answerlist.addAll(ans7);
 		List<Menu> ans8 = new ArrayList<Menu>();
 		MenusDAO menudao8 = new MenusDAO();
-		ans8 = menudao8.selectByVege(material12_id);
+		ans8 = menudao8.selectByVege(material2_id);
 		answerlist.addAll(ans8);
 		List<Menu> ans9 = new ArrayList<Menu>();
 		MenusDAO menudao9 = new MenusDAO();
-		ans9 = menudao9.selectByPatty(material21_id);
+		ans9 = menudao9.selectByPatty(material3_id);
 		answerlist.addAll(ans9);
 		List<Menu> ans10 = new ArrayList<Menu>();
 		MenusDAO menudao10 = new MenusDAO();
-		ans10 = menudao10.selectBySauce(material21_id);
+		ans10 = menudao10.selectBySauce(material3_id);
 		answerlist.addAll(ans10);
 		List<Menu> ans11 = new ArrayList<Menu>();
 		MenusDAO menudao11 = new MenusDAO();
-		ans11 = menudao11.selectByTopping(material21_id);
+		ans11 = menudao11.selectByTopping(material3_id);
 		answerlist.addAll(ans11);
 		List<Menu> ans12 = new ArrayList<Menu>();
 		MenusDAO menudao12 = new MenusDAO();
-		ans12 = menudao12.selectByVege(material21_id);
+		ans12 = menudao12.selectByVege(material3_id);
 		answerlist.addAll(ans12);
-		List<Menu> ans13 = new ArrayList<Menu>();
-		MenusDAO menudao13 = new MenusDAO();
-		ans13 = menudao13.selectByPatty(material22_id);
-		answerlist.addAll(ans13);
-		List<Menu> ans14 = new ArrayList<Menu>();
-		MenusDAO menudao14 = new MenusDAO();
-		ans14 = menudao14.selectBySauce(material22_id);
-		answerlist.addAll(ans14);
-		List<Menu> ans15 = new ArrayList<Menu>();
-		MenusDAO menudao15 = new MenusDAO();
-		ans15 = menudao15.selectByTopping(material22_id);
-		answerlist.addAll(ans15);
-		List<Menu> ans16 = new ArrayList<Menu>();
-		MenusDAO menudao16 = new MenusDAO();
-		ans16 = menudao16.selectByVege(material22_id);
-		answerlist.addAll(ans16);
-		List<Menu> ans17 = new ArrayList<Menu>();
-		MenusDAO menudao17 = new MenusDAO();
-		ans17 = menudao17.selectByPatty(material31_id);
-		answerlist.addAll(ans17);
-		List<Menu> ans18 = new ArrayList<Menu>();
-		MenusDAO menudao18 = new MenusDAO();
-		ans18 = menudao18.selectBySauce(material31_id);
-		answerlist.addAll(ans18);
-		List<Menu> ans19 = new ArrayList<Menu>();
-		MenusDAO menudao19 = new MenusDAO();
-		ans19 = menudao19.selectByTopping(material31_id);
-		answerlist.addAll(ans19);
-		List<Menu> ans20 = new ArrayList<Menu>();
-		MenusDAO menudao20 = new MenusDAO();
-		ans20 = menudao20.selectByVege(material31_id);
-		answerlist.addAll(ans20);
-		List<Menu> ans21 = new ArrayList<Menu>();
-		MenusDAO menudao21 = new MenusDAO();
-		ans21 = menudao21.selectByPatty(material32_id);
-		answerlist.addAll(ans21);
-		List<Menu> ans22 = new ArrayList<Menu>();
-		MenusDAO menudao22 = new MenusDAO();
-		ans22 = menudao22.selectBySauce(material32_id);
-		answerlist.addAll(ans22);
-		List<Menu> ans23 = new ArrayList<Menu>();
-		MenusDAO menudao23 = new MenusDAO();
-		ans23 = menudao23.selectByTopping(material32_id);
-		answerlist.addAll(ans23);
-		List<Menu> ans24 = new ArrayList<Menu>();
-		MenusDAO menudao24 = new MenusDAO();
-		ans24 = menudao24.selectByVege(material32_id);
-		answerlist.addAll(ans24);
+		
+		
 		
 		Map<Integer, Integer> countMap = new HashMap<>();
 
@@ -248,6 +195,7 @@ public class AkinatorQuestionResultServlet extends HttpServlet {
 		    }
 		}
 		
+		
 		Menu bestMenu = null;
 
 		for (Menu menu : answerlist) {
@@ -264,6 +212,13 @@ public class AkinatorQuestionResultServlet extends HttpServlet {
 			Random random = new Random();
 	        int menu_id = random.nextInt(5)+1;
 	        bestMenu = menudao.selectById(menu_id);
+		}
+		
+		if (bestMenu == null) {
+		    request.setAttribute("errorMessage", "おすすめメニューが見つかりませんでした");
+		    request.getRequestDispatcher("/WEB-INF/jsp/error.jsp")
+		           .forward(request, response);
+		    return;
 		}
 		
 		Menu answermenu = bestMenu;
