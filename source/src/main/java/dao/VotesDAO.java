@@ -111,25 +111,30 @@ public class VotesDAO {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 
-			conn = DriverManager.getConnection(
-				    "jdbc:mysql://localhost:3306/b1?"
-				    + "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
-				    "root",
-				    "password"
-				);
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/b1?"
+					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
+					"root", "password");
 
 			String sql = """
-					    SELECT
+
+					SELECT
 					        v.contestmenu_id,
-					        contestmenu.name,
+					        cm.name,
+					        u.name AS user_name,
+					        r.name AS rank_name,
 					        COUNT(*) AS vote_count
 					    FROM votes v
-					    JOIN contestmenus contestmenu
-					        ON v.contestmenu_id = contestmenu.id
-					    GROUP BY v.contestmenu_id, contestmenu.name
+					    JOIN contestmenus cm
+					        ON v.contestmenu_id = cm.id
+					    JOIN users u
+					        ON cm.user_id = u.id
+					    JOIN ranks r
+					        ON u.rank_id = r.id
+					    GROUP BY v.contestmenu_id, cm.name, u.name, r.name
 					    ORDER BY vote_count DESC
 					    LIMIT 3
-					""";
+
+											""";
 
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ResultSet rs = ps.executeQuery();

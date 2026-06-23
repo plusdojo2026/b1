@@ -92,6 +92,15 @@ public class Vote implements Serializable {
 		this.voteCount = voteCount;
 	}
 	
+	private String userName;
+	private String rankName;
+
+	public String getUserName() { return userName; }
+	public void setUserName(String userName) { this.userName = userName; }
+
+	public String getRankName() { return rankName; }
+	public void setRankName(String rankName) { this.rankName = rankName; }
+	
 	// メニュー名
 	private String menuName;
 
