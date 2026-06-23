@@ -65,6 +65,12 @@ body {
 
 /* もう一度診断するボタン：カプセル型の完全な丸角赤ボタン */
 .btn-retry {
+	display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+
+    margin: 0 auto;
     width: 100%;
     max-width: 280px;
     background-color: #d93333;
@@ -76,4 +82,31 @@ body {
     font-weight: bold;
     cursor: pointer;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* バーガー表示 */
+.burger {
+    position: relative;
+    width: 100px;
+    margin: 0 auto;
+}
+
+.burger img {
+    width: 100px;
+}
+
+.buns_top {
+    top: 0;
+    z-index: 999;
+}
+
+.buns_bottom {
+    z-index: 1;
+}
+
+.stack-area {
+    position: relative;
+    width: 100px;
+    min-height: 120px;
+    margin: 0 auto;
 }
