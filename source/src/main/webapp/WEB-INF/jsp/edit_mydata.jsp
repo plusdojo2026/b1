@@ -28,7 +28,11 @@
             </div>
             <div class="input-row">
                 <span class="label-red">パスワード</span>
-                <input type="password" name="password" class="input-field" value="${password}">
+                <input type="password" name="password" class="input-field" value="">
+            </div>
+            <div class="input-row">
+                <span class="label-red">パスワード<br>(確認用)</span>
+                <input type="password" name="passwordConf" class="input-field" value="">
             </div>
         </div>
 
@@ -42,7 +46,7 @@
 
     <!-- 会员情報を削除するボタン -->
     <button type="button" class="btn-large btn-delete" onclick="location.href='${pageContext.request.contextPath}/delete_user'">会員情報を削除する</button>
-
+	<br>
     <!-- 変更せずに戻るリンク -->
     <div class="back-link" onclick="location.href='${pageContext.request.contextPath}/mydata'">« 変更せずに戻る</div>
 
@@ -50,11 +54,21 @@
     <footer>
         <nav>
             <ul>
-                <li><img src="/b1/images/home.png" class="footer_icon"><br>ホーム</li>
-                <li><img src="/b1/images/custom.png" class="footer_icon"><br>カスタム</li>
-                <li><img src="/b1/images/contest.png" class="footer_icon"><br>コンテスト</li>
-                <li><img src="/b1/images/akinator.png" class="footer_icon"><br>診断</li>
-                <li class="nowpage"><img src="/b1/images/mydata_red.png" class="footer_icon"><br>マイデータ</li>
+                <li><a href="/b1/home">
+                		<img src="/b1/images/home.png" class="footer_icon"><br>ホーム
+                	</a></li>
+                <li><a href="/b1/custom">
+                		<img src="/b1/images/custom.png" class="footer_icon"><br>カスタム
+                	</a></li>
+                <li><a href="/b1/contest">
+                		<img src="/b1/images/contest.png" class="footer_icon"><br>コンテスト
+                	</a></li>
+                <li><a href="/b1/akinator">
+                		<img src="/b1/images/akinator.png" class="footer_icon"><br>診断
+                	</a></li>
+                <li class="nowpage"><a href="/b1/mydata">
+                	<img src="/b1/images/mydata_red.png" class="footer_icon"><br>マイデータ
+                	</a></li>
             </ul>
         </nav>
     </footer>

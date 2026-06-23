@@ -26,7 +26,6 @@ public class HomeServlet extends HttpServlet {
         // 1. セッションからログイン中のユーザー（DTO）を取得
         HttpSession session = request.getSession();
         
-
         // 2. 未ログインの場合はログイン画面へ強制遷移        
         LoginUser loginUser = (LoginUser) session.getAttribute("loginUser");
 
