@@ -61,8 +61,8 @@
 			        <input type="hidden" name="mymenu_price" value="${v.price}" readonly="readonly">	
 				    <div class="menu-info">
 				        <span class="name">${v.name}</span><br>
-				        <span class="contest_name">${v.contest_name}</span>
-				        <span class="vote"></span>
+				        <span class="contest_name">${v.contest_name}</span><br>
+				        <span class="contest_vote">得票数：${v.vote}</span>
 				    </div>
 			    </div>
 			</form>

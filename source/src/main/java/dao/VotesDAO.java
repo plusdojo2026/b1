@@ -150,44 +150,50 @@ public class VotesDAO {
 	}
 
 	// 👇 ★ここに追加するのがベスト
-	public Vote getCountByMenu(int contestmenu_id) {
-		Connection conn = null;
-		Vote vote = null;
+	public int getCountByMenu(int contestmenu_id) {
+	    Connection conn = null;
+	    int count = 0;
 
-		try {
-			Class.forName("com.mysql.cj.jdbc.Driver");
+	    try {
+	        Class.forName("com.mysql.cj.jdbc.Driver");
 
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/b1?"
-					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
-					"root", "password");
+	        conn = DriverManager.getConnection(
+	            "jdbc:mysql://localhost:3306/b1?"
+	            + "characterEncoding=utf8&useSSL=false"
+	            + "&serverTimezone=GMT%2B9"
+	            + "&rewriteBatchedStatements=true",
+	            "root",
+	            "password"
+	        );
 
-			String sql = """
-					    SELECT COUNT(*) AS vote_count
-					    FROM votes
-					    WHERE contestmenu_id = ?
-					""";
+	        String sql = """
+	                SELECT COUNT(*) AS vote_count
+	                FROM votes
+	                WHERE contestmenu_id = ?
+	                """;
 
-			PreparedStatement ps = conn.prepareStatement(sql);
-			ps.setInt(1, contestmenu_id);
-			ResultSet rs = ps.executeQuery();
+	        PreparedStatement ps = conn.prepareStatement(sql);
+	        ps.setInt(1, contestmenu_id);
 
-			if (rs.next()) {
-				vote.setVoteCount(rs.getInt("vote_count"));
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			// データベースを切断
-			if (conn != null) {
-				try {
-					conn.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-			}
-		}
+	        ResultSet rs = ps.executeQuery();
 
-		return vote;
+	        if (rs.next()) {
+	            count = rs.getInt("vote_count");
+	        }
+
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    } finally {
+	        if (conn != null) {
+	            try {
+	                conn.close();
+	            } catch (SQLException e) {
+	                e.printStackTrace();
+	            }
+	        }
+	    }
+
+	    return count;
 	}
 	
 	// 引数voteのデータを格納する
