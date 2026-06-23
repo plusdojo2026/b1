@@ -210,11 +210,11 @@ public class UserContestVoteServlet extends HttpServlet {
 
 	        request.setAttribute("result_message", "投票が完了しました。残り投票数：" + newVote);
 	    } else {
-	        request.setAttribute("result_message", "投票に失敗しました。もう一度やり直してください。");
+	        request.setAttribute("result_message", "投票に失敗しました。<br>もう一度やり直してください。");
 	    }
 
 	    RequestDispatcher dispatcher =
-	            request.getRequestDispatcher("/home");
+	        request.getRequestDispatcher("/home");
 	        dispatcher.forward(request, response);
 		
 		

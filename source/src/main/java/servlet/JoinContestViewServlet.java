@@ -52,6 +52,14 @@ public class JoinContestViewServlet extends HttpServlet {
 		ContestmenusDAO contestmenusDao = new ContestmenusDAO();
 		List<Contestmenu> contestmenuList = contestmenusDao.selectByUserId(user_id);
 		
+		if (contestmenuList == null || contestmenuList.isEmpty()) {
+		    request.setAttribute("menus", null);
+		    RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/view_contest.jsp");
+		    dispatcher.forward(request, response);
+		    return;
+		}
+		
+		
 		//一覧用のリストの方を作る
 		List<Map<String, Object>> viewList = new ArrayList<>();
 
@@ -76,6 +84,11 @@ public class JoinContestViewServlet extends HttpServlet {
 		    int vege3_Id = contestmenu.getVege3();
 		    int contest_Id = contestmenu.getContest_id();
 
+		 // contest_id が 0 のメニューはスキップ
+		 if (contest_Id == 0) {
+		     continue;
+		 }
+		 
 		    MaterialsDAO materialsDao = new MaterialsDAO();
 
 		 // 素材IDから対応する素材カラムを取得
@@ -91,8 +104,14 @@ public class JoinContestViewServlet extends HttpServlet {
 		    
 		    ContestsDAO contestsDao = new ContestsDAO();
 		    Contest contest = contestsDao.selectById(contest_Id);
-		    String contest_name = contest.getName();
 
+		    String contest_name = "";
+		    if (contest != null) {
+		        contest_name = contest.getName();
+		    } else {
+		        contest_name = "未参加";
+		    }
+		    
 		    VotesDAO votedao = new VotesDAO();
 		    int vote = votedao.getCountByMenu(id);
 		    // マップにメニュー情報・各素材情報を格納

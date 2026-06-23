@@ -29,95 +29,97 @@
 				</section>
 			</div>
 
-			<c:forEach var="vote" items="${rankList}" varStatus="status">
+			<!-- 1位 -->
+			<div class="card first">
 
-				<c:choose>
+				<div class="rank-badge">第1位</div>
 
-					<c:when test="${status.index == 0}">
-						<!-- 1位 -->
-						<div class="card first">
-							<div class="rank-badge">第1位</div>
-							<div class="info">
-								ID ${vote.contestmenu_id}
-								<span class="votes">${vote.voteCount}票</span>
-							</div>
+				<div class="info">
+					<span class="brand-icon">ア </span> ミスターバーガー <span class="silver">Silver</span>
+
+					<div class="title">
+						${rankList[0].menuName}
+					</div>
+
+					<span class="votes">
+						${rankList[0].voteCount}票
+					</span>
+
+					<!-- <span class="votes">12,450票</span> -->
+				</div>
+
+				<div class="image">
+
+					<div class="burger">
+						<img src="/b1/images/hamburger/buns_top.png" class="buns_top">
+
+						<div class="stack-area">
+							<section class="vegetable3"><img src="/b1/images/hamburger/onion.png" data-type="onion">
+							</section>
+							<section class="topping3"><img src="/b1/images/hamburger/egg.png" data-type="egg"></section>
+							<section class="patty3"><img src="/b1/images/hamburger/chicken.png" data-type="chicken">
+							</section>
+
+							<section class="vegetable2"><img src="/b1/images/hamburger/tomato.png" data-type="tomato">
+							</section>
+							<section class="topping2"><img src="/b1/images/hamburger/bacon.png" data-type="bacon">
+							</section>
+							<section class="patty2"><img src="/b1/images/hamburger/beef.png" data-type="beef"></section>
+
+							<section class="vegetable1"><img src="/b1/images/hamburger/lettuce.png" data-type="lettuce">
+							</section>
+							<section class="topping1"><img src="/b1/images/hamburger/cheese.png" data-type="cheese">
+							</section>
+							<section class="patty1"><img src="/b1/images/hamburger/chicken.png" data-type="chicken">
+							</section>
 						</div>
-					</c:when>
 
-					<c:otherwise>
-						<!-- 2位・3位 -->
-						<div class="item">
-							<div class="rank">第${status.index + 1}位</div>
-							<div class="text">
-								ID ${vote.contestmenu_id}
-								（${vote.voteCount}票）
-							</div>
-						</div>
-					</c:otherwise>
+						<img src="/b1/images/hamburger/buns_bottom.png" class="buns_bottom">
+					</div>
 
-				</c:choose>
+				</div>
 
-			</c:forEach>
+				<!-- <div class="title">トリプルチーズボム</div> -->
 
-			<!-- 1位
-		<div class="card first">
-
-			<div class="rank-badge">第1位</div>
-
-			<div class="info">
-				<span class="brand-icon">ア </span> ミスターバーガー <span class="silver">Silver</span>
-				<span class="votes">12,450票</span>
 			</div>
 
-			<div class="image">
-			
-			    <div class="burger">
-	                <img src="/b1/images/hamburger/buns_top.png" class="buns_top">
-	
-	                <div class="stack-area">
-	                        <section class="vegetable3"><img src="/b1/images/hamburger/onion.png" data-type="onion"></section>
-	                        <section class="topping3"><img src="/b1/images/hamburger/egg.png" data-type="egg"></section>
-	                        <section class="patty3"><img src="/b1/images/hamburger/chicken.png" data-type="chicken"></section>
-	
-	                        <section class="vegetable2"><img src="/b1/images/hamburger/tomato.png" data-type="tomato"></section>
-	                        <section class="topping2"><img src="/b1/images/hamburger/bacon.png" data-type="bacon"></section>
-	                        <section class="patty2"><img src="/b1/images/hamburger/beef.png" data-type="beef"></section>
-	
-	                        <section class="vegetable1"><img src="/b1/images/hamburger/lettuce.png" data-type="lettuce"></section>
-	                        <section class="topping1"><img src="/b1/images/hamburger/cheese.png" data-type="cheese"></section>
-	                        <section class="patty1"><img src="/b1/images/hamburger/chicken.png" data-type="chicken"></section>
-	                </div>
-	
-	                <img src="/b1/images/hamburger/buns_bottom.png" class="buns_bottom">
-            </div>
-			
-			</div>
+			<!-- 2位 -->
+			<div class="item">
+				<div class="rank">第2位</div>
+				<div class="text">
 
-			<div class="title">トリプルチーズボム</div>
+					<div class="name">
+						${rankList[1].menuName}
+					</div>
 
-		</div>
+					<!-- <div class="name">アボカドベーコン</div> -->
 
-		2位
-		<div class="item">
-			<div class="rank">第2位</div>
-			<div class="text">
-				<div class="name">アボカドベーコン</div>
-				<div class="brand">
-					<span class="brand-icon">ア</span> バーガーマスター
+					<div class="brand">
+						<span class="brand-icon">ア</span> バーガーマスター
+						（${rankList[1].voteCount}票）
+					</div>
+
 				</div>
 			</div>
-		</div>
 
-		3位
-		<div class="item">
-			<div class="rank">第3位</div>
-			<div class="text">
-				<div class="name">スパイシー・チキンサンド</div>
-				<div class="brand">
-					<span class="brand-icon">ア</span> キング・バーガー
+			<!-- 3位 -->
+			<div class="item">
+				<div class="rank">第3位</div>
+				<div class="text">
+
+					<div class="name">
+						${rankList[2].menuName}
+					</div>
+
+					<div class="brand">
+						<span class="brand-icon">ア</span> キング・バーガー
+						（${rankList[2].voteCount}票）
+					</div>
+
+					<!-- <div class="name">スパイシー・チキンサンド</div> -->
+
 				</div>
 			</div>
-		</div> -->
 
 		</main>
 

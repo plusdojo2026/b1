@@ -257,7 +257,7 @@ INSERT INTO contestmenus
      vege1, vege2, vege3, topping1, topping2, topping3,
      sauce, price, contest_id)
 VALUES
-    ('チーズ爆増バーガー', 1,
+    ('欲張りバーガー', 1,
         1, 2,
         3, 4, 0,
         8, 0, 9,
@@ -338,8 +338,13 @@ VALUES
     (1, 1, 1),
     (2, 1, 2),
     (3, 1, 3),
-    (4, 2, 4),
-    (5, 2, 5);
+    (4, 2, 1),
+    (5, 2, 1),
+    (6, 1, 1),
+    (7, 1, 1),
+    (8, 1, 2),
+    (9, 2, 3),
+    (10, 2, 3);
 
 
 /* ordersテーブル */

@@ -12,7 +12,6 @@ import javax.servlet.http.HttpSession;
 
 import dao.MymenusDAO;
 import dto.LoginUser;
-import dto.Result;
 
 /**
  * Servlet implementation class MymenuRegistServlet
@@ -33,6 +32,15 @@ public class MymenuDeleteServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	
+		HttpSession session = request.getSession();
+		
+		LoginUser loginUser =(LoginUser)session.getAttribute("loginUser");
+		if (loginUser == null) {
+		    response.sendRedirect(request.getContextPath() + "/login");
+		    return;
+		}
+		
 		// マイメニュー登録ページにフォワードする
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
@@ -51,18 +59,21 @@ public class MymenuDeleteServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		
 		LoginUser loginUser =(LoginUser)session.getAttribute("loginUser");
+		if (loginUser == null) {
+		    response.sendRedirect(request.getContextPath() + "/login");
+		    return;
+		}
+		
 		int id = Integer.parseInt(request.getParameter("mymenuId"));
 		
 		// 登録処理を行う
 		MymenusDAO Dao = new MymenusDAO();;
 		if (Dao.delete(id)) { // 登録成功
-			request.setAttribute("result", new Result("登録成功！", "レコードを登録しました。", "/webapp/MenuServlet"));
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/home");
-			dispatcher.forward(request, response);
+			session.setAttribute("result_message", "マイメニューを削除しました。");
+			response.sendRedirect(request.getContextPath() + "/home");
 		} else { // 登録失敗
-			request.setAttribute("result", new Result("登録失敗！", "データを登録できませんでした。", "/webapp/MenuServlet"));
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/home");
-			dispatcher.forward(request, response);
+			session.setAttribute("result_message", "削除に失敗しました。<br>もう一度やり直してください。");
+			response.sendRedirect(request.getContextPath() + "/home");
 		}
 	}
 }

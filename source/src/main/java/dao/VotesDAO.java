@@ -103,7 +103,7 @@ public class VotesDAO {
 		return votelist;
 	}
 
-	// 👇 ★ここに追加するのがベスト
+	// 投票数
 	public List<Vote> getTop3Votes() {
 		Connection conn = null;
 		List<Vote> list = new ArrayList<>();
@@ -116,12 +116,25 @@ public class VotesDAO {
 					"root", "password");
 
 			String sql = """
-					    SELECT contestmenu_id, COUNT(*) AS vote_count
-					    FROM votes
-					    GROUP BY contestmenu_id
+
+					SELECT
+					        v.contestmenu_id,
+					        cm.name,
+					        u.name AS user_name,
+					        r.name AS rank_name,
+					        COUNT(*) AS vote_count
+					    FROM votes v
+					    JOIN contestmenus cm
+					        ON v.contestmenu_id = cm.id
+					    JOIN users u
+					        ON cm.user_id = u.id
+					    JOIN ranks r
+					        ON u.rank_id = r.id
+					    GROUP BY v.contestmenu_id, cm.name, u.name, r.name
 					    ORDER BY vote_count DESC
 					    LIMIT 3
-					""";
+
+											""";
 
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ResultSet rs = ps.executeQuery();
@@ -130,6 +143,7 @@ public class VotesDAO {
 				Vote v = new Vote();
 				v.setContestmenu_id(rs.getInt("contestmenu_id"));
 				v.setVoteCount(rs.getInt("vote_count"));
+				v.setMenuName(rs.getString("name"));
 				list.add(v);
 			}
 
@@ -149,53 +163,47 @@ public class VotesDAO {
 		return list;
 	}
 
-	// 👇 ★ここに追加するのがベスト
+	// 投票数
 	public int getCountByMenu(int contestmenu_id) {
-	    Connection conn = null;
-	    int count = 0;
+		Connection conn = null;
+		int count = 0;
 
-	    try {
-	        Class.forName("com.mysql.cj.jdbc.Driver");
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
 
-	        conn = DriverManager.getConnection(
-	            "jdbc:mysql://localhost:3306/b1?"
-	            + "characterEncoding=utf8&useSSL=false"
-	            + "&serverTimezone=GMT%2B9"
-	            + "&rewriteBatchedStatements=true",
-	            "root",
-	            "password"
-	        );
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/b1?" + "characterEncoding=utf8&useSSL=false"
+					+ "&serverTimezone=GMT%2B9" + "&rewriteBatchedStatements=true", "root", "password");
 
-	        String sql = """
-	                SELECT COUNT(*) AS vote_count
-	                FROM votes
-	                WHERE contestmenu_id = ?
-	                """;
+			String sql = """
+					SELECT COUNT(*) AS vote_count
+					FROM votes
+					WHERE contestmenu_id = ?
+					""";
 
-	        PreparedStatement ps = conn.prepareStatement(sql);
-	        ps.setInt(1, contestmenu_id);
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1, contestmenu_id);
 
-	        ResultSet rs = ps.executeQuery();
+			ResultSet rs = ps.executeQuery();
 
-	        if (rs.next()) {
-	            count = rs.getInt("vote_count");
-	        }
+			if (rs.next()) {
+				count = rs.getInt("vote_count");
+			}
 
-	    } catch (Exception e) {
-	        e.printStackTrace();
-	    } finally {
-	        if (conn != null) {
-	            try {
-	                conn.close();
-	            } catch (SQLException e) {
-	                e.printStackTrace();
-	            }
-	        }
-	    }
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
 
-	    return count;
+		return count;
 	}
-	
+
 	// 引数voteのデータを格納する
 	public boolean insert(Vote vote) {
 		Connection conn = null;
