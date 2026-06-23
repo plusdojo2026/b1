@@ -18,7 +18,39 @@
     <!-- 会员ランク・ユーザー情報の表示カード -->
     <div class="card">
         <p class="mydata_text">User's Rank</p>
-        <div class="rank-badge"><img src="/b1/images/gold.png" width="150px"></div>
+        
+       <div class="rank-badge">
+    <%
+        // 1. 从 request 域获取 Servlet 传过来的字符串
+        String rankData = (String) request.getAttribute("rankData");
+        
+        // 2. 严密的防空指针判定：如果为 null，默认给个 Standard 或者空字符串，防止 500 报错
+        if (rankData == null) {
+            rankData = "Standard";
+        }
+        
+        // 3. 修正拼写：全部统一使用 rankData，绝对不再报错
+        if ("Bronze".equals(rankData)) {
+    %>
+            <img src="/b1/images/bronze.png" width="150px" alt="Bronze Rank">
+    <%
+        } else if ("Silver".equals(rankData)) {
+    %>
+            <img src="/b1/images/silver.png" width="150px" alt="Silver Rank">
+    <%
+        } else if ("Gold".equals(rankData)) {
+    %>
+            <img src="/b1/images/gold.png" width="150px" alt="Gold Rank">
+    <%
+        } else {
+    %>
+            <span style="font-weight: bold; color: #aaa;">Standard</span>
+    <%
+        }
+    %>
+</div>
+
+
         <p><span class="label-red">ユーザー名</span> <strong>${nameData}</strong></p>
         <button class="btn-change" onclick="location.href='${pageContext.request.contextPath}/edit_mydata'">変更</button>
     </div>

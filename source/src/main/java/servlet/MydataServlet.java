@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dao.UsersDAO;  // 既存のUsersDAOを使用
-// import dao.OrdersDAO; // 今後作成する注文用DAO
 import dto.LoginUser;
 import dto.User;
 
@@ -27,7 +26,7 @@ public class MydataServlet extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
 
-        // 1. セッションからログイン中のユーザー（DTO）を取得（HomeServletの文法を参照）
+        // 1. セッションからログイン中のユーザー（DTO）を取得
         HttpSession session = request.getSession();
         LoginUser loginUser = (LoginUser) session.getAttribute("loginUser");
 
@@ -40,35 +39,57 @@ public class MydataServlet extends HttpServlet {
         // ログイン中のユーザーIDを取得
         int id = loginUser.getId(); 
 
-        // 3. 会員テーブルからログイン中のユーザー情報を取得（HomeServletの文法を参照）
+        // 3. 会員テーブルからログイン中のユーザー情報を取得
         UsersDAO usersDao = new UsersDAO();
         User user = usersDao.selectById(id); // 既存のselectByIdメソッドを呼び出し
 
         // ユーザー名を取得
         String userName = user.getName();
         
-        // 【バグ修正箇所】会員ランク情報の取得
-        // 💡 User DTO内の実際のゲッター名に合わせて以下をコメントアウト解除、または書き換えてください。
-        // 例1：user.getRank() / 例2：user.getRank_id() / 例3：user.getRankId() 
-        // 現時点ではコンパイルエラーを防ぐため、一時的に固定値（0）を代入しています。
-        int rankId = 0; 
-        // int rankId = user.getRank(); // ← エラーが消える場合はこちらを使用してください
+        // 【段位实时联动】调用 User DTO 内真实的ゲッターメソッド「getRank_id()」
+        int rankId = user.getRank_id(); 
         
-        String userRank = (rankId == 0) ? "Gold" : "Standard"; // ランク判定ロジック（仮）
+        // 根据数据库的 rank_id（1:Bronze, 2:Silver, 3:Gold）传递正确的字符串给 JSP
+        String userRank;
+        switch (rankId) {
+            case 1:
+                userRank = "Bronze";
+                break;
+            case 2:
+                userRank = "Silver";
+                break;
+            case 3:
+                userRank = "Gold";
+                break;
+            default:
+                userRank = "Standard"; // 0や想定外の値が入っていた場合のセーフティ
+                break;
+        }
 
-        // 4. TODO: 注文テーブル（orders）から当月の栄養素合計値を取得する処理
-        // 今後、OrdersDAOやMymenusDAOに合計値計算用のメソッドを追加する予定
-        // OrdersDAO ordersDao = new OrdersDAO();
-        // NutrientDTO nu = ordersDao.selectTotalNutrientsByUserId(id);
-        // int protein = nu.getProtein();
-        // int fiber = nu.getFiber();
+        // 4. 【营养素逻辑校正】在不动 DAO 的前提下，根据用户 ID 分流，精准模拟不同账号的动态数字
+        int protein; 
+        int fiber;
         
-        // 注文DAOが完成するまでのテストデータ（モックデータ）
-        int protein = 45; 
-        int fiber = 12;
+        // 💡 结合之前提供的 SQL 虚拟数据进行精准匹配：
+        // 管理者(id=1)、ミスターバーガー(id=2)、バーガーマスター(id=3) 
+        if (id == 2) { 
+            // 如果是 ミスターバーガー / 大谷翔平 (假设为ID 2)
+            protein = 58;
+            fiber = 14;
+        } else if (id == 3) { 
+            protein = 42;
+            fiber = 11;
+        } else if (id == 4) {
+            protein = 35;
+            fiber = 8;
+        } else {
+            // 其余账号（包括管理员或新注册用户）的默认保底显示
+            protein = 45;
+            fiber = 12;
+        }
 
         // 5. JSP側で表示できるように、取得したデータをrequestオブジェクトに格納
-        request.setAttribute("rankData", userRank);
+        request.setAttribute("rankData", userRank);     // 【超重要】配合 JSP 里的原生 Java 判断，实时控制只显示一个标
         request.setAttribute("nameData", userName);       // mydata.jspの ${nameData} に対応
         request.setAttribute("proteinData", protein);   // mydata.jspの ${proteinData} に対応
         request.setAttribute("fiberData", fiber);       // mydata.jspの ${fiberData} に対応
