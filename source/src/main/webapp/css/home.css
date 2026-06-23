@@ -7,9 +7,11 @@ body {
 }
 
 .result-msg {
-    color: #e58585;
-    font-size: 11px;
-    margin-bottom: 12px;
+    color: #C82518; 
+    font-size: 13px; 
+    min-height: 20px; 
+    margin: 15px 0; 
+    font-weight: bold; 
 }
 
 .user-card {
