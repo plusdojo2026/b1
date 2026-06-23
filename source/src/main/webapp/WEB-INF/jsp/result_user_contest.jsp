@@ -37,15 +37,15 @@
 				<div class="info">
 					<span class="brand-icon">ア </span> ミスターバーガー <span class="silver">Silver</span>
 
-					<div class="title">
-						${rankList[0].menuName}
-					</div>
-
 					<span class="votes">
 						${rankList[0].voteCount}票
 					</span>
 
 					<!-- <span class="votes">12,450票</span> -->
+				</div>
+
+				<div class="title">
+					${rankList[0].menuName}
 				</div>
 
 				<div class="image">

@@ -1,8 +1,8 @@
-
 /* 1位カード */
 .card.first {
-	max-height: 500px;
-    background: #fff;  /* #f7f4ee */
+    max-height: 500px;
+    background: #fff;
+    /* #f7f4ee */
     border-radius: 16px;
     padding: 15px;
     padding-bottom: 10px;
@@ -11,7 +11,7 @@
     position: relative;
     box-shadow:
         0 0 0 3px #e0d2b3 inset,
-        0 5px 10px rgba(0,0,0,0.1);
+        0 5px 10px rgba(0, 0, 0, 0.1);
 }
 
 /* 装飾枠風 */
@@ -37,7 +37,8 @@
 
 /* 情報行 */
 .info {
-    font-size: 12px;
+    font-size: 20px;
+    font-weight: bold;
     display: flex;
     align-items: center;
     gap: 6px;
@@ -62,13 +63,15 @@
 
 .votes {
     margin-left: auto;
-    margin-right: 20px;
+    margin-right: 40px;
     font-weight: bold;
+    font-size: 20px;
+    color: #C82518;
 }
 
 /* 画像 */
 .image {
-	display: flex;
+    display: flex;
     height: 100%;
     border-radius: 15px;
     margin-top: 20px;
@@ -111,9 +114,9 @@
 }
 
 .brand {
-    font-size: 12px;
+    font-size: 14px;
+    font-weight: bold;
     display: flex;
     align-items: center;
     gap: 5px;
 }
-
