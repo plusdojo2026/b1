@@ -17,6 +17,7 @@ import javax.servlet.http.HttpSession;
 import dao.ContestmenusDAO;
 import dao.ContestsDAO;
 import dao.MaterialsDAO;
+import dao.VotesDAO;
 import dto.Contest;
 import dto.Contestmenu;
 import dto.LoginUser;
@@ -92,6 +93,8 @@ public class JoinContestViewServlet extends HttpServlet {
 		    Contest contest = contestsDao.selectById(contest_Id);
 		    String contest_name = contest.getName();
 
+		    VotesDAO votedao = new VotesDAO();
+		    int vote = votedao.getCountByMenu(id);
 		    // マップにメニュー情報・各素材情報を格納
 		    Map<String, Object> map = new HashMap<>();
 		    
@@ -109,6 +112,7 @@ public class JoinContestViewServlet extends HttpServlet {
 		    map.put("vege2", vege2);
 		    map.put("vege3", vege3);
 		    map.put("contest_name",contest_name);
+		    map.put("vote", vote);
 
 		    viewList.add(map);
 		}
