@@ -27,7 +27,7 @@
         <div class="input-container">
             <!-- 占位符 placeholder 完美还原灰色提示字效果 -->
             <input type="text" name="userName" class="input-field" placeholder="ユーザー名" value="${userName}">
-            <input type="text" name="phoneNumber" class="input-field" placeholder="電話番号" value="${phoneNumber}">
+            <input type="text" name="phoneNumber" class="input-field" placeholder="電話番号（ハイフンなし）" value="${phoneNumber}">
             <input type="password" name="password" class="input-field" placeholder="パスワードを入力">
             <input type="password" name="passwordConfirm" class="input-field" placeholder="パスワードを入力（確認）">
         </div>

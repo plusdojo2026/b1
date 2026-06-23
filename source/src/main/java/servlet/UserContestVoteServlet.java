@@ -104,13 +104,13 @@ public class UserContestVoteServlet extends HttpServlet {
 		    Material vege2 = materialsDao.selectById(vege2_Id);
 		    Material vege3 = materialsDao.selectById(vege3_Id);
 		    
-		 // ユーザーネームを取得
+		 // ユーザーネームとランクIDを取得
 		    int user_id = cmenu.getUser_id();
 		    
 		    User user = uDao.selectById(user_id);
 		    
 		    String user_name = user.getName();
-		    
+		    int rank_id = user.getRank_id();		    
 
 		    // マップにメニュー情報・各素材情報を格納
 		    Map<String, Object> map = new HashMap<>();
@@ -119,6 +119,7 @@ public class UserContestVoteServlet extends HttpServlet {
 		    map.put("id", id);
 		    map.put("name", name);
 		    map.put("user_name", user_name);
+		    map.put("rank_id", rank_id);
 		    map.put("price", price);
 		    map.put("patty1", patty1);
 		    map.put("patty2", patty2);

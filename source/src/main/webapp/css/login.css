@@ -2,8 +2,6 @@
 
 /* ページ全体のスタイル設定（【微调】去掉 padding:20px，改由各个模块自己控制，图片才能顶格铺满） */
 body { 
-    background-color: #fcfbf4; 
-    font-family: Arial, sans-serif; 
     padding: 0; 
     margin: 0; 
     text-align: center; 
@@ -38,7 +36,7 @@ body {
 
 /* エラーメッセージ表示エリア（赤文字） */
 .error-txt { 
-    color: #d93333; 
+    color: #C82518; 
     font-size: 13px; 
     min-height: 20px; 
     margin: 15px 0; 
@@ -76,7 +74,7 @@ body {
     border-radius: 30px; 
     font-size: 18px; 
     font-weight: bold; 
-    background-color: #d93333; 
+    background-color: #C82518; 
     color: white;
     cursor: pointer; 
     margin-top: 5px;
@@ -88,10 +86,9 @@ body {
     margin-top: 25px;
     font-size: 14px;
     font-weight: bold;
-    color: #000000;
 }
 .register-redirect a {
-    color: #d93333;
+    color: #C82518;
     text-decoration: underline;
 }
 

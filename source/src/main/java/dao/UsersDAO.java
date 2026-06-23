@@ -142,7 +142,7 @@ public class UsersDAO {
 					"root", "password");
 
 			// SQL文を準備する
-			String sql = "INSERT INTO users (phone,pw,name,rank_id,icon,vote,levelup_menu)" + "VALUES (?, ?, ?, 1, ?, 0, 0)";
+			String sql = "INSERT INTO users (phone,pw,name,rank_id,icon,vote,levelup_menu)" + "VALUES (?, ?, ?, 1, ?, 5, 1)";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる

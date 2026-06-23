@@ -29,9 +29,23 @@
 	
 	
 		<c:forEach var="v" items="${menus}" >
-        <div class="contest_menu_item">
+            <div class="contest_menu_item">
             <h2>${v.name}</h2>
-            <p class="contest_user">${v.user_name}<img src="/b1/images/gold.png" width="60px"></p>
+            <p class="contest_user">
+            ${v.user_name}
+            
+           	<c:if test="${v.rank_id == 1}">
+           		<img src="/b1/images/bronze.png" width="60px">
+           	</c:if>
+           	<c:if test="${v.rank_id == 2}">
+           		<img src="/b1/images/silver.png" width="60px">
+           	</c:if>
+           	<c:if test="${v.rank_id == 3}">
+           		<img src="/b1/images/gold.png" width="60px">
+           	</c:if>
+           	
+            </p>
+            
             <div class="burger">
                 <img src="/b1/images/hamburger/buns_top.png" class="buns_top">
 
