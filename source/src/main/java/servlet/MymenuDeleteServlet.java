@@ -32,6 +32,15 @@ public class MymenuDeleteServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	
+		HttpSession session = request.getSession();
+		
+		LoginUser loginUser =(LoginUser)session.getAttribute("loginUser");
+		if (loginUser == null) {
+		    response.sendRedirect(request.getContextPath() + "/login");
+		    return;
+		}
+		
 		// マイメニュー登録ページにフォワードする
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
@@ -50,6 +59,11 @@ public class MymenuDeleteServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		
 		LoginUser loginUser =(LoginUser)session.getAttribute("loginUser");
+		if (loginUser == null) {
+		    response.sendRedirect(request.getContextPath() + "/login");
+		    return;
+		}
+		
 		int id = Integer.parseInt(request.getParameter("mymenuId"));
 		
 		// 登録処理を行う

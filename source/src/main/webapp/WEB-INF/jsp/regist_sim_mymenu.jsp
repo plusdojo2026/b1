@@ -292,7 +292,7 @@
 	        }
 	    });
 
-	    // ★ここが重要：2回待つ
+	    // 2回待つ
 	    requestAnimationFrame(() => {
 	        requestAnimationFrame(() => {
 	            stackIngredients();
