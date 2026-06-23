@@ -13,7 +13,6 @@ import javax.servlet.http.HttpSession;
 import dao.MymenusDAO;
 import dto.LoginUser;
 import dto.Mymenu;
-import dto.Result;
 
 /**
  * Servlet implementation class MymenuRegistServlet
@@ -70,15 +69,13 @@ public class MymenuRegistServlet extends HttpServlet {
 		
 		
 		// 登録処理を行う
-		MymenusDAO Dao = new MymenusDAO();;
+		MymenusDAO Dao = new MymenusDAO();
 		if (Dao.insert(new Mymenu(0,name,user_id,buns1,buns2,patty1,patty2,patty3,vege1,vege2,vege3,topping1,topping2,topping3,sauce,price,null,null))) { // 登録成功
-			request.setAttribute("result", new Result("登録成功！", "レコードを登録しました。", "/webapp/MenuServlet"));
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/home");
-			dispatcher.forward(request, response);
+			session.setAttribute("result_message", "マイメニューに追加しました。");
+			response.sendRedirect(request.getContextPath() + "/home");
 		} else { // 登録失敗
-			request.setAttribute("result", new Result("登録失敗！", "データを登録できませんでした。", "/webapp/MenuServlet"));
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/home");
-			dispatcher.forward(request, response);
+			session.setAttribute("result_message", "登録に失敗しました。<br>もう一度やり直してください。");
+			response.sendRedirect(request.getContextPath() + "/home");
 		}
 	}
 }

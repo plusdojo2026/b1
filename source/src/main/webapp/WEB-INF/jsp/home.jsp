@@ -15,7 +15,9 @@
     
     <main>        
         <!-- リザルトメッセージエリア -->
-        <div class="result-msg">${result_message}</div>
+        <div class="result-msg">${result_message}
+        <c:remove var="result_message" scope="session"/>
+        </div>
 
         <!-- ユーザー情報表示用角丸カード -->
         <div class="user-card">

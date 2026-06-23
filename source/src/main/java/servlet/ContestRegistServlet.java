@@ -15,7 +15,6 @@ import dao.ContestsDAO;
 import dto.Contest;
 import dto.Contestmenu;
 import dto.LoginUser;
-import dto.Result;
 
 /**
  * Servlet implementation class MymenuRegistServlet
@@ -79,13 +78,11 @@ public class ContestRegistServlet extends HttpServlet {
 		// 登録処理を行う
 		ContestmenusDAO Dao = new ContestmenusDAO();;
 		if (Dao.insert(new Contestmenu(0,name,user_id,buns1,buns2,patty1,patty2,patty3,vege1,vege2,vege3,topping1,topping2,topping3,sauce,price,contest_id,null,null))) { // 登録成功
-			request.setAttribute("result", new Result("登録成功！", "レコードを登録しました。", "/webapp/MenuServlet"));
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/home");
-			dispatcher.forward(request, response);
+			session.setAttribute("result_message", "コンテストに応募しました。");
+			response.sendRedirect(request.getContextPath() + "/home");
 		} else { // 登録失敗
-			request.setAttribute("result", new Result("登録失敗！", "データを登録できませんでした。", "/webapp/MenuServlet"));
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/home");
-			dispatcher.forward(request, response);
+			session.setAttribute("result_message", "応募に失敗しました。<br>もう一度やり直してください。");
+			response.sendRedirect(request.getContextPath() + "/home");
 		}
 	}
 }

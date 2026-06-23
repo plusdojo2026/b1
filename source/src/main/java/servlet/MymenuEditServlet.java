@@ -2,7 +2,6 @@ package servlet;
 
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,7 +12,6 @@ import javax.servlet.http.HttpSession;
 import dao.MymenusDAO;
 import dto.LoginUser;
 import dto.Mymenu;
-import dto.Result;
 
 /**
  * Servlet implementation class MymenuRegistServlet
@@ -63,13 +61,11 @@ public class MymenuEditServlet extends HttpServlet {
 		// 登録処理を行う
 		MymenusDAO Dao = new MymenusDAO();;
 		if (Dao.update(new Mymenu(id,name,user_id,buns1,buns2,patty1,patty2,patty3,vege1,vege2,vege3,topping1,topping2,topping3,sauce,price,null,null))) { // 登録成功
-			request.setAttribute("result", new Result("登録成功！", "レコードを登録しました。", "/webapp/MenuServlet"));
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/home");
-			dispatcher.forward(request, response);
+			session.setAttribute("result_message", "マイメニューを編集しました。");
+			response.sendRedirect(request.getContextPath() + "/home");
 		} else { // 登録失敗
-			request.setAttribute("result", new Result("登録失敗！", "データを登録できませんでした。", "/webapp/MenuServlet"));
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/home");
-			dispatcher.forward(request, response);
+			session.setAttribute("result_message", "編集に失敗しました。<br>もう一度やり直してください。");
+			response.sendRedirect(request.getContextPath() + "/home");
 		}
 	}
 }
