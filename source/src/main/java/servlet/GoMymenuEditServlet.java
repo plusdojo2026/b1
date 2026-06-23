@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dao.MymenusDAO;
+import dto.LoginUser;
 import dto.Mymenu;
 
 
@@ -30,6 +31,12 @@ public class GoMymenuEditServlet extends HttpServlet {
 		response.setContentType("text/html; charset=UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession();
+		
+		LoginUser loginUser =(LoginUser)session.getAttribute("loginUser");
+		if (loginUser == null) {
+		    response.sendRedirect(request.getContextPath() + "/login");
+		    return;
+		}
 		
 		int mymenuId =
 			    Integer.parseInt(request.getParameter("mymenuId"));
