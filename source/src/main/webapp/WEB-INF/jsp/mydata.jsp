@@ -13,7 +13,7 @@
 <body>
 
 <main>
-    <h2 style="text-align:center; color:#4a2c11;">マイデータ</h2>
+    <h1>マイデータ</h1>
 
     <!-- 会员ランク・ユーザー情報の表示カード -->
     <div class="card">
