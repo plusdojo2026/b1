@@ -81,7 +81,7 @@ public class Vote implements Serializable {
 		this.updated_at = updated_at;
 	}
 
-	// 投票テーブルから多い順にソート
+	// 投票テーブルから
 	private int voteCount;
 
 	public int getVoteCount() {
@@ -91,5 +91,15 @@ public class Vote implements Serializable {
 	public void setVoteCount(int voteCount) {
 		this.voteCount = voteCount;
 	}
+	
+	// メニュー名
+	private String menuName;
 
+	public String getMenuName() {
+	    return menuName;
+	}
+
+	public void setMenuName(String menuName) {
+	    this.menuName = menuName;
+	}
 }
