@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FanTable │ コンテスト応募メニュー</title>
     <link rel="stylesheet" href="/b1/css/common.css">
-    <link rel="stylesheet" href="/b1/css/view_mymenu.css">
+    <link rel="stylesheet" href="/b1/css/view_contest.css">
 </head>
 <body>
     <header>

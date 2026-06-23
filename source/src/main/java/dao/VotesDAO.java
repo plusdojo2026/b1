@@ -149,6 +149,47 @@ public class VotesDAO {
 		return list;
 	}
 
+	// 👇 ★ここに追加するのがベスト
+	public Vote getCountByMenu(int contestmenu_id) {
+		Connection conn = null;
+		Vote vote = null;
+
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/b1?"
+					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
+					"root", "password");
+
+			String sql = """
+					    SELECT COUNT(*) AS vote_count
+					    FROM votes
+					    WHERE contestmenu_id = ?
+					""";
+
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1, contestmenu_id);
+			ResultSet rs = ps.executeQuery();
+
+			if (rs.next()) {
+				vote.setVoteCount(rs.getInt("vote_count"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			// データベースを切断
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+
+		return vote;
+	}
+	
 	// 引数voteのデータを格納する
 	public boolean insert(Vote vote) {
 		Connection conn = null;
