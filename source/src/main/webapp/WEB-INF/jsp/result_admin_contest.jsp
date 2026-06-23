@@ -20,10 +20,12 @@
 	<main>
 	
         <div class="top_contest">
+        <%--
             <section class="class_contest">
             <span><a href="/b1/usercontestview">ユーザー考案</a></span>
             <span class="choice"><a href="/b1/admincontestview">店主考案　</a></span>
             </section>
+        --%>
         </div>
 
 		<!-- 1位 -->
