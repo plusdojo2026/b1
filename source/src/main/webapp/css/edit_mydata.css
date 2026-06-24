@@ -65,7 +65,7 @@ body {
 
 /* 未入力警告メッセージ（赤文字） */
 .error-txt { 
-    color: #d93333; 
+    color: #C82518; 
     font-size: 13px; 
     min-height: 20px; 
     margin: 15px 0; 

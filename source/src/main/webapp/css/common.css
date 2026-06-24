@@ -93,6 +93,14 @@ footer nav ul li a {
     pointer-events: none;
 }
 
+.error-txt { 
+    color: #C82518; 
+    font-size: 13px; 
+    min-height: 20px; 
+    margin: 15px 0; 
+    font-weight: bold; 
+}
+
 /* カラーコード サンプル
 #f5e9d3 ベージュ
 #C82518 赤
