@@ -181,6 +181,20 @@ public class UserContestVoteServlet extends HttpServlet {
 	        dispatcher.forward(request, response);
 	        return;
 	    }
+	    
+	    // コンテストメニューの登録ユーザーを確認
+	    ContestmenusDAO cmenusDao = new ContestmenusDAO();
+	    Contestmenu cmenu = cmenusDao.selectById(cmenu_id);
+	    
+	    int menu_user_id = cmenu.getUser_id();
+	    
+	    if (user_id == menu_user_id) {
+	        request.setAttribute("result_message", "同アカウントから登録したコンテストメニューには投票できません。");
+	        RequestDispatcher dispatcher = request.getRequestDispatcher("/home");
+	        dispatcher.forward(request, response);
+	        return;
+	    }
+	    
 
 	    // 投票処理
 	    Vote vote = new Vote(0, user_id, contest_id, cmenu_id, null, null);
@@ -216,7 +230,6 @@ public class UserContestVoteServlet extends HttpServlet {
 	    RequestDispatcher dispatcher =
 	        request.getRequestDispatcher("/home");
 	        dispatcher.forward(request, response);
-		
 		
 	}
 

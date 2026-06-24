@@ -9,6 +9,7 @@
     <title>FanTable | おすすめメニュー診断結果</title>
 
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/common.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/view_mymenu.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/result_akinator.css">
 </head>
 <body>
@@ -97,24 +98,46 @@
         <button type="button"
                 class="button"
                 onclick="location.href='${pageContext.request.contextPath}/akinator'">
-            もう一度診断する
+            もう一度診断する<span class="arrow">≫</span>
         </button>
 
     </div>
 </main>
 
+    <footer>
+        <nav>
+            <ul>
+                <li><a href="/b1/home">
+                		<img src="/b1/images/home.png" class="footer_icon"><br>ホーム
+                	</a></li>
+                <li><a href="/b1/custom">
+                		<img src="/b1/images/custom.png" class="footer_icon"><br>カスタム
+                	</a></li>
+                <li><a href="/b1/contest">
+                		<img src="/b1/images/contest.png" class="footer_icon"><br>コンテスト
+                	</a></li>
+                <li class="nowpage"><a href="/b1/akinator">
+                		<img src="/b1/images/akinator_red.png" class="footer_icon"><br>診断
+                	</a></li>
+                <li><a href="/b1/mydata">
+                	<img src="/b1/images/mydata.png" class="footer_icon"><br>マイデータ
+                	</a></li>
+            </ul>
+        </nav>
+    </footer>
+
 <script>
 "use strict";
 
 const thickness = {
-    3: 12,
-    4: 16,
-    5: -2,
-    6: -4,
-    7: 10,
-    8: 9,
-    9: 9,
-    10: 8
+    3: 17,
+    4: 25,
+    5: 4,
+    6: 4,
+    7: 13,
+    8: 15,
+    9: 12,
+    10: 10
 };
 
 window.addEventListener("load", () => {
@@ -123,7 +146,7 @@ window.addEventListener("load", () => {
 
         const ingredients = stack.querySelectorAll("img");
 
-        let currentTop = 28;
+        let currentTop = -25;
 
         ingredients.forEach((img, index) => {
 
@@ -141,12 +164,12 @@ window.addEventListener("load", () => {
             stack.parentElement.querySelector(".buns_bottom");
 
         bottom.style.position = "absolute";
-        bottom.style.top = currentTop + "px";
+        bottom.style.top = (currentTop + 65) + "px";
 
         const burger =
             stack.closest(".burger");
 
-        burger.style.height = currentTop + "px";
+        burger.style.height = currentTop + 125 + "px";
     });
 });
 </script>
