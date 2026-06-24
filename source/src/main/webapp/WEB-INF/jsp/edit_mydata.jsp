@@ -27,13 +27,44 @@
                 <input type="text" name="phoneNumber" class="input-field" value="${phoneNumber}">
             </div>
             <div class="input-row">
-                <span class="label-red">パスワード</span>
-                <input type="password" name="password" class="input-field" value="">
-            </div>
-            <div class="input-row">
-                <span class="label-red">パスワード<br>(確認用)</span>
-                <input type="password" name="passwordConf" class="input-field" value="">
-            </div>
+			    <span class="label-red">パスワード</span>
+			    <div class="pw_wrap">
+			        <input id="password"
+			               type="password"
+			               name="password"
+			               class="input-field"
+			               >
+			
+			        <button id="pw_buttun"
+			                type="button"
+			                onclick="visible()">
+			            <img id="eye_password" src="${pageContext.request.contextPath}/images/eye_password.png"
+			                 width="12"
+			                 height="12"
+			                 alt="表示切替">
+			        </button>
+			    </div>
+			</div>
+			
+			<div class="input-row">
+			    <span class="label-red">パスワード<br>(確認用)</span>
+			    <div class="pw_wrap2">
+			        <input id="password2"
+			               type="password"
+			               name="passwordConf"
+			               class="input-field"
+			               >
+			
+			        <button id="pw_buttun2"
+			                type="button"
+			                onclick="visible2()">
+			            <img id="eye_password" src="${pageContext.request.contextPath}/images/eye_password.png"
+			                 width="12"
+			                 height="12"
+			                 alt="表示切替">
+			        </button>
+			    </div>
+			</div>
         </div>
 
         <!-- 未入力エラーメッセージ表示エリア -->
@@ -72,6 +103,30 @@
             </ul>
         </nav>
     </footer>
+    <script>
+function visible() {
+
+    const password =
+        document.getElementById("password");
+
+    if (password.type === "password") {
+        password.type = "text";
+    } else {
+        password.type = "password";
+    }
+}
+function visible2() {
+
+    const password2 =
+        document.getElementById("password2");
+
+    if (password2.type === "password") {
+        password2.type = "text";
+    } else {
+        password2.type = "password";
+    }
+}
+</script>
 
 </body>
 </html>

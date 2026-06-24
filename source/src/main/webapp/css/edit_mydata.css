@@ -1,4 +1,4 @@
-@charset "UTF-8";
+
 
 @charset "UTF-8";
 
@@ -29,11 +29,11 @@ body {
 }
 
 /* 入力行のレイアウト調整 */
-.input-row { 
-    display: flex; 
-    align-items: center; 
-    margin-bottom: 15px; 
-    justify-content: center; 
+.input-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
 }
 .input-row:last-child { 
     margin-bottom: 0; 
@@ -106,4 +106,32 @@ body {
     text-decoration: underline; 
     margin-top: 5px; 
     cursor: pointer; 
+}
+
+.pw_wrap,
+.pw_wrap2 {
+    position: relative;
+    display: inline-block;
+}
+
+/* パスワード入力欄 */
+
+
+/* パスワード表示ボタン */
+#pw_buttun,
+#pw_buttun2 {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+/* 目のアイコン */
+.eye_password {
+    width: 20px;
+    height: 20px;
 }
