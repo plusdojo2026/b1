@@ -23,20 +23,18 @@ body {
 }
 
 .result-hint {
-    font-size: 14px;
+    font-size: 18px;
     font-weight: bold;
-    color: #000000;
     margin-bottom: 15px;
 }
 
 /* 白い角丸カードのデザイン定義（超角丸スタイル） */
 .result-card {
     background-color: #ffffff;
-    border: 1.5px solid #bdc3c7;
     border-radius: 35px; 
     padding: 25px 20px;
     margin-bottom: 30px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+    box-shadow: 0 5px 6px rgba(0,0,0,0.2);
 }
 
 /* 画像表示枠：標準のグレー塗りつぶし背景 */
@@ -56,9 +54,9 @@ body {
 
 /* 赤色のおすすめバーガーテキスト */
 .burger-title {
-    font-size: 18px;
+    font-size: 24px;
     font-weight: bold;
-    color: #d93333; 
+    color: #C82518; 
     margin: 0;
     letter-spacing: 0.5px;
 }
@@ -73,7 +71,7 @@ body {
     margin: 0 auto;
     width: 100%;
     max-width: 280px;
-    background-color: #d93333;
+    background-color: #C82518;
     color: #ffffff;
     border: none;
     border-radius: 30px; 
@@ -87,12 +85,12 @@ body {
 /* バーガー表示 */
 .burger {
     position: relative;
-    width: 100px;
+    width: 150px;
     margin: 0 auto;
 }
 
 .burger img {
-    width: 100px;
+    width: 150px;
 }
 
 .buns_top {
@@ -106,7 +104,7 @@ body {
 
 .stack-area {
     position: relative;
-    width: 100px;
-    min-height: 120px;
+    width: 160px;
+    min-height: 500px;
     margin: 0 auto;
 }
