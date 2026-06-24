@@ -108,6 +108,8 @@ public class UserRegistServlet extends HttpServlet {
 			User user2 = dao.search(phone, pass);
 			int id2=user2.getId();
 			session.setAttribute("loginUser", new LoginUser(id2));
+			int rank = user2.getRank_id();    
+	        session.setAttribute("rank", rank);
 			
 			// homeへ
 			//登録成功メッセージをスコープへ

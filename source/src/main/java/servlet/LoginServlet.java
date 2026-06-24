@@ -81,7 +81,9 @@ public class LoginServlet extends HttpServlet {
         //session.setAttribute("loginUser", loginUser);//テストオワタら削除
         //本番用
         int id = user.getId();
+        int rank = user.getRank_id();    
         session.setAttribute("loginUser", new LoginUser(id));
+        session.setAttribute("rank", rank);
 
         // ログイン成功後はマイデータ画面（Servlet）へリダイレクト
         response.sendRedirect(request.getContextPath() + "/home");

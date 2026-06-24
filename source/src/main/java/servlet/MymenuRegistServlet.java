@@ -46,6 +46,12 @@ public class MymenuRegistServlet extends HttpServlet {
 		    response.sendRedirect(request.getContextPath() + "/login");
 		    return;
 		}
+		int rank = (int) session.getAttribute("rank");
+        if (rank!=3) { // 登録成功
+			session.setAttribute("result_message", "マイメニューの登録はゴールドランクから可能です");
+			response.sendRedirect(request.getContextPath() + "/home");
+			return;
+        }
 		
 		// マイメニュー登録ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/regist_sim_mymenu.jsp");

@@ -40,10 +40,17 @@ public class ContestRegistServlet extends HttpServlet {
 		//セッションからログイン状態を検証
         HttpSession session = request.getSession();
         dto.LoginUser loginUser = (dto.LoginUser) session.getAttribute("loginUser");
+        
 
         if (loginUser == null) {
             response.sendRedirect(request.getContextPath() + "/login");
             return;
+        }
+        int rank = (int) session.getAttribute("rank");
+        if (rank==1) { // 失敗
+			session.setAttribute("result_message", "コンテストへのメニューの応募はシルバーランクから可能です");
+			response.sendRedirect(request.getContextPath() + "/home");
+			return;
         }
 		response.setCharacterEncoding("UTF-8");
 		ContestsDAO contestdao = new ContestsDAO();
