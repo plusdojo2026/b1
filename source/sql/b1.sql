@@ -1,8 +1,4 @@
-DROP DATABASE b1;
 SET SESSION sql_mode = CONCAT(@@sql_mode, ',NO_AUTO_VALUE_ON_ZERO');
-CREATE DATABASE b1;
-USE b1;
-
 
 /* テーブル作成 */
 /* usersテーブル */
