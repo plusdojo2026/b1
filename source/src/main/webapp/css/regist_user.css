@@ -114,3 +114,53 @@ body {
     color: #d93333;
     text-decoration: underline;
 }
+
+.pw_wrap {
+    position: relative;
+    width: 100%;
+}
+
+.pw_wrap2 {
+	margin-top: 13px;
+    position: relative;
+    width: 100%;
+}
+
+.pw_wrap input {
+    width: 100%;
+    padding-right: 40px;
+    box-sizing: border-box;
+    margin-bottom: 0;
+}
+
+#pw_buttun {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    outline: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+#pw_buttun2 {
+    position: absolute;
+    right: 3px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    outline: none;
+    padding-bottom: 10px;
+    cursor: pointer;
+}
+
+/* ★パスワードだけ下マージン消す */
+
+
+#eye_password {
+    width: 20px;
+    height: 20px;
+}
