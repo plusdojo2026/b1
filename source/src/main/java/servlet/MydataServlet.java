@@ -83,10 +83,10 @@ public class MydataServlet extends HttpServlet {
         
         MaterialsDAO maDao = new MaterialsDAO();
         
-        // 4. 【营养素逻辑校正】在不动 DAO 的前提下，根据用户 ID 分流，精准模拟不同账号的动态数字
         int protein = 0; 
         int df = 0;
         
+        //通常メニューの計算
         for(int i = 0; i < orderList.size(); i++) {
         	
         	Order order = orderList.get(i);
@@ -107,24 +107,25 @@ public class MydataServlet extends HttpServlet {
         	int patty1_id = menu.getPatty1();
 		    int patty2_id = menu.getPatty2();
 		    int patty3_id = menu.getPatty3();
-		    int top1_id = menu.getTopping1();
-		    int top2_id = menu.getTopping2();
-		    int top3_id = menu.getTopping3();
 		    int vege1_id = menu.getVege1();
 		    int vege2_id = menu.getVege2();
 		    int vege3_id = menu.getVege3();
+		    int top1_id = menu.getTopping1();
+		    int top2_id = menu.getTopping2();
+		    int top3_id = menu.getTopping3();
         	
 		    Material mate_buns1 = maDao.selectById(buns1_id);
 		    Material mate_buns2 = maDao.selectById(buns2_id);
 		    Material mate_patty1 = maDao.selectById(patty1_id);
 		    Material mate_patty2 = maDao.selectById(patty2_id);
 		    Material mate_patty3 = maDao.selectById(patty3_id);
-		    Material mate_top1 = maDao.selectById(top1_id);
-		    Material mate_top2 = maDao.selectById(top2_id);
-		    Material mate_top3 = maDao.selectById(top3_id);
 		    Material mate_vege1 = maDao.selectById(vege1_id);
 		    Material mate_vege2 = maDao.selectById(vege2_id);
 		    Material mate_vege3 = maDao.selectById(vege3_id);
+		    Material mate_top1 = maDao.selectById(top1_id);
+		    Material mate_top2 = maDao.selectById(top2_id);
+		    Material mate_top3 = maDao.selectById(top3_id);
+		    
 		    
 		    int pro_buns1 = mate_buns1.getProtein();
 		    int df_buns1 = mate_buns1.getDf();
@@ -153,7 +154,7 @@ public class MydataServlet extends HttpServlet {
 		    int pro_vege3 = mate_vege3.getProtein();
 		    int df_vege3 = mate_vege3.getDf();
 		    
-		    int itemCount = order.getMymenu_count();
+		    int itemCount = order.getMenu_count();
 		    
 		    protein = protein + (pro_buns1 + pro_buns2 +
 		    		pro_patty1 + pro_patty2 + pro_patty3 +
@@ -187,24 +188,24 @@ public class MydataServlet extends HttpServlet {
         	int patty1_id = menu.getPatty1();
 		    int patty2_id = menu.getPatty2();
 		    int patty3_id = menu.getPatty3();
-		    int top1_id = menu.getTopping1();
-		    int top2_id = menu.getTopping2();
-		    int top3_id = menu.getTopping3();
 		    int vege1_id = menu.getVege1();
 		    int vege2_id = menu.getVege2();
 		    int vege3_id = menu.getVege3();
+		    int top1_id = menu.getTopping1();
+		    int top2_id = menu.getTopping2();
+		    int top3_id = menu.getTopping3();
         	
 		    Material mate_buns1 = maDao.selectById(buns1_id);
 		    Material mate_buns2 = maDao.selectById(buns2_id);
 		    Material mate_patty1 = maDao.selectById(patty1_id);
 		    Material mate_patty2 = maDao.selectById(patty2_id);
 		    Material mate_patty3 = maDao.selectById(patty3_id);
-		    Material mate_top1 = maDao.selectById(top1_id);
-		    Material mate_top2 = maDao.selectById(top2_id);
-		    Material mate_top3 = maDao.selectById(top3_id);
 		    Material mate_vege1 = maDao.selectById(vege1_id);
 		    Material mate_vege2 = maDao.selectById(vege2_id);
 		    Material mate_vege3 = maDao.selectById(vege3_id);
+		    Material mate_top1 = maDao.selectById(top1_id);
+		    Material mate_top2 = maDao.selectById(top2_id);
+		    Material mate_top3 = maDao.selectById(top3_id);
 		    
 		    int pro_buns1 = mate_buns1.getProtein();
 		    int df_buns1 = mate_buns1.getDf();
