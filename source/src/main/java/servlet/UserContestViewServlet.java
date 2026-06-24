@@ -9,8 +9,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dao.VotesDAO;
+import dto.LoginUser;
 import dto.Vote;
 
 
@@ -23,6 +25,13 @@ public class UserContestViewServlet extends HttpServlet {
 
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
+        HttpSession session = request.getSession();
+		
+		LoginUser loginUser =(LoginUser)session.getAttribute("loginUser");
+		if (loginUser == null) {
+		    response.sendRedirect(request.getContextPath() + "/login");
+		    return;
+		}
 
         // DAO呼び出し
         VotesDAO dao = new VotesDAO();

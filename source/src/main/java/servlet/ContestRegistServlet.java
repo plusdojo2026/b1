@@ -14,7 +14,6 @@ import dao.ContestmenusDAO;
 import dao.ContestsDAO;
 import dto.Contest;
 import dto.Contestmenu;
-import dto.LoginUser;
 
 /**
  * Servlet implementation class MymenuRegistServlet
@@ -38,6 +37,14 @@ public class ContestRegistServlet extends HttpServlet {
 		// マイメニュー登録ページにフォワードする
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
+		//セッションからログイン状態を検証
+        HttpSession session = request.getSession();
+        dto.LoginUser loginUser = (dto.LoginUser) session.getAttribute("loginUser");
+
+        if (loginUser == null) {
+            response.sendRedirect(request.getContextPath() + "/login");
+            return;
+        }
 		response.setCharacterEncoding("UTF-8");
 		ContestsDAO contestdao = new ContestsDAO();
 		Contest contest = contestdao.selectByNowDate();
@@ -55,9 +62,15 @@ public class ContestRegistServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		response.setCharacterEncoding("UTF-8");
-		HttpSession session = request.getSession();
+		//セッションからログイン状態を検証
+        HttpSession session = request.getSession();
+        dto.LoginUser loginUser = (dto.LoginUser) session.getAttribute("loginUser");
+
+        if (loginUser == null) {
+            response.sendRedirect(request.getContextPath() + "/login");
+            return;
+        }
 		
-		LoginUser loginUser =(LoginUser)session.getAttribute("loginUser");
 		String name = request.getParameter("name");
 		int user_id = loginUser.getId();
 		int buns1 = Integer.parseInt(request.getParameter("bunstop"));

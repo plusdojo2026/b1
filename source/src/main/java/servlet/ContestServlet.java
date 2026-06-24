@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class TestServlet
@@ -32,6 +33,14 @@ public class ContestServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		response.setCharacterEncoding("UTF-8");
+		//セッションからログイン状態を検証
+        HttpSession session = request.getSession();
+        dto.LoginUser loginUser = (dto.LoginUser) session.getAttribute("loginUser");
+
+        if (loginUser == null) {
+            response.sendRedirect(request.getContextPath() + "/login");
+            return;
+        }
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/contest.jsp");
 		dispatcher.forward(request, response);
 	}
@@ -43,6 +52,14 @@ public class ContestServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		response.setCharacterEncoding("UTF-8");
+		//セッションからログイン状態を検証
+        HttpSession session = request.getSession();
+        dto.LoginUser loginUser = (dto.LoginUser) session.getAttribute("loginUser");
+
+        if (loginUser == null) {
+            response.sendRedirect(request.getContextPath() + "/login");
+            return;
+        }
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/contest.jsp");
 		dispatcher.forward(request, response);
 	}

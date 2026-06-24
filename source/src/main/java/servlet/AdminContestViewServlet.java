@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dao.VotesDAO;
 import dto.Vote;
@@ -26,6 +27,14 @@ public class AdminContestViewServlet extends HttpServlet {
         // 文字コードは最初に設定
         request.setCharacterEncoding("UTF-8");
         response.setContentType("text/html; charset=UTF-8");
+        //セッションからログイン状態を検証
+        HttpSession session = request.getSession();
+        dto.LoginUser loginUser = (dto.LoginUser) session.getAttribute("loginUser");
+
+        if (loginUser == null) {
+            response.sendRedirect(request.getContextPath() + "/login");
+            return;
+        }
 
         // DAO呼び出し
         VotesDAO dao = new VotesDAO();

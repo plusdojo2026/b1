@@ -216,7 +216,7 @@ public class AkinatorQuestionResultServlet extends HttpServlet {
 		
 		if (bestMenu == null) {
 		    request.setAttribute("errorMessage", "おすすめメニューが見つかりませんでした");
-		    request.getRequestDispatcher("/WEB-INF/jsp/error.jsp")
+		    request.getRequestDispatcher("/WEB-INF/jsp/home.jsp")
 		           .forward(request, response);
 		    return;
 		}
