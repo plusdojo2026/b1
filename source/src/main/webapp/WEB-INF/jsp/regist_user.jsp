@@ -28,8 +28,14 @@
             <!-- 占位符 placeholder 完美还原灰色提示字效果 -->
             <input type="text" name="userName" class="input-field" placeholder="ユーザー名" value="${userName}">
             <input type="text" name="phoneNumber" class="input-field" placeholder="電話番号（ハイフンなし）" value="${phoneNumber}">
-            <input type="password" name="password" class="input-field" placeholder="パスワードを入力">
-            <input type="password" name="passwordConfirm" class="input-field" placeholder="パスワードを入力（確認）">
+            <div class="pw_wrap">
+	            <input id="password" type="password" name="password" class="input-field" placeholder="パスワードを入力">
+	            <button  id="pw_buttun" type="button" onclick="visible()"><img id="eye_password" src="${pageContext.request.contextPath}/images/eye_password.png" width="12" height="12"></button>
+		    </div>
+		    <div class="pw_wrap2">
+	            <input id="password2" type="password" name="passwordConfirm" class="input-field" placeholder="パスワードを入力（確認）">
+	            <button  id="pw_buttun2" type="button" onclick="visible2()"><img id="eye_password" src="${pageContext.request.contextPath}/images/eye_password.png" width="12" height="12"></button>
+		    </div>
         </div>
 
         <!-- 同意確認チェックボックス -->
@@ -50,6 +56,30 @@
     <!-- ⭕ 修正后：直接找 Servlet 的路径 /login -->
     すでにアカウントをお持ちの方は、<a href="${pageContext.request.contextPath}/login">ログイン</a>
         </div>
+<script>
+function visible() {
+
+    const password =
+        document.getElementById("password");
+
+    if (password.type === "password") {
+        password.type = "text";
+    } else {
+        password.type = "password";
+    }
+}
+function visible2() {
+
+    const password2 =
+        document.getElementById("password2");
+
+    if (password2.type === "password") {
+        password2.type = "text";
+    } else {
+        password2.type = "password";
+    }
+}
+</script>
 
 
 </body>
