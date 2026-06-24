@@ -99,16 +99,29 @@ public class UserRegistServlet extends HttpServlet {
         		
         UsersDAO dao  = new UsersDAO();
         //boolean result = dao.insert(user);  
-        dao.insert(user);   // 戻り値を見ない
-     
-     // 登録成功後にログイン状態にする
-        HttpSession session = request.getSession();
-        session.setAttribute("loginUser", new LoginUser(user.getId()));
-        
-     //登録成功メッセージをスコープへ
-        session.setAttribute("result_message", "会員情報を登録しました。");
-        
-        // 登録成功後はログイン画面、またはホーム画面へ遷移
-        response.sendRedirect(request.getContextPath() + "/login");
+           // 戻り値を見ない
+        boolean result = dao.insert(user);
+
+		if (result) {
+			// 登録成功
+			HttpSession session = request.getSession();
+			User user2 = dao.search(phone, pass);
+			int id2=user2.getId();
+			session.setAttribute("loginUser", new LoginUser(id2));
+			
+			// homeへ
+			//登録成功メッセージをスコープへ
+	        session.setAttribute("result_message", "会員情報を登録しました。");
+	        
+	        // 登録成功後はログイン画面、またはホーム画面へ遷移
+	        response.sendRedirect(request.getContextPath() + "/home");
+
+		} else {
+			// 登録失敗
+			HttpSession session = request.getSession();
+			session.setAttribute("errorMessage", "会員情報が登録できませんでした。");
+			// 登録画面へ戻す
+			request.getRequestDispatcher("/WEB-INF/jsp/regist_user.jsp").forward(request, response);
+		}
     }
 }

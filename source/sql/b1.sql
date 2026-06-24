@@ -8,7 +8,7 @@ USE b1;
 /* usersテーブル */
 CREATE TABLE users  (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    phone VARCHAR(20),
+    phone VARCHAR(20) UNIQUE,
     pw VARCHAR(20),
     name VARCHAR(10),
     rank_id INT DEFAULT 0,

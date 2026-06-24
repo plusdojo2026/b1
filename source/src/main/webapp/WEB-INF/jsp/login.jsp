@@ -41,7 +41,10 @@
         <form action="${pageContext.request.contextPath}/login" method="POST">
             <div class="input-container">
                 <input type="text" name="phoneNumber" class="input-field" placeholder="電話番号" value="${phoneNumber}">
-                <input type="password" name="password" class="input-field" placeholder="パスワード">
+                <div class="pw_wrap">
+		            <input id="password" type="password" name="password" class="input-field" placeholder="パスワード">
+		            <button  id="pw_buttun" type="button" onclick="visible()"><img id="eye_password" src="${pageContext.request.contextPath}/images/eye_password.png" width="12" height="12"></button>
+		        </div>
             </div>
 
             <!-- ログインボタン -->
@@ -54,6 +57,18 @@
         </div>
         
     </div>
+<script>
+function visible() {
 
+    const password =
+        document.getElementById("password");
+
+    if (password.type === "password") {
+        password.type = "text";
+    } else {
+        password.type = "password";
+    }
+}
+</script>
 </body>
 </html>

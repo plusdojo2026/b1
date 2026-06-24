@@ -77,7 +77,7 @@ body {
     background-color: #C82518; 
     color: white;
     cursor: pointer; 
-    margin-top: 5px;
+    margin-top: 18px;
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
@@ -92,3 +92,34 @@ body {
     text-decoration: underline;
 }
 
+.pw_wrap {
+    position: relative;
+    width: 100%;
+}
+
+.pw_wrap input {
+    width: 100%;
+    padding-right: 40px;
+    box-sizing: border-box;
+    margin-bottom: 0;
+}
+
+#pw_buttun {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    outline: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+/* ★パスワードだけ下マージン消す */
+
+
+#eye_password {
+    width: 20px;
+    height: 20px;
+}
