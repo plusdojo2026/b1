@@ -1,3 +1,14 @@
+DROP TABLE users;
+DROP TABLE ranks;
+DROP TABLE materials;
+DROP TABLE categories;
+DROP TABLE menus;
+DROP TABLE mymenus;
+DROP TABLE contestmenus;
+DROP TABLE contests;
+DROP TABLE votes;
+DROP TABLE orders;
+
 SET SESSION sql_mode = CONCAT(@@sql_mode, ',NO_AUTO_VALUE_ON_ZERO');
 
 /* テーブル作成 */
