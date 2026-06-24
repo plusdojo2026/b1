@@ -90,12 +90,18 @@ body {
 .btn-submit { 
     background-color: #d93333; 
     color: white; 
+    margin-top: 0;
+    margin-bottom: 0;
 }
 
 /* 削除用按钮（深茶色/黒） */
 .btn-delete { 
     background-color: #2b1d11; 
     color: white; 
+    
+    
+    display: block;
+    margin: 0 auto;
 }
 
 /* 戻るテキストリンク */

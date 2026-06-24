@@ -71,12 +71,22 @@
         <div class="error-txt">${errorMessage}</div>
 
         <!-- 会員情報を変更するボタン -->
-        <button type="submit" class="btn-large btn-submit">会員情報を変更する</button>
+        <button
+		    type="submit"
+		    class="btn-large btn-submit"
+		    onclick="return confirm('こちらの内容でよろしいですか？')">
+		    会員情報を変更する
+		</button>
         
     </form>
 
     <!-- 会员情報を削除するボタン -->
-   <button type="button" class="btn-large btn-delete" onclick="location.href='${pageContext.request.contextPath}/UserDeleteServlet'">会員情報を削除する</button>
+   　<button
+	    type="button"
+	    class="btn-large btn-delete"
+	    onclick="confirmDelete()">
+	    会員情報を削除する
+	</button>
 	<br>
     <!-- 変更せずに戻るリンク -->
     <div class="back-link" onclick="location.href='${pageContext.request.contextPath}/mydata'">« 変更せずに戻る</div>
@@ -124,6 +134,11 @@ function visible2() {
         password2.type = "text";
     } else {
         password2.type = "password";
+    }
+}
+function confirmDelete() {
+    if (confirm('本当に削除しますか？')) {
+        location.href='${pageContext.request.contextPath}/UserDeleteServlet';
     }
 }
 </script>
