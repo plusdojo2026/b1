@@ -71,12 +71,16 @@
 			        	<input type="hidden" name="mymenuId" value="${v.id}">
 			            <input class="btn-submit" type="submit" name="submit" value="編集">
 			            <input class="btn-delete" type="submit" name="delete" value="削除" 
-			            formaction="${pageContext.request.contextPath}/mymenudelete">
+			            formaction="${pageContext.request.contextPath}/mymenudelete"
+			            onclick="return confirm('このマイメニューを削除しますか？');">
 			        </div>
 			    </div>
 			</form>
 			</div>
 		</c:forEach>
+		<c:if test="${empty menus}">
+			<p class="if_message">マイメニューが登録されていません。</p>
+		</c:if>
 
 	</main>
 

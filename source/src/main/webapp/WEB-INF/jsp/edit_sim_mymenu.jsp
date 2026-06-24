@@ -43,7 +43,10 @@
 
 		</div>
 
-        <form class="choice_material" method="post" action="/b1/mymenuedit">  
+        <form class="choice_material"
+		      method="post"
+		      action="/b1/mymenuedit"
+		      onsubmit="return confirm('この内容でマイメニューを更新しますか？');">
         	  
             <input type="hidden" name="bunstop" value="1">
             <input type="hidden" name="bunsbottom" value="2">

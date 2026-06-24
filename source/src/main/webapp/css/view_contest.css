@@ -94,3 +94,7 @@
 .buns_bottom {
     z-index: 1;
 }
+
+.if_message {
+	text-align: center;
+}

@@ -68,6 +68,9 @@
 			</form>
 			</div>
 		</c:forEach>
+		<c:if test="${empty menus}">
+			<p class="if_message">コンテスト応募メニューが登録されていません。</p>
+		</c:if>
 
 	</main>
 
