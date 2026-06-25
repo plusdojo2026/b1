@@ -47,7 +47,9 @@ h2 {
     background-color: #FFF;
     overflow-y: auto;
     padding-right: 20px;
-    max-height: calc(100dvh - 300px);
+    height: calc(100dvh - 300px);
+    padding-bottom: 120px;
+    box-sizing: border-box;
 }
 
 .choice_material h3 {
@@ -112,6 +114,4 @@ input[type="text"] {
     z-index: 999;
 }
 
-.space {
-    padding: 150px;
-}
+
