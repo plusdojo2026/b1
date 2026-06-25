@@ -1,7 +1,7 @@
 @charset "UTF-8";
 body {
     overflow: hidden;
-    height: 100vh;
+    height: 100dvh;
 }
 
 
@@ -47,7 +47,7 @@ h2 {
     background-color: #FFF;
     overflow-y: auto;
     padding-right: 20px;
-    max-height: calc(100vh - 300px);
+    max-height: calc(100dvh - 300px);
 }
 
 .choice_material h3 {
