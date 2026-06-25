@@ -26,14 +26,14 @@
         
         <div class="input-container">
             <!-- 占位符 placeholder 完美还原灰色提示字效果 -->
-            <input type="text" name="userName" class="input-field" placeholder="ユーザー名" value="${userName}">
-            <input type="text" name="phoneNumber" class="input-field" placeholder="電話番号（ハイフンなし）" value="${phoneNumber}">
+            <input type="text" name="userName" class="input-field" placeholder="ユーザー名" value="${userName}" maxlength="10">
+            <input type="text" name="phoneNumber" class="input-field" placeholder="電話番号（ハイフンなし）" value="${phoneNumber}" maxlength="20">
             <div class="pw_wrap">
-	            <input id="password" type="password" name="password" class="input-field" placeholder="パスワードを入力">
+	            <input id="password" type="password" name="password" class="input-field" placeholder="パスワードを入力" maxlength="20">
 	            <button  id="pw_buttun" type="button" onclick="visible()"><img id="eye_password" src="${pageContext.request.contextPath}/images/eye_password.png" width="12" height="12"></button>
 		    </div>
 		    <div class="pw_wrap2">
-	            <input id="password2" type="password" name="passwordConfirm" class="input-field" placeholder="パスワードを入力（確認）">
+	            <input id="password2" type="password" name="passwordConfirm" class="input-field" placeholder="パスワードを入力（確認）" maxlength="20">
 	            <button  id="pw_buttun2" type="button" onclick="visible2()"><img id="eye_password" src="${pageContext.request.contextPath}/images/eye_password.png" width="12" height="12"></button>
 		    </div>
         </div>
