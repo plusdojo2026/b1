@@ -38,7 +38,7 @@
 				<div class="rank-badge">第1位</div>
 
 				<div class="info">
-					<span class="brand-icon">ア </span> ミスターバーガー <span class="silver">Silver</span>
+					ミスターバーガー <span class="gold">Gold</span>
 
 					<span class="votes">
 						${rankList[0].voteCount}票
@@ -98,7 +98,7 @@
 					<!-- <div class="name">アボカドベーコン</div> -->
 
 					<div class="brand">
-						<span class="brand-icon">ア</span> バーガーマスター
+						バーガーマスター
 						（${rankList[1].voteCount}票）
 					</div>
 
@@ -115,7 +115,7 @@
 					</div>
 
 					<div class="brand">
-						<span class="brand-icon">ア</span> キング・バーガー
+						キング・バーガー
 						（${rankList[2].voteCount}票）
 					</div>
 
