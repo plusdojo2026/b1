@@ -64,7 +64,7 @@
     </div>
 
     <!-- ログアウトボタン（レイアウト保持用に追加） -->
-    <button class="btn-logout" onclick="location.href='/b1/logout'">ログアウト</button>
+    <button class="btn-logout" onclick="logoutConfirm()">ログアウト</button>
 
 </main>
     <!-- 共通フッター：グループ作成の画像ナビゲーションバー -->
@@ -89,6 +89,12 @@
             </ul>
         </nav>
     </footer>
-
+<script>
+function logoutConfirm() {
+    if (confirm("ログアウトしますか？")) {
+        location.href = "/b1/logout";
+    }
+}
+</script>
 </body>
 </html>

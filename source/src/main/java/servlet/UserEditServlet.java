@@ -81,7 +81,7 @@ public class UserEditServlet extends HttpServlet {
             pwConf == null || pwConf.trim().isEmpty()) {
             
             // エラーメッセージと入力値を保持して元の画面に戻す
-            request.setAttribute("errorMessage", "ユーザー名、パスワード、電話番号を入力してください。");
+            request.setAttribute("errorMessage", "ユーザー名、電話番号、パスワードを入力してください。");
             request.setAttribute("userName", name);
             request.setAttribute("phoneNumber", phone);
             
@@ -90,8 +90,8 @@ public class UserEditServlet extends HttpServlet {
         }
         
         // ユーザーネームの文字数チェック
-        if (name.length() >= 9) {
-            request.setAttribute("errorMessage", "ユーザー名は8文字以内で設定してください。");
+        if (name.length() >= 11) {
+            request.setAttribute("errorMessage", "ユーザー名は10文字以内で設定してください。");
             request.setAttribute("userName", name);
             request.setAttribute("phoneNumber", phone);
             request.getRequestDispatcher("/WEB-INF/jsp/edit_mydata.jsp").forward(request, response);
@@ -101,6 +101,15 @@ public class UserEditServlet extends HttpServlet {
         // 電話番号の文字チェック
         if (phone.length() >= 12 || !phone.matches("[0-9]+")) {
             request.setAttribute("errorMessage", "電話番号に誤りがあります。");
+            request.setAttribute("userName", name);
+            request.setAttribute("phoneNumber", phone);
+            request.getRequestDispatcher("/WEB-INF/jsp/edit_mydata.jsp").forward(request, response);
+            return;
+        }
+        
+        // パスワードの文字数チェック
+        if (pw.length() >= 21) {
+            request.setAttribute("errorMessage", "パスワードは20文字以内で設定してください。");
             request.setAttribute("userName", name);
             request.setAttribute("phoneNumber", phone);
             request.getRequestDispatcher("/WEB-INF/jsp/edit_mydata.jsp").forward(request, response);

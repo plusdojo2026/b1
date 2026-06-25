@@ -44,9 +44,9 @@
 		</div>
 
         <form class="choice_material"
-		      method="post"
-		      action="/b1/mymenuedit"
-		      onsubmit="return confirm('この内容でマイメニューを更新しますか？');">
+		    method="post"
+		    action="/b1/mymenuedit"
+		    onsubmit="return validateForm();">
         	  
             <input type="hidden" name="bunstop" value="1">
             <input type="hidden" name="bunsbottom" value="2">
@@ -206,7 +206,10 @@
 
             <h3>メニュー名</h3>
             <input type="hidden" name="id" value="${mymenu.id}">
-            <input type="text" name="name" value="${mymenu.name}">
+            <input type="text" name="name" value="${mymenu.name}" maxlength="20">
+            
+            <!-- 未入力エラーメッセージ表示エリア -->
+        <div class="error-txt">${errorMessage}</div>
 
             <input type="submit" value="マイメニューを更新する">
             <p></p>
@@ -335,7 +338,18 @@
 	    });
 	});
 	
-		</script>
+	function validateForm() {
+	    const name = document.querySelector('input[name="name"]').value.trim();
+
+	    if (name === "") {
+	        alert("メニュー名を入力してください。");
+	        return false;
+	    }
+
+	    return confirm("この内容でマイメニューを更新しますか？");
+	}
+	
+	</script>
 
 </body>
 </html>

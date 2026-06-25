@@ -40,7 +40,7 @@
 
 		</div>
 
-        <form class="choice_material" method="post" action="/b1/contestregist">        
+        <form class="choice_material" method="post" action="/b1/contestregist" onsubmit="return validateForm();">        
             <input type="hidden" name="bunstop" value="1">
             <input type="hidden" name="bunsbottom" value="2">
 
@@ -199,7 +199,7 @@
 
             <h3>メニュー名</h3>
             <input type="hidden" name="contest_id" value="${contest_id}">
-            <input type="text" name="name" value="サンプル" placeholder="メニュー名を入力してください">
+            <input type="text" name="name" value="サンプル" placeholder="メニュー名を入力してください" maxlength="20">
 
             <input type="submit" value="このメニューをコンテストに追加する">
             <p></p>
@@ -328,7 +328,17 @@
 	    });
 	});
 	
-		</script>
+	function validateForm() {
+	    const name = document.querySelector('input[name="name"]').value.trim();
+
+	    if (name === "") {
+	        alert("メニュー名を入力してください。");
+	        return false;
+	    }
+
+	    return confirm("この内容でコンテストメニューを応募しますか？");
+	}
+</script>
 
 </body>
 </html>

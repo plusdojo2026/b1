@@ -22,7 +22,7 @@
     <div class="error-txt">${errorMessage}</div>
 
     <!-- 会員登録情報送信フォーム -->
-    <form action="${pageContext.request.contextPath}/regist_user" method="POST">
+    <form action="${pageContext.request.contextPath}/regist_user" method="POST" onsubmit="return confirmRegist();">
         
         <div class="input-container">
             <!-- 占位符 placeholder 完美还原灰色提示字效果 -->
@@ -57,10 +57,12 @@
     すでにアカウントをお持ちの方は、<a href="${pageContext.request.contextPath}/login">ログイン</a>
         </div>
 <script>
-function visible() {
+function confirmRegist() {
+    return confirm("この内容で会員登録しますか？");
+}
 
-    const password =
-        document.getElementById("password");
+function visible() {
+    const password = document.getElementById("password");
 
     if (password.type === "password") {
         password.type = "text";
@@ -68,10 +70,9 @@ function visible() {
         password.type = "password";
     }
 }
-function visible2() {
 
-    const password2 =
-        document.getElementById("password2");
+function visible2() {
+    const password2 = document.getElementById("password2");
 
     if (password2.type === "password") {
         password2.type = "text";

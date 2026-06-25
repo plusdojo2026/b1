@@ -65,8 +65,8 @@ public class UserRegistServlet extends HttpServlet {
         }
         
         // ユーザーネームの文字数チェック
-        if (name.length() >= 9) {
-            request.setAttribute("errorMessage", "ユーザー名は8文字以内で設定してください。");
+        if (name.length() >= 11) {
+            request.setAttribute("errorMessage", "ユーザー名は10文字以内で設定してください。");
             request.setAttribute("userName", name);
             request.setAttribute("phoneNumber", phone);
             request.getRequestDispatcher("/WEB-INF/jsp/regist_user.jsp").forward(request, response);
@@ -76,6 +76,15 @@ public class UserRegistServlet extends HttpServlet {
         // 電話番号の文字チェック
         if (phone.length() >= 12 || !phone.matches("[0-9]+")) {
             request.setAttribute("errorMessage", "電話番号に誤りがあります。");
+            request.setAttribute("userName", name);
+            request.setAttribute("phoneNumber", phone);
+            request.getRequestDispatcher("/WEB-INF/jsp/regist_user.jsp").forward(request, response);
+            return;
+        }
+        
+        // パスワードの文字数チェック
+        if (pass.length() >= 21) {
+            request.setAttribute("errorMessage", "パスワードは20文字以内で設定してください。");
             request.setAttribute("userName", name);
             request.setAttribute("phoneNumber", phone);
             request.getRequestDispatcher("/WEB-INF/jsp/regist_user.jsp").forward(request, response);

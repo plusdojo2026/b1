@@ -20,11 +20,11 @@
         <div class="form-card">
             <div class="input-row">
                 <span class="label-red">ユーザー名</span>
-                <input type="text" name="userName" class="input-field" value="${userName}">
+                <input type="text" name="userName" class="input-field" value="${userName}" maxlength="10">
             </div>
             <div class="input-row">
                 <span class="label-red">電話番号</span>
-                <input type="text" name="phoneNumber" class="input-field" value="${phoneNumber}">
+                <input type="text" name="phoneNumber" class="input-field" value="${phoneNumber}" maxlength="20">
             </div>
             <div class="input-row">
 			    <span class="label-red">パスワード</span>
@@ -33,7 +33,7 @@
 			               type="password"
 			               name="password"
 			               class="input-field"
-			               >
+			                maxlength="20">
 			
 			        <button id="pw_buttun"
 			                type="button"
@@ -53,7 +53,7 @@
 			               type="password"
 			               name="passwordConf"
 			               class="input-field"
-			               >
+			                maxlength="20">
 			
 			        <button id="pw_buttun2"
 			                type="button"

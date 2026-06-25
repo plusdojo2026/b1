@@ -49,6 +49,7 @@ public class MymenuEditServlet extends HttpServlet {
 		int user_id = loginUser.getId();
 		
 		String name = request.getParameter("name");
+		
 		int id = Integer.parseInt(request.getParameter("id"));
 		int buns1 = Integer.parseInt(request.getParameter("bunstop"));
 		int buns2 = Integer.parseInt(request.getParameter("bunsbottom"));
