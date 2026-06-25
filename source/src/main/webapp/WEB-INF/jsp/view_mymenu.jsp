@@ -112,7 +112,7 @@
             3: 12,
             4: 16,
             5: -2,
-            6: -4,
+            6: -2,
             7: 10,
             8: 9,
             9: 9,
@@ -126,7 +126,7 @@
 
                 const ingredients = stack.querySelectorAll("img");
 
-                let currentTop = 28;
+                let currentTop = 29;
 
                 ingredients.forEach((img, index) => {
                     const type = img.dataset.type;
