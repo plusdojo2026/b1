@@ -201,7 +201,8 @@
             <input type="text" name="name" value="サンプル" placeholder="メニュー名を入力してください" maxlength="20">
 
             <input type="submit" value="このメニューをマイメニューに追加する">
-            
+            <p></p>
+            <span class="space">　</span>
         </form>
 
     </main>
