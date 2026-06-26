@@ -83,10 +83,9 @@ public class MaterialsDAOTest {
         // -------------------------
         System.out.println("---------- update()のテスト ----------");
 
-        List<Material> upList = dao.selectByName("テスト食材");
+        Material up = dao.selectByName("テスト食材");
 
-        if (upList != null && !upList.isEmpty()) {
-            Material up = upList.get(0);
+        if (up != null) {
             up.setName("更新食材");
 
             if (dao.update(up)) {
@@ -104,14 +103,14 @@ public class MaterialsDAOTest {
         // -------------------------
         System.out.println("---------- delete()のテスト ----------");
 
-        List<Material> delList = dao.selectByName("更新食材");
+        Material del = dao.selectByName("更新食材");
 
-        if (delList != null && !delList.isEmpty()) {
-            int id = delList.get(0).getId();
+        if (del != null) {
+            int id = del.getId();
 
             if (dao.delete(id)) {
                 System.out.println("削除成功！");
-                showAllData(dao.selectByName("更新食材"));
+                System.out.println(dao.selectByName("更新食材"));
             } else {
                 System.out.println("削除失敗！");
             }
