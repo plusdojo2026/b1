@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>会員情報の変更</title>
+    <title>FanTable │ 会員情報の変更</title>
     <!-- 共通のスタイルシートと、この画面専用のスタイルシートを読み込み -->
     <link rel="stylesheet" href="/b1/css/common.css">
     <link rel="stylesheet" href="/b1/css/edit_mydata.css">

@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="/b1/css/mydata.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>マイデータ</title>
+    <title>FanTable │ マイデータ</title>
 
 </head>
 
