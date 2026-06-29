@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ホーム</title>
+    <title>FanTable │ ホーム</title>
     <link rel="stylesheet" href="/b1/css/common.css">
     <link rel="stylesheet" href="/b1/css/home.css">
 </head>
